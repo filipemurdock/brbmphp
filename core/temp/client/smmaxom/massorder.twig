@@ -1,0 +1,124 @@
+{% include 'header.twig' %}
+
+  <!-- Main variables *content* -->
+            <div class="page-container">
+    <div class="container-fluid">
+        <div class="row">
+            <span class="page-title"><i class="fi fi-rr-boxes"></i>Mass order</span>
+            <div class="col-md-12">
+        
+        
+        	  
+							    {% if error %}
+        <div class="alert alert-dismissible alert-danger {% if site['rtl'] %} rtl-alert {% endif %}">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ errorText }}
+        </div>
+      {% elseif success %}
+        <div class="alert alert-dismissible alert-success {% if site['rtl'] %} rtl-alert {% endif %}">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ successText }}
+        </div>
+      {% endif %}
+								<form  method="post" action="/massorder">
+								  								  								   <div class="form-group">
+                        <label for="links" class="control-label" style="margin-bottom:10px;">One order per line in format</label>
+								
+									<textarea class="form-control" name="mass" rows="15" id="mass" placeholder="service_id | link | quantity" value="{{ data['mass'] }}"></textarea>
+								 
+								  </div>
+								   <button type="submit" class="btn btn-blue">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>    
+</div>
+
+                        <div class="bottom-navigaiton">
+                                 <a class="bottom-item " href="/">
+                                    <i class="fi fi-rr-shopping-cart"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/services">
+                                    <i class="fi fi-rr-clipboard-list-check"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/orders">
+                                    <i class="fi fi-rr-bags-shopping"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/addfunds">
+                                    <i class="fi fi-rr-money-check"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/api">
+                                    <i class="fi fi-rr-display-code"></i>
+                                    </a>
+                           </div>
+                        
+
+
+            <div id="lnc"></div>
+                        <div id="voiceerror" class="notification"><i class="fa fa-times"></i>The browser does not support</div>
+            <div id="voiceclose">
+               <lottie-player src="https://cdn.fsksoft.com/voice.json"  background="transparent"  speed="1"  style="width: 50px; height: 50px;"  loop  autoplay></lottie-player>
+               <lottie-player src="https://cdn.fsksoft.com/voicebar.json" class="voice-bar" background="transparent"  speed="1"  style="width: 250px;"  loop  autoplay></lottie-player>
+               I listen to you, tell me your platform name or request
+            </div>
+         </div>
+      </div>
+      <div class="notify-box">
+         <div class="notify-top">
+            <span>Duyurular</span>
+            <i class="fa fa-times" onclick="notifyClose()"></i>
+         </div>
+         <div class="notify-list" id="notify-list">
+         </div>
+      </div>
+      <div class="modal_container" id="modal-container99999999">
+         <div class="modal_content">
+            <div class="modal_close close-modal99999999" title="Close">
+               <span>Voice Search</span>
+               <i class="fa fa-times"></i>
+            </div>
+            <div class="modal-content">
+               <div id="search-value"></div>
+            </div>
+            <div class="modal-bottom-btn">
+               <button class="btn btn-border close-modal99999999">Close</button>
+               <button class="btn btn-blue search-modal-btn">Search</button>
+            </div>
+         </div>
+      </div>
+      <div class="modal_container" id="modal-container02">
+         <div class="modal_content">
+            <div class="modal_close close-modal02" title="Close">
+               <span>Loading..</span>
+               <i class="fa fa-times"></i>
+            </div>
+            <div class="modal-content">
+               <div class="progress">
+                  <div class="progress-value" id="uploadProgress"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="modal_container" id="modal-containerPopup">
+         <div class="modal_content">
+            <div class="modal_close">
+               <span id="popupbaslik"></span>
+               <i class="fa fa-times" onclick="closePopup()"></i>
+            </div>
+            <div class="modal-content">
+               <div id="popupsistemi">
+               </div>
+            </div>
+            <div class="progress-bar-modal">
+               <span class="bar-modal">
+               <span class="progress-modal"></span>
+               </span>
+            </div>
+            <div id="popupbutton">
+            </div>
+         </div>
+      </div>
+
+
+
+{% include 'footer.twig' %}

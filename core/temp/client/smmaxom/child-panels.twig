@@ -1,0 +1,121 @@
+{% include 'header.twig' %}
+ <style>#bellIcon {
+    pointer-events: none;
+    opacity: 0.5; 
+    cursor: not-allowed; 
+}
+</style>  
+
+  <!-- Main variables *content* -->
+            <div class="page-container">
+    <div class="container-fluid">
+        <div class="row">
+            <span class="page-title"><i class="fi fi-rr-browser"></i> Painel afiliado</span>
+            <div class="col-md-12">
+                <div class="affiliates-box">
+                    <div class="affiliates-top">
+                        <video playsinline="" autoplay="" muted="" loop="">
+      						<source src="https://cdn.fsksoft.com/master/assets/img/shape.mp4" type="video/mp4">
+   						</video>
+                        <span>Alugue nosso painel smm</span>
+                    </div>
+                                                            <div class="well">
+                                                                
+{% if error %}
+      <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+        {{ errorText }}
+      </div>
+    {% endif %}  
+
+    {% if data["childpanel"]["success"] == 1 %}
+      <div class="alert alert-dismissible alert-success">
+          <strong> Order Id: </strong> {{ data['childpanel']['id'] }} <br>
+          <strong> Service: </strong> {{ data['childpanel']['service'] }} <br>
+          <strong> Domain: </strong> {{ data['childpanel']['link'] }} <br>
+          <strong> Quantity: </strong> {{ data['childpanel']['quantity'] }} <br>
+          <strong> Charge: </strong> {{ data['childpanel']['price'] }} <br>
+      </div>
+    {% endif %}
+                                    <form action="/child-panels" method="post" class="component_form_group">
+                                        <div class="">
+
+                                            {% if errorText %}
+                                                <div class="alert alert-dismissible alert-danger">
+                                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    {{ errorText }}
+                                                </div>
+                                            {% endif %}
+                                            {% if successText %}
+                                                <div class="alert alert-dismissible alert-success">
+                                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    {{ successText }}
+                                                </div>
+                                            {% endif %}
+
+                                            <div class="form-group">
+                                                <label for="domain" class="control-label">Domínio</label>
+                                                <input type="text" class="form-control" id="domain" name="domain" value="">
+                                            </div>
+                                            <div class="component_alert_dns">
+                                                <div class="">
+                                                    <div class="alert alert-info">
+                                                        <div>Por favor, altere os servidores de nomes para:</div>
+                                                        <ul style="padding-left: 20px">
+                                                            <li>painel.sam</li>
+                                                            <li>painel.sam</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="createorderform-currency">Moeda</label>
+                                                <select class="form-control" name="panel_currency" aria-required="true">
+                                                    {% for curr in site['currencies'] %}
+                                                        <option value="{{ curr['name'] }}">{{curr['name']}}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="createorderform-username">Nome de usuário
+                                                    do administrador</label>
+                                                <input type="text" id="createorderform-username" class="form-control"
+                                                    name="username" aria-required="true" value="">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label" for="createorderform-password">Senha do
+                                                    administrador</label>
+                                                <input type="password" id="createorderform-password"
+                                                    class="form-control" name="password" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label"
+                                                    for="createorderform-password_confirm">Confirmar senha</label>
+                                                <input type="password" id="createorderform-password_confirm"
+                                                    class="form-control" name="password_confirm" aria-required="true">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="price" class="control-label">Preço por mês</label>
+                                                <input type="text" class="form-control" id="price"
+                                                    value="{{ currency["symbol"]  }} {{ (settings["panel_price"]*currency["value"]) |round(2, 'floor') }}"
+                                                    readonly>
+                                            </div>
+                                        </div>
+                                        <div class="component_button_submit">
+                                            <div class="">
+                                                <button class="btn btn-block btn-primary" type="submit">
+                                                    Enviar pedido
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        {% include 'footer.twig' %}

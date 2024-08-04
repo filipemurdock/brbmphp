@@ -1,0 +1,187 @@
+{% include 'header.twig' %}<style>#bellIcon {
+    pointer-events: none;
+    opacity: 0.5; 
+    cursor: not-allowed; 
+}
+</style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.5.0/js/bootstrap.bundle.min.js"></script>
+
+   
+   
+   <!-- Main variables *content* -->
+            <div class="page-container">
+    <div class="container-fluid">
+        <div class="row">
+            <span class="page-title"><i class="fi fi-rr-bags-shopping"></i> Meus pedidos</span>
+            <div class="col-md-12">
+                <div class="page-search-box">
+                    <select class="form-control all-dropdown" onchange="location = this.value;">
+                        <option value="/orders" selected="">Todos pedidos</option>
+                        <option value="/orders/pending" >Pendente</option>
+                        <option value="/orders/inprogress" >Em andamento</option>
+                        <option value="/orders/completed" >Concluido</option>
+                        <option value="/orders/partial" >Parcial</option>
+                        <option value="/orders/processing" >Em processamento</option>
+                        <option value="/orders/canceled" >Cancelado</option>
+                    </select>
+                    <div class="serach-box-input" >
+                        <form action="/orders" method="get">
+                            <input class="form-control" name="search" value="" placeholder="Buscar pedidos">
+                            <button type="submit" class="search-input-btn"><i class="fi fi-rr-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                
+                {% for order in orders %}
+                
+                <div class="order-list">
+                                      <div class="order-date-list" data-order-date="{{ order['date'] }}" style="display:none;"><i class="fi fi-rr-calendar"></i> {{ order['date'] }}</div>
+                    <div class="order-box">
+                        <div class="order-box-top">
+                            <div class="order-top-left">
+                                <div class="order-id">ID : {{ order['id'] }}</div>
+                                <div class="order-date">{{ order['date'] }}</div>
+                                <div class="order-service">{{ order["service_id"] }} - {{ order['service'] }}</div>
+                            </div>
+                            <div class="order-top-right">
+                                                            <div class="order-status {{ order['status'] }}">
+                                    <i class="fad fa-hourglass-half"></i>
+                                    <span>{{ order['status'] }} </span>
+                                </div>
+                                                    </div>
+                        </div>
+                        <div class="order-box-bottom">
+                            <div class="order-link" onclick="copyLink({{ order['id'] }});"><i class="far fa-copy"></i>{{ order['link'] }}</div>
+                            <input id="link-{{ order['id'] }}" type="text" readonly="" value="{{ order['link'] }}" style="opacity: 0;position: absolute;left: -2220px;">
+                            
+                            
+                            
+                              
+                              
+    
+                            
+                            <div class="order-button">
+                               
+ 
+
+                   {% if order['show_refill'] == "true"  %}
+{% if order['kancel']  == 1 %}
+
+                   {% if order['refill'] == 1 %}
+
+ <div style="">
+   <button data-toggle="tooltip" data-placement="top" data-placement="top" title="{{order['refillTimeLeft']}} {{ "left for refill" }}" class="btn btn-warning btn-sm">Refill</button>
+</div>
+{% endif %}
+      {% endif %}
+                         {% endif %}
+
+{% if order['refillbutton'] == "true"  %}
+{% if order['status'] == "Completed"  %}
+{% if order['refill'] == 2 %}
+
+{% if order['show_refill'] == "true"  %}
+                   <a href="orders/refill/{{order['id']}}" class="btn btn-success btn-sm">Refill</a>
+ 
+
+
+                {% endif %}
+{% endif %}
+{% endif %}
+                
+    {% endif %}            
+
+
+               {% if order['cancel_button']   == "true" %}
+         
+
+
+                   <a href="orders/cancel/{{order['id']}}" class="btn btn-actions">cancelado</a>
+               {% endif %}
+
+                                 
+                                
+                            </div>
+                            
+                             <button class="btn btn-blue" onclick="openModalID({{ order['id'] }})">Detalhes do pedido</button><br>
+                                    
+                        </div>
+                    </div>
+                    <div class="modal_container" id="modal-container{{ order['id'] }}">
+                        <div class="modal_content">
+                            <div class="modal_close close-modal{{ order['id'] }}" title="Close">
+                                <span>ID : {{ order['id'] }} -Detalhes do pedido</span>
+                                <i class="fa fa-times"></i>
+                            </div>
+                            
+                            
+                            
+                            
+                            
+                            <div class="modal-order-content">
+                                <span>ID : {{ order['id'] }}</span>
+                                <span>Data : {{ order['date'] }}</span>
+                                <span onclick="copyLink({{ order['id'] }});"><i class="far fa-copy"></i> Link : {{ order['link'] }}</span>
+                                <span>Valor : {{ currency['symbol'] }}{{ (order['charge']*currency['value']) }}</span>
+                                <span>Serviço : {{ order["service_id"] }} - {{ order['service'] }}</span>
+                                <div class="modal-order-detail">
+                                    <span>Começou com:<b>{{ order['start_count'] }}</b></span>
+                                    <span>Quantidade:<b>{{ order['quantity'] }}</b></span>
+                                    <span>Falta:<b>{{ order['remains'] }}</b></span>
+                                </div>
+                            </div>
+                                                       <div class="order-status {{ order['status'] }}">
+                                <i class="fad fa-hourglass-half"></i>
+                                <span>{{ order['status'] }} </span>
+                            </div>
+                                                                  </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    {% endfor %}
+                    
+        
+    
+                                  <div class="bottom-navigaiton">
+                                 <a class="bottom-item " href="/">
+                                    <i class="fi fi-rr-shopping-cart"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/services">
+                                    <i class="fi fi-rr-clipboard-list-check"></i>
+                                    </a>
+                                 <a class="bottom-item active " href="/orders">
+                                    <i class="fi fi-rr-bags-shopping"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/addfunds">
+                                    <i class="fi fi-rr-money-check"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/api">
+                                    <i class="fi fi-rr-display-code"></i>
+                                    </a>
+                           </div>
+                    
+                    
+                                    </div>
+                          </div>
+        </div>
+    </div>    
+</div>
+<div id="notification" class="notification"><i class="fi fi-rr-check"></i>Link copiado</div>
+
+
+<script>
+    $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+{% include 'footer.twig' %}
+
+                
+
+                       
+                       

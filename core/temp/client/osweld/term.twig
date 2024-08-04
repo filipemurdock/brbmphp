@@ -1,0 +1,123 @@
+{% include 'header.twig' %}
+{% if contentText %}
+
+
+{% else %}
+	<style>
+		@media (max-width: 991.98px) {
+			.main-top {padding: 70px 0 40px 0!important}
+		}
+        .lgn-btn {display: none!important}
+      
+      	@media (min-width: 1199.98px) {
+      		.main-top { padding: 400px 0 40px 0}
+      		.app-content { margin-top: -300px }
+      	}
+	</style> 
+	
+    <div class="main-top">
+        <div class="main-top-bg"></div>
+	</div>
+
+
+
+	<div class="app-content">
+      
+          <div class="container-fluid">
+     
+          <div class="container">
+     
+               <section class="app-childs">
+                  <div class="row">
+                     <div class="col-lg-12 col-12 mb-lg-0">
+						<div class="d-card h-100">
+                            <div class="d-card-head">
+                               <div class="dch-icon">
+                                  <i class="fal fa-book-open"></i>
+                               </div>
+                               {% if user['lang'] == "ar" %}شروط الخدمة{% else %}Terms of service{% endif %}
+                            </div>
+								<div class="d-card-body">	
+
+								The use of services provided by &nbsp;{{ site["site_name"] }} Reseller establishes an agreement to these terms. By registering or using our services you agree that you have read and fully understood the following terms of Service and &nbsp;{{ site["site_name"] }} Reseller will not be held liable for loss in any way for users who have not read the below terms of service.
+
+1. General
+By placing an order with &nbsp;{{ site["site_name"] }} Reseller, you automatically accept all the below-listed terms of services whether you read them or not.
+
+
+
+We reserve the right to change these terms of service without notice. You are expected to read all terms of service before placing every order to ensure you are up to date with any changes or any future changes.
+
+
+
+You will only use &nbsp;{{ site["site_name"] }} Reseller website in a manner which follows all agreements made with Twitter/Youtube/other social media site on their individual Terms of Service page.
+
+
+
+&nbsp;{{ site["site_name"] }}  Reseller rates are subject to change at any time without notice. The payment/refund policy stays in effect in the case of rate changes. &nbsp;{{ site["site_name"] }} Reseller does not guarantee a delivery time for any services. We offer our best estimation for when the order will be delivered. This is only an estimation and &nbsp;{{ site["site_name"] }} Reseller will not refund orders that are processing if you feel they are taking too long.
+
+
+
+&nbsp;{{ site["site_name"] }} Reseller tries hard to deliver exactly what is expected from us by our re-sellers. In this case, we reserve the right to change a service type if we deem it necessary to complete an order.
+
+
+
+All prices shown on &nbsp;{{ site["site_name"] }} Reseller refer to the US dollar. We will not be responsible for any losses due to the exchange rate from your domestic currency.
+
+
+
+2. Service
+&nbsp;{{ site["site_name"] }} Reseller will only be used to promote your Twitter or Social account and help boost your "Appearance" only.
+
+
+
+We DO NOT guarantee your new followers will interact with you, we simply guarantee you to get the followers you pay for.
+
+
+
+We DO NOT guarantee 100% of our accounts will have a profile picture, full bio, and uploaded pictures, although we strive to make this the reality for all accounts.
+
+
+
+You will not upload anything into the &nbsp;{{ site["site_name"] }} Reseller site including nudity or any material that is not accepted or suitable for the  Social Media community.
+
+
+
+You shall not knowingly exploit the system including gaining an advantage, exploit speed, or any other bug in a manner other than purchasing them from the website or use the regular features, and others.
+
+
+
+If you change your username, password, email, or any other mandatory field the script will stop automatically until you re-login and re-launch it. Should it happen, the time of script inactivity will not be added to your license.
+
+
+
+Private accounts would not get a refund! Please ensure that your account is public before ordering.
+
+
+
+We are not responsible for your actions and their consequences, including accounts or pages, banned or photos removed, we will not issue any refund or compensation in this case.
+
+
+
+We are not to blame if your accounts are banned for any reason.
+
+
+
+&nbsp;{{ site["site_name"] }} Reseller is brought to you to make your life easier with automated processes. We discourage spam and violation of the law. We will block without warning any adult content or content that goes against the law.
+
+
+
+Once orders are submitted we cannot refund them. We will guarantee that you get what you purchased.
+
+
+								</div>
+							</div>
+						</div>
+					</div>
+               </section>
+            </div>
+         </div>
+      </div>
+  
+{% endif %}
+{% include 'footer.twig' %}

@@ -1,0 +1,212 @@
+{% include 'header.twig' %}
+<div class="g-dash-content">
+   <section class="mt-4 mb-2">
+      <div class="container-fluid">
+         <div class="gcard-2 gcard-shadow fade-1 mb-5">
+            <div class="gcard-body gi-card">
+               <div class="row align-items-center">
+                  <div class="col-auto">
+                     <div class="gcard-icon gi-1">
+                        <i class="ri-store-2-line"></i>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <span class="gi-title">{{ lang['childpanels.title'] }}</span>
+                     <p class="gi-text">Torne-se nosso parceiro e revendedor e comece a lucrar agora.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row mb-3">
+
+            <div class="col-lg-7 mb-3">
+               <div class="gcard">
+                  <div class="gcard-header">
+                     <div class="row align-items-center">
+                        <div class="col d-flex align-items-center">
+                           <div class="ch-g-ticon">
+                              <div class="gcard-head-icon">
+                                 <i class="ri-share-forward-box-fill"></i>
+                              </div>
+                           </div>
+                           <div class="ch-text">
+                              <h3 class="gcard-title">Painel afiliado</h3>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="gcard-body">
+				  {% if errorText %}
+					<div class="alert alert-dismissible alert-danger">
+					  <button type="button" class="close" data-dismiss="alert">×</button>
+					  {{ errorText }}
+					</div>
+				  {% endif %}
+				  {% if successText %}
+					<div class="alert alert-dismissible alert-success">
+					  <button type="button" class="close" data-dismiss="alert">×</button>
+					  {{ successText }}
+					</div>
+				  {% endif %}
+                    <form action="/child-panels" method="post">
+                            <div class="form-group">
+                                <label for="domain" class="control-label">{{ lang["childpanels.panel.domain"] }}</label>
+                                <input type="text" class="form-control" id="domain" name="domain" value="">
+                            </div>
+                        <div class="form-group">
+                            <label class="control-label">{{ lang["childpanels.panel.currency"] }}</label>
+                            <select class="form-control" name="panel_currency" aria-required="true">
+                                                                   
+                                                                   <option value="BRL">
+                                        Real Brasil (BRL)
+                                    </option>
+                                                                    <option value="USD">
+                                        United States Dollars (USD)
+                                    </option>
+                                                                    {#<option value="TRY">
+                                        Türk Lirası (TRY)
+                                    </option>
+                                                                    <option value="EUR">
+                                        Euro (EUR)
+                                    </option>#}
+                 
+                                                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{ lang["childpanels.admin.username"] }}</label>
+                            <input type="text" class="form-control" value="admin" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{ lang["childpanels.admin.password"] }}</label>
+                            <input class="form-control" value="admin@123" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">{{ lang["childpanels.panel.amount"] }}</label>
+                            <input type="text" class="form-control" value="{{ settings['panel_price'] }}{{ site['currency'] }}" disabled>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-block">{{ lang["neworder.button"] }}</button>
+                    </form>
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-5">
+			   <div class="gcard-2 gcard-shadow fade-4 mb-3">
+				   <div class="gcard-body">
+                        <p>{{ lang["childpanels.nameservers"] }}</p>
+                        <ul style="padding-left: 20px">
+                            <li>sasha.ns.cloudflare.com</li>
+                            <li>sullivan.ns.cloudflare.com</li>
+                        </ul>
+				   </div>
+			   </div>
+			
+               <div class="gcard">
+                  <div class="gcard-header">
+                     <div class="row align-items-center">
+                        <div class="col d-flex align-items-center">
+                           <div class="ch-g-ticon">
+                              <div class="gcard-head-icon">
+                                 <i class="ri-alarm-warning-line"></i>
+                              </div>
+                           </div>
+                           <div class="ch-text">
+                              <h3 class="gcard-title">Vantagens do Painel afiliado</h3>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="gcard-body">
+                    <p>Quer ser um revendedor e nosso parceiro ? Não perca essa oportunidade, configurando seu próprio painel$nbsp<strong>{{site["site_name"]}}</strong> você pode vender seus serviços. Você pode ganhar dinheiro com nossos serviços. Se pretende iniciar o seu próprio negócio com custos acessíveis, não perca esta oportunidade e preencha o formulário ao lado!</p>
+                     <p>A marca BM Ilimitada nunca é usada no site que pertence a você, você terá um painel totalmente novo com sua marca, criamos todo o visual e estrutura do seu painel, contrate já nossos serviços.</p>
+					 <p>	        <li>Critérios do Painel de afiliado:
+	            <ol>
+	                <li>É Preciso ter um domínio próprio e aponta-lo pros nameservers descritos logo acima.</li>
+	            </ol>
+	        </li>
+	        <li>Cadastro:
+	            <ol>
+	                <li>Todos nossos parceiros que adquirirem nosso painel ganham 10% de desconto em todos nossos produtos.</li>
+	            </ol>
+	        </li>
+	 <li>Do Pagamento:
+	            <ol>
+	                <li>O Preço mensal do painel é de 200R$ para manter custos de hospedagem e manutenção.</li>
+	                <li>Há uma taxa simbólica de instalação de 100R$</li>
+	            </ol>
+	        </li>
+	<li>Da Produção:
+	            <ol>
+	                <li>O Parceiro deve informar a equipe de desenvolvimento as cores juntamente com a logo e autenticidade de marca desejada.</li>
+	                <li>A Equipe entrará em contato via Email do parceiro solicitando os dados necessários para ativação, cadastro e estilização do código.</li>
+	            </ol>
+	        </li>
+	<li>Do Prazo:
+	            <ol>
+	                <li>O Prazo para a entrega do painel é de 7 dias uteis</li>
+	                <li>O Tempo se abrange caso o usuário não colaborar com a equipe</li>
+	            </ol>
+	        </li>
+	<li>Da Entrega:
+	            <ol>
+	                <li>O parceiro receberá o link de acesso ao painel de administração juntamente com login e senha.</li>
+	                <li>O Tempo se abrange caso o usuário não colaborar com a equipe</li>
+	            </ol>
+	        </li>
+	<li>Término da Parceria:
+	            <ol>
+	                <li>Reservamo-nos o direito de encerrar a parceria a qualquer momento, caso haja violação dos termos estabelecidos.</li>
+	            </ol>
+	        </li>
+	<li>Modificação dos Termos:
+	            <ol>
+	                <li>Reservamo-nos o direito de alterar os termos a qualquer momento. Qualquer mudança significativa será comunicada aos nossos parceiros.</li>
+	            </ol>
+	        </li>
+	
+</P>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+		 {% if ticketList %}
+<div class="card bg-dark text-white">
+  <div class="table-responsive">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>{{ lang["childpanels.domain"] }}</th>
+          <th>{{ lang["childpanels.currency"] }}</th>
+          <th>{{ lang["childpanels.price"] }}</th>
+          <th>{{ lang["childpanels.created"] }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for panel in ticketList %}
+        <tr>
+          <td>{{ panel['panel_domain'] }}</td>
+          <td>{{ panel['panel_currency'] }}</td>
+          <td>{{ panel['panel_price'] }}</td>
+          <td><span class="nowrap">{{ panel['panel_created'] }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+		 {% endif %} 
+      </div>
+   </section>
+</div>
+</div>
+
+<a href="https://machinesmm.com/">
+    <img src="" alt="">
+</a>
+{% include 'footer.twig' %}

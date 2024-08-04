@@ -1,0 +1,281 @@
+{% include 'header.twig' %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Seu script JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var methodSelect = document.getElementById('payment_method');
+        var samDiv = document.getElementById('sam');
+        var cpfInput = document.getElementById('cpf');
+        var cpfErrorMessage = document.getElementById('cpf-error-message');
+        var form = document.getElementById('seu-form-id'); // Substitua 'seu-form-id' pelo ID do seu formulário
+
+        function toggleSamVisibility() {
+            samDiv.style.display = (methodSelect.value === '52') ? 'block' : 'none';
+            cpfInput.required = (methodSelect.value === '52');
+        }
+
+        function validateCpfInput() {
+            cpfInput.value = cpfInput.value.replace(/\D/g, '');
+
+            if (cpfInput.value.length !== 11) {
+                cpfErrorMessage.textContent = 'CPF Deve Ser Valido!';
+            } else {
+                cpfErrorMessage.textContent = '';
+            }
+        }
+
+        function handleSubmit(event) {
+            if (methodSelect.value === '52') {
+                validateCpfInput();
+
+                if (cpfErrorMessage.textContent !== '') {
+                    event.preventDefault();
+                }
+            }
+        }
+
+        methodSelect.addEventListener('change', toggleSamVisibility);
+        cpfInput.addEventListener('input', validateCpfInput);
+        form.addEventListener('submit', handleSubmit);
+
+        toggleSamVisibility();
+    });
+</script>
+
+<style>
+    #sam {
+        display: none; /* Oculta por padrão */
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+<div class="g-dash-content">
+   <section class="mt-4 mb-2">
+      <div class="container-fluid">
+         <div class="gcard-2 gcard-shadow fade-1 mb-5">
+            <div class="gcard-body gi-card">
+								 <img src="/img/addsaldo.svg" class="mascot-img2">
+               <div class="row align-items-center">
+                  <div class="col-auto">
+                     <div class="gcard-icon gi-1">
+                        <i class="ri-exchange-dollar-line"></i>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <span class="gi-title">{{ lang['addfunds.title'] }}</span>
+                     <p class="gi-text">Recarregue sua conta automaticamente via Pix 24/7.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row mb-3">
+            <div class="col-lg-7 mb-3">
+                {% if paymentsList %}
+               <div class="gcard addfunds-page">
+                  <div class="gcard-header">
+                     <div class="row align-items-center">
+                        <div class="col d-flex align-items-center d-none-imp">
+                           <div class="ch-g-ticon">
+                              <div class="gcard-head-icon">
+                                 <i class="ri-wallet-3-line"></i>
+                              </div>
+                           </div>
+        
+                           <div class="ch-text">
+                              <h3 class="gcard-title">Recarregar</h3>
+                           </div>
+                        </div>
+                        <div class="col-md-auto">
+                           <ul class="nwoNav nav nav-tabs" role="tablist">
+                              <li class="nav-item" role="presentation">
+                                 <button class="nwoNavLink active" data-toggle="tab" d="addFunds-tab" data-target="#addFunds" type="button" role="tab" aria-controls="addFunds" aria-selected="true">Pagamento online</button>
+                              </li>
+                              {#<li class="nav-item" role="presentation">#}
+                              {#   <button class="nwoNavLink" data-toggle="tab" id="seeTransaction-tab" data-target="#seeTransaction" type="button" role="tab" aria-controls="seeTransaction" aria-selected="false">Pagamento Bancário</button>#}
+                              {#</li>#}
+                           </ul>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="gcard-body">
+                     <div class="tab-content">
+                        <div class="tab-pane active" id="addFunds" role="tabpanel" aria-labelledby="addFunds-tab">
+                            <form method="post" action="addfunds">
+							{% if error %}
+							  <div class="alert alert-dismissible alert-danger">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+								{{ errorText }}
+							  </div>
+							{% endif %}
+							{% if success %}
+							  <div class="alert alert-dismissible alert-success">
+								<button type="button" class="close" data-dismiss="alert">×</button>
+								{{ successText }}
+							  </div>
+							{% endif %}
+                           <div class="form-group">
+                              <label for="method" class="control-label">{{ lang['addfunds.method'] }}</label>
+							  <select class="form-control" id="payment_method" name="payment_type">
+							   {% for payment in paymentsList %}
+								  <option value="{{ payment['id'] }}" {% if data['payment_type'] == payment['id'] %} selected {% endif %} >{{ payment['method_name'] }}</option>
+								{% endfor %}
+							  </select>
+                           </div>
+                           
+                           
+    <div class="form-group instruction" id="instruction_instruction" bis_skin_checked="1">
+    <label class="control-label"> </label>
+    <div class="panel-body border-solid border-rounded text-center" >
+      
+    <div class="t-pix">
+	<img src="img/pixwhite.png" width="100">
+    </div>
+    <div class="t-cripto">
+	<img src="img/cripto.png" width="260">
+    </div>									
+    </div>
+</div>
+    <div id="sam">
+        <div class="form-group">
+            <label class="fla" for="cpf">CPF </label>
+            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite Seu CPF">
+            <span class="error-message" id="cpf-error-message"></span>
+        </div>
+    </div>
+                           <div class="form-group">
+                              <label for="amount" class="control-label">{{ lang['addfunds.amount'] }}</label>
+                              <input class="form-control" id="amount" name="payment_amount" value="{{ data['payment_amount'] }}">
+                           </div>
+  
+                             
+                        <div class="addBalance my-4">
+                            <button class="addBalanceBtn" type="button" onclick="setAmount(50)">50</button>
+                            <button class="addBalanceBtn" type="button" onclick="setAmount(100)">100</button>
+                            <button class="addBalanceBtn" type="button" onclick="setAmount(250)">250</button>
+                            <button class="addBalanceBtn" type="button" onclick="setAmount(500)">500</button>
+                        </div>
+                             
+                           <button type="submit" class="btn btn-primary btn-block">{{ lang['addfunds.button'] }}</button>
+                           </form>
+                        </div>
+                        <div class="tab-pane" id="seeTransaction" role="tabpanel" aria-labelledby="seeTransaction-tab">
+                         
+					  {% if bankPayment == 2 %}
+
+						<form method="post" action="addfunds">
+
+							<div class="row">
+
+								  <div class="form-group col-md-12">
+									<label for="method" class="control-label">{{ lang['addfunds.bank'] }}</label>
+									<select class="form-control" name="payment_bank">
+									 {% for bank in bankList %}
+										<option value="{{ bank['id'] }}" {% if data['payment_bank'] == payment['id'] %} selected {% endif %} >{{ bank['bank_name'] }}</option>
+									  {% endfor %}
+									</select>
+								  </div>
+
+									<div class="form-group col-md-6">
+										<label for="method" class="control-label">{{ lang['addfunds.bank.amount'] }}</label>
+										<input class="form-control" name="payment_bank_amount" value="{{ data['payment_bank_amount'] }}">
+									</div>
+									<div class="form-group col-md-6">
+										<label for="method" class="control-label">{{ lang['addfunds.bank.sender'] }}</label>
+										<input class="form-control" name="payment_gonderen" value="{{ data['payment_gonderen'] }}">
+									</div>
+									<div class="col-md-12">
+									  <button type="submit" class="btn btn-primary btn-block">{{ lang['addfunds.bank.button'] }}</button>
+									</div>
+							  </div>                
+						</form>
+					  {% endif %}	
+
+					  {% if bankPayment == 2 %}
+					  
+								 {# <p style="text-align: center; margin-top: 25px">#}
+									{#<span style="font-weight: 700; font-size: 36px;">Banco</span><span style="font-size: 36px;"> Nossas contas</span>#}
+								 {# </p>#}
+
+								 {# <div class="table-responsive">#}
+									{#<table class="table affiliates table-striped table-bordered table-checkable ">#}
+									{#  <thead>#}
+									{#	<tr>#}
+									{#	  <th>Codigo do banco</th>#}
+									{#	  <th>Código da Agência</th>#}
+									{#	  <th>Número de conta</th>#}
+									{#	  <th>Digito</th>#}
+									{#	  <th>Nome do Destinatário</th>#}
+
+									{#	</tr>#}
+									{#  </thead>#}
+									{#  <tbody>#}
+									{#  {% for bank in bankList %}#}
+									{#	<tr>#}
+									{#	  <td>{{ bank['bank_name'] }}</td>#}
+									{#	  <td>{{ bank['bank_sube'] }}</td>#}
+									{#	  <td>{{ bank['bank_hesap'] }}</td>#}
+									{#	  <td><b>{{ bank['bank_iban'] }}</b><br></td>#}
+									{#	  <td>{{ bank["bank_alici"] }}</td>#}
+									{#	</tr>#}
+									{#  {% endfor %}#}
+									{#	</tbody>#}
+									{#  </table>#}
+									{#</div>#}
+
+								  <div class="gcard-2 gcard-shadow fade-4">
+									<div class="gcard-body">
+										<b>PARA INFORMAR: </b> As taxas de remessa/EFT deduzidas durante o pagamento não serão cobertas por nós.
+									</div>
+								  </div>
+
+					  {% endif %}
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               {% endif %}
+            </div>
+            <div class="col-lg-5">
+               <div class="gcard">
+                  <div class="gcard-header">
+                     <div class="row align-items-center">
+                        <div class="col d-flex align-items-center">
+                           <div class="ch-g-ticon">
+                              <div class="gcard-head-icon">
+                                 <i class="ri-flag-line"></i>
+                              </div>
+                           </div>
+                           <div class="ch-text">
+                              <h3 class="gcard-title">Atenção</h3>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="gcard-body">
+					
+  <h6 class="alert-heading"small id="small_lemon" class="from-text text-muted" style="display: block;"><p><i class="far fa-donate"> </i> RECEBA O SALDO AUTOMATICAMENTE EM MENOS DE 2 MINUTOS!</p><br>
+<p>GERE O QR CODE E PAGUE NO SEU BANCO (NA OP&Ccedil;&Atilde;O PAGAR COM PIX - COPIE E COLE).</p><br>
+<p>ESSE QR CODE TAMB&Eacute;M PODE SER PAGO COM SEU CART&Atilde;O DE CR&Eacute;DITO PELO PICPAY OU PAYPAL POR EXEMPLO.</p><br>
+<p>FUNCIONA 24 HORAS POR DIA E O SALDO ENTRA AUTOMATICAMENTE NO SEU CADASTRO.</p><br>
+<p>RECARGA M&Iacute;NIMA DE R$: 5,00.</p>
+</h6>
+                                            </small>
+                                        </div>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</div>
+</div>
+
+<a href="https://machinesmm.com/">
+    <img src="" alt="">
+</a>
+{% include 'footer.twig' %}

@@ -1,0 +1,607 @@
+{% include 'header.twig' %}
+
+
+
+  <!-- Main variables *content* -->
+            <div class="page-container">
+    <div class="container-fluid">
+        <div class="row">
+            <span class="page-title"><i class="fi fi-rr-shopping-cart"></i>Novo Pedido</span>
+            <div class="col-md-12 stats-box-content">
+                <div class="stats-box">
+                    <span class="stats-box-title"><i class="fi fi-rr-bags-shopping"></i>Total de Pedidos</span>
+                    <span class="stats-box-text">{{ ordersCount }}</span>
+                </div>
+                <div class="stats-box">
+                    <span class="stats-box-title"><i class="fi fi-rr-shopping-bag"></i>Sua conta</span>
+                    <span class="stats-box-text">{{ user["username"]  }} </span>
+                </div>
+                <div class="stats-box">
+                    <span class="stats-box-title"><i class="fi fi-rr-coins"></i>Valor gasto</span>
+                    <span class="stats-box-text">≈  {{ currency["symbol"]  }} {{ (user["spent"]*currency["value"]) |round(7, 'floor') }} </span>
+                </div>
+                <div class="stats-box">
+                    <span class="stats-box-title"><i class="fi fi-rr-wallet"></i>Saldo</span>
+                    <span class="stats-box-balance">
+                        <div class="stats-balance"><dot class="color-red"></dot>≈  {{ currency["symbol"]  }} {{ (user["balance"]*currency["value"]) |round(7, 'floor') }} </div>
+                        <a class="stats-btn" href="/addfunds"><span>Recarregar</span><i class="fi fi-rr-arrow-small-right"></i></a>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-12">
+              
+                            
+                          </div>
+            <div class="col-md-6">
+              <div class="tab-select">
+                <div class="neworderApp favslct" onclick="setFavDisable()"><span><i class="far fa-shopping-bag"></i> Novo Pedido</span></div>
+               <!-- <div class="favoriApp favslct" onclick="setFavSelect()"><span><i class="far fa-bookmark"></i> My favorite services</span></div> -->
+                
+                
+                  <div class="favoriApp favslct" >
+                    <span>
+                         <a href="/massorder" > Pedido em massa </a>
+                    </span>
+               
+               </div>
+                <div class="search-new-service">
+                  <input class="search-neworder-input" value="" id="neworder-search" placeholder="Search with service ID">
+                  <style>.search-new-service {
+  pointer-events: none;
+}
+
+.search-neworder-input {
+  pointer-events: none;
+}.search-new-service {
+  pointer-events: none;
+  display: none;
+}
+
+.search-neworder-input {
+  pointer-events: none;
+  display: none;
+}
+
+</style>
+                </div> 
+              </div>
+                <div class="favalert">You don't have a favorite service. If you want to add a service to your favorite liste immediately, visit the <a href="/services"> service list </a>.</div>
+                
+                
+                
+                
+                
+                
+                
+                
+                <!--- start pop pap -->
+                          
+
+
+    {% if error %}
+      <div class="alert alert-dismissible alert-danger">
+        {{ errorText }}
+      </div>
+    {% endif %}
+
+    {% if data["order"]["success"] == 1 %}
+      <div class="alert alert-dismissible alert-success">
+  <p>  <center>Your order received</center> </p>
+      </div>
+    {% endif %}
+   
+   
+
+
+
+
+
+
+        <form action="/" method="post" id="order-form">
+                  <div class="well notfav">
+                      <div class="neworder-search"><i class="fad fa-spinner-third"></i></div>
+                      <label for="orderform-category" class="control-label"><i class="fi fi-rr-plus-small"></i>Categoria</label>
+                      
+                      
+<select class="form-control" id="neworder_category" name="categories" data-select="true" data-select-search="true" data-select-search-placeholder="Search" data-select-container="#select-category-container" tabindex="-1" aria-hidden="true">
+{% for category in categories %}
+
+<option value="{{ category["category_id"] }}" {% if category["category_id"] == data['categories'] %} selected {% endif %}>{{ category["category_name"] }}</option>
+
+{% endfor %}
+
+</select>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                      <label for="service" class="control-label"><i class="fi fi-rr-plus-small"></i>Serviços</label>
+                       <select class="form-control" id="neworder_services" name="services">
+
+              </select>
+                      
+                      
+            <div id="neworder_fields"></div>
+
+ <label for="charge" class="control-label"><i class="fi fi-rs-dollar"></i>Valor</label>
+                      <input class="form-control" value="" type="text" id="charge" readonly>
+
+
+
+ <button type="submit" class="btn btn-main">Enviar pedido</button>
+                  </div>
+              </form>
+            </div>
+            
+       
+       
+        <div class="col-md-6">
+                <div class="well">
+                    <div class="secili-servis">
+                       <label class="control-label"><i class="fi fi-rr-text"></i>Descrição</label>
+                        <div class="m-service-box">
+                         
+                           <div class="m-service-bottom">
+                           
+                              
+                              
+                              
+                           </div>
+                        </div>
+                        <div id="description_new">
+                          
+                          <div class="description-box">
+                              
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+<div id="error-search"><i class="fa fa-times"></i>Não consigo encontrar o ID que você está procurando</div>
+                        <div class="bottom-navigaiton">
+                                 <a class="bottom-item active" href="/">
+                                    <i class="fi fi-rr-shopping-cart"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/services">
+                                    <i class="fi fi-rr-clipboard-list-check"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/orders">
+                                    <i class="fi fi-rr-bags-shopping"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/addfunds">
+                                    <i class="fi fi-rr-money-check"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/api">
+                                    <i class="fi fi-rr-display-code"></i>
+                                    </a>
+                           </div>
+                        
+
+
+            <div id="lnc"></div>
+                        <div id="voiceerror" class="notification"><i class="fa fa-times"></i>O navegador não suporta</div>
+            <div id="voiceclose">
+               <lottie-player src="https://cdn.fsksoft.com/voice.json"  background="transparent"  speed="1"  style="width: 50px; height: 50px;"  loop  autoplay></lottie-player>
+               <lottie-player src="https://cdn.fsksoft.com/voicebar.json" class="voice-bar" background="transparent"  speed="1"  style="width: 250px;"  loop  autoplay></lottie-player>
+   Eu ouço você, diga-me o nome da sua plataforma ou solicitação
+            </div>
+         </div>
+      </div>
+ <div class="notify-box ">
+		<div class="notify-top">
+		   <span>Announcement</span>
+		   <i class="fa fa-times" onclick="notifyClose()"></i>
+		</div> {% for new in newsList %}
+		
+		<div class="notify-list" id="notify-list">
+		    
+		<div class="duyuru-box">
+			<div class="duyuru-top">
+			    <center><span>{{ new['news_date'] }}</span></span></center>
+				<span class="duyuru-title">{{ new['news_title'] }}</span>
+				<span class="duyuru-content">{{ new['news_content'] }}</span>
+					
+					<div class="news-wrapper-023904">
+						<!-- <h3 class="news-title"><center>News</center></h3> -->
+					   
+						<div class="timeLineWrapper">
+						  <ul class="news-wrap" id="news_updates_div"></ul>
+						</div>
+					   </div>
+				</span></div>
+ {% endfor %}
+ 
+
+
+</div>
+
+</div>
+	  </div>
+	<script>
+		function notifyOpen(){
+			$(".notify-box").toggleClass("active")
+		}
+		function notifyClose(){
+			$(".notify-box").toggleClass("active")
+		}
+	</script>
+      <div class="modal_container" id="modal-container99999999">
+         <div class="modal_content">
+            <div class="modal_close close-modal99999999" title="Close">
+               <span>Voice Search</span>
+               <i class="fa fa-times"></i>
+            </div>
+            <div class="modal-content">
+               <div id="search-value"></div>
+            </div>
+            <div class="modal-bottom-btn">
+               <button class="btn btn-border close-modal99999999">Close</button>
+               <button class="btn btn-blue search-modal-btn">Search</button>
+            </div>
+         </div>
+      </div>
+      <div class="modal_container" id="modal-container02">
+         <div class="modal_content">
+            <div class="modal_close close-modal02" title="Close">
+               <span>Loading..</span>
+               <i class="fa fa-times"></i>
+            </div>
+            <div class="modal-content">
+               <div class="progress">
+                  <div class="progress-value" id="uploadProgress"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="modal_container" id="modal-containerPopup">
+         <div class="modal_content">
+            <div class="modal_close">
+               <span id="popupbaslik"></span>
+               <i class="fa fa-times" onclick="closePopup()"></i>
+            </div>
+            <div class="modal-content">
+               <div id="popupsistemi">
+               </div>
+            </div>
+            <div class="progress-bar-modal">
+               <span class="bar-modal">
+               <span class="progress-modal"></span>
+               </span>
+            </div>
+            <div id="popupbutton">
+            </div>
+         </div>
+      </div>
+      
+      
+      
+      
+
+
+{% include 'footer.twig' %}
+
+
+
+
+
+
+
+
+
+
+<script>
+    /*
+    $(document).on('change','#neworder_category',function(){
+
+           $('#neworder_fields').hide();
+
+           while (1){
+               if($('#description')){
+                   $('#description').attr('style','display:none');
+                   $('#neworder_fields').show();
+                   $('#description_new').html($('#service_description').html());
+                   console.log('x');
+                   break;
+               }else{
+                   console.log('y');
+                   continue;
+               }
+           }
+
+            document.getElementById('description').addEventListener()
+
+        })
+        */
+
+    $(document).on('DOMSubtreeModified','#neworder_fields',function(){
+        $('#description').hide();
+        $('#description_new').html($('#service_description').html());
+    })
+  /*  $(document).on('DOMSubtreeModified','#order_link',function(){
+        console.log('x');
+       // $('#order_link').hide();
+        //$('#order_link').html('<div class="fg"><div class="fg-icon"><i class="far fa-link"></i></div><input class="fg-control" name="OrderForm[link]" value="" type="text" id="field-orderform-fields-link"></div></div></div>');
+    }) */
+    
+
+    $(document).on('DOMSubtreeModified','#neworder_services',function(){
+        $('#s_name').html($('#neworder_services').find(":selected").html());
+    })
+
+
+
+
+function ikon(opt) {
+var ikon = "";
+if (opt.indexOf("Instagram") >= 0) {
+ikon = '<img src="https://cdn.mypanel.link/si46tw/akj2dlg0893li2ic.png" alt="" class="img-responsive btn-group-vertical" style="max-width: calc(1em + 10px); max-height: calc(1em + 10px); margin-right: 10px;">';
+  
+} else if (opt.indexOf("Facebook") >= 0) {
+ikon = '<img src="https://cdn.mypanel.link/si46tw/ni21xuu3n4a6r0if.png" alt="" class="img-responsive btn-group-vertical" style="max-width: calc(1em + 10px); max-height: calc(1em + 10px); margin-right: 10px;">';
+  
+} else if (opt.indexOf("YouTube") >= 0) {
+ikon = '<img src="https://cdn.mypanel.link/si46tw/3hxfpcmr6odceun7.png" alt="" [ Refill Guarantee ]" class="img-responsive btn-group-vertical" style="max-width: calc(1em + 10px); max-height: calc(1em + 10px); margin-right: 10px;">';
+  
+} else if (opt.indexOf("Twitter") >= 0) {
+ikon = '<img src="https://cdn.mypanel.link/si46tw/u658e5mcklnydog5.png" alt="" class="img-responsive btn-group-vertical" style="max-width: calc(1em + 10px); max-height: calc(1em + 10px); margin-right: 10px;">';
+    
+} else if (opt.indexOf("Telegram") >= 0) {
+ikon = '<img src="https://cdn.mypanel.link/si46tw/rhacs5djntmcr17b.png" alt="" class="img-responsive btn-group-vertical" style="max-width: calc(1em + 10px); max-height: calc(1em + 10px); margin-right: 10px;">';
+  
+} else if (opt.indexOf("Tik") >= 0) {
+ikon = '<img src="https://cdn.mypanel.link/si46tw/04u3rorjptffqax9.png" alt="" class="img-responsive btn-group-vertical" style="max-width: calc(1em + 10px); max-height: calc(1em + 10px); margin-right: 10px;">';
+  
+} else {
+ikon = '<img src="/assets/smmspot/assets/images/icons8-circled-z-24.png" alt="" class="img-responsive btn-group-vertical" style="max-width: calc(1em + 10px); max-height: calc(1em + 10px); margin-right: 10px;">';
+}
+return ikon;
+}
+
+  
+  
+  var categories = {{categories|json_encode()}};
+  
+  
+  
+  
+setTimeout(function () {
+                $('#neworder_services').trigger('change');
+                $('.btn_cat_filter').on('click', function() {
+                  
+                    category = $(this).data('id');
+                    
+                     var category_2 = null;
+                    if(category == 'instagram'){
+                            category_2 = "انستغرام";
+                    }
+                    if(category == 'facebook'){
+                            category_2 = "فايسبوك";
+                    }
+                    if(category == 'youtube'){
+                            category_2 = "يوتيوب";
+                    }
+                    if(category == 'twitter'){
+                            category_2 = "تويتر";
+                    }
+                    if(category == 'tiktok'){
+                            category_2 = "تيك توك";
+                    }
+                    if(category == 'telegram'){
+                            category_2 = "تلغرام";
+                    }
+                    
+                    
+                    $('#neworder_category').html("");
+                    categories.forEach(element => {
+                        if (category == "everything") {
+                            $('#neworder_category').append("<option value='" + element.category_id + "'>" + element.category_name + "</option>");
+                        } else if (category == "other") {
+                            if (!element.category_name.toLowerCase().includes("instagram") &&
+                                !element.category_name.toLowerCase().includes("facebook") &&
+                                !element.category_name.toLowerCase().includes("youtube") &&
+                                !element.category_name.toLowerCase().includes("twitter") &&
+                                !element.category_name.toLowerCase().includes("tiktok") &&
+                                !element.category_name.toLowerCase().includes("telegram")) {
+                                $('#neworder_category').append("<option value='" + element.category_id + "'>" + element.category_name + "</option>");
+                            }
+                        } else if (element.category_name.toLowerCase().includes(category) || element.category_name.toLowerCase().includes(category_2)) {
+                            $('#neworder_category').append("<option value='" + element.category_id + "'>" + element.category_name + "</option>");
+                        }
+                    });
+                    $('#neworder_category').trigger('change');
+                    setTimeout(function(){
+                        $(".smmspot-sb-dd-item").each(function() {
+                            var ico = ikon($(this).text());
+                            $(this).html(ico + $(this).text() );
+                            console.log($(this).text());
+                        });
+                    }, 500);
+                    setTimeout(function(){
+                        $(".smmspot-sb-selected").each(function() {
+                            var ico = ikon($(this).text());
+                            $(this).html(ico + $(this).text() );
+                            console.log($(this).text());
+                        });
+                    }, 500);
+                });
+            
+        }, 400);
+        
+</script>
+
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+
+  /* Katogeriye ait servisleri Ã§ek */
+  category_detail();
+  $("#neworder_category").change(function(){
+    category_detail();
+  });
+  /* Katogeriye ait servisleri Ã§ek */
+  /* Servise ait verileri Ã§ek */
+  $("#neworder_services").change(function(){
+    service_detail();
+  });
+  /* Servise ait verileri Ã§ek */
+  /* SipariÅŸ miktarÄ± deÄŸiÅŸince fiyat hesapla */
+  $(document).on('keyup', '#order_quantity', function() {
+    var service   = $("#neworder_services").val();
+    var quantity  = $("#neworder_quantity").val();
+    var runs      = $("#dripfeed-runs").val();
+      if( $("#dripfeedcheckbox").prop('checked') ){
+        var dripfeed  = "var";
+      }else{
+        var dripfeed  = "bos";
+      }
+    $.post('ajax_data',{action:'service_price',service:service,quantity:quantity,dripfeed:dripfeed,runs:runs}, function(data){
+        $("#charge").val(data.price);
+        $("#dripfeed-totalquantity").val(data.totalQuantity);
+    }, 'json');
+  });
+  $(document).on('keyup', '#dripfeed-runs', function() {
+    var service   = $("#neworder_services").val();
+    var quantity  = $("#neworder_quantity").val();
+    var runs      = $("#dripfeed-runs").val();
+      if( $("#dripfeedcheckbox").prop('checked') ){
+        var dripfeed  = "var";
+      }else{
+        var dripfeed  = "bos";
+      }
+    $.post('ajax_data',{action:'service_price',service:service,quantity:quantity,dripfeed:dripfeed,runs:runs}, function(data){
+        $("#charge").val(data.price);
+        $("#dripfeed-totalquantity").val(data.totalQuantity);
+    }, 'json');
+  });
+  $(document).on('keyup', '#neworder_comment', function() {
+    comment_charge();
+  });
+  /* SipariÅŸ miktarÄ± deÄŸiÅŸince fiyat hesapla */
+  /* Dripfeed deÄŸiÅŸtir */
+  $(document).on('change', '#dripfeedcheckbox', function() {
+    var dripfeed = $(this).prop('checked');
+    if( dripfeed ){
+      $("#dripfeed-options").removeClass();
+      dripfeed_charge();
+    }else{
+      $("#dripfeed-options").addClass('hidden');
+      dripfeed_charge();
+    }
+  });
+  /* Dripfeed deÄŸiÅŸtir */
+});
+
+function category_detail(){
+  var category_now = $("#neworder_category").val();
+  $.post('ajax_data',{action:'services_list',category:category_now}, function(data){
+      $("#neworder_services").html(data.services);
+      service_detail();
+  }, 'json');
+}
+
+function service_detail(){
+  var service_now = $("#neworder_services").val();
+  $.post('ajax_data',{action:'service_detail',service:service_now}, function(data){
+      if( data.empty == 1 ){
+        $("#charge_div").hide();
+      }else{
+        $("#charge_div").show();
+        $("#neworder_fields").html(data.details);
+        $("#charge").val(data.price);
+      }
+      $(".datetime").datepicker({
+         format: "dd/mm/yyyy",
+         language: "tr",
+         startDate: new Date(),
+       }).on('change', function(ev){
+         $(".datetime").datepicker('hide');
+       });
+      $("#clearExpiry").click(function(){
+           $("#expiryDate").val('');
+       });
+       var dripfeed = $("#dripfeedcheckbox").prop('checked');
+       if( dripfeed ){
+         $("#dripfeed-options").removeClass();
+       }
+       comment_charge();
+        if( $("#dripfeedcheckbox").prop('checked') ){
+          dripfeed_charge();
+        }
+          if( data.sub ){
+            $("#charge_div").hide();
+          }else{
+            $("#charge_div").show();
+          }
+  }, 'json');
+}
+
+function comment_charge(){
+  var service   = $("#neworder_services").val();
+  var comments  = $("#neworder_comment").val();
+    if( comments ){
+      $.post('ajax_data',{action:'service_price',service:service,comments:comments}, function(data){
+          $("#neworder_quantity").val(data.commentsCount);
+          $("#charge").val(data.price);
+      }, 'json');
+    }
+}
+
+function dripfeed_charge(){
+  var service     = $("#neworder_services").val();
+  var quantity    = $("#neworder_quantity").val();
+  var runs        = $("#dripfeed-runs").val();
+    if( $("#dripfeedcheckbox").prop('checked') ){
+      var dripfeed  = "var";
+    }else{
+      var dripfeed  = "bos";
+    }
+  $.post('ajax_data',{action:'service_detail',service:service,quantity:quantity,dripfeed:dripfeed,runs:runs}, function(data){
+      $("#charge").val(data.price);
+  }, 'json');
+}
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-..."> <!-- Substitua o '...' pela integridade do arquivo -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-..."></script> <!-- Substitua o '...' pela integridade do arquivo -->
+<script>
+    $(document).ready(function() {
+       
+        $('#neworder_category').select2();
+
+    
+        $('#neworder_services').select2();
+    });
+</script>
+<script>
+function disableSubmitButton(button) {
+    // Salvar o texto original do botão
+    const originalButtonText = button.innerHTML;
+    
+    // Definir o texto para "Carregando..."
+    button.innerHTML = 'Enviando...';
+
+    // Desabilitar o botão ao clicar
+    button.disabled = true;
+    
+    // Aguarde 10 segundos (10000 milissegundos)
+    setTimeout(function() {
+        button.disabled = false; // Reative o botão
+        button.innerHTML = originalButtonText; // Restaure o texto original
+    }, 10000);
+    
+    // Envie o formulário
+    const form = button.form;
+    form.submit();
+}
+</script>

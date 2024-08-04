@@ -1,0 +1,202 @@
+{% include 'header.twig' %}
+
+<div class="g-dash-content">
+   <section class="pt-4">
+      <div class="container-fluid">
+         <div class="gcard gcard-border">
+            <div class="gcard-body p-3">
+               <div class="row align-items-center">
+                  <div class="col-md-auto col-12">
+                     <div class="dropdown">
+                        <button class="btn btn-primary btn-sm btn-100 dropdown-toggle gny-btn" type="button"
+                           id="filterServicesDd" data-toggle="dropdown" aria-expanded="false">
+                           <div class="d-flex fw-400">
+                              <i class="ri-filter-2-line mr-2"></i>
+                              <span>Filtrar Pedidos</span>
+                              <i class="ri-arrow-down-s-line ms-auto ms-md-3"></i>
+                           </div>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filterServicesDd">
+							<li><a class="dropdown-item" href="dripfeeds">{{ lang['dripfeed.status.all'] }}</a></li>
+							<li><a class="dropdown-item" href="dripfeeds/active">{{ lang['dripfeed.status.active'] }}</a></li>
+							<li><a class="dropdown-item" href="dripfeeds/canceled">{{ lang['dripfeed.status.canceled'] }}</a></li>
+							<li><a class="dropdown-item" href="dripfeeds/completed">{{ lang['dripfeed.status.completed'] }}</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-lg">
+                     <div class="g-search">
+                        <div class="g-ticon">
+                           <i class="ri-search-line"></i>
+                        </div>
+						<input type="text" name="search" class="textbox" value="{{ search }}" placeholder="Buscar">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section class="pt-4">
+	   <div class="container-fluid">
+		<div class="order-container">
+
+		
+				{% for dripFeed in orders %}
+				  <div class="gcard mb-3">
+					<div class="gcard-body">
+					  <div class="orderCardtop cursor-pointer" id="openOrder{{ dripFeed['id'] }}">
+						<div class="row align-items-center">
+						  <div class="col-lg-auto col-md-auto mb-3 mb-lg-0">
+							{% if dripFeed['status'] == "completed" %}
+								<div class="g-status os-sm completed d-flex align-items-center">
+							{% endif %}
+							{% if dripFeed['status'] == "active" %}
+								<div class="g-status os-sm processing d-flex align-items-center">
+							{% endif %}
+							{% if dripFeed['status'] == "canceled" %}
+								<div class="g-status os-sm cancelled d-flex align-items-center">
+							{% endif %} 
+								 <span>{{ dripFeed['id'] }}</span> <i class="ri-file-copy-line cursor-pointer pl-2" onclick="copyToClipboard('{{ dripFeed['id'] }}')"></i>
+							</div>
+						  </div>
+						  <div class="col-lg-6 col-md mb-3 mb-lg-0">
+							<h3 class="g-order-title">
+							    {{ dripFeed['service'] }}
+							</h3>							
+							<div class="d-flex g-olink mb-0">
+							  <div class="link">{{ dripFeed['link'] }}</div>
+							</div>
+						  </div>
+						  <div class="col-12 d-none d-md-block d-lg-none"></div>
+						  <div class="col-lg col-md-6 mb-3 mb-lg-0">
+							<div class="g-order-date">{{ dripFeed['date'] }}</div>
+						  </div>
+						  <div class="col-lg-auto">
+						  {% if dripFeed['status'] == "completed" %}
+							  <div class="g-status completed">{{ lang['dripfeed.status.completed'] }}
+						  {% endif %}
+						  {% if dripFeed['status'] == "active" %}
+							  <div class="g-status processing">{{ lang['dripfeed.status.active'] }}
+						  {% endif %}
+						  {% if dripFeed['status'] == "canceled" %}
+							  <div class="g-status cancelled">{{ lang['dripfeed.status.canceled'] }}
+						  {% endif %}  
+							</div>
+						  </div>
+						  <div class="col-lg-auto">
+							 <i class="ri-arrow-down-s-line cursor-pointer g-status downBtn"></i>
+						  </div>
+						</div>
+					  </div>
+					  <div class="g-order-bottom hidden" id="thisOrder{{ dripFeed['id'] }}">
+						<div class="row align-items-center row-cols-md-4 row-cols-2">
+						  <div class="col-lg-auto mt-3 mt-md-0">
+							<div class="g-order-item">
+							  <div class="title">{{ lang['dripfeed.total_charges'] }}</div>
+							  <div class="text">{{ dripFeed['total_charges'] }} {{ site['currency'] }}</div>
+							</div>
+						  </div>
+						  <div class="col-lg-auto mt-3 mt-md-0">
+							<div class="g-order-item">
+							  <div class="title">{{ lang['dripfeed.quantity'] }}</div>
+							  <div class="text">{{ dripFeed['quantity'] }}</div>
+							</div>
+						  </div>
+						  <div class="col-lg-auto mt-3 mt-md-0">
+							<div class="g-order-item">
+							  <div class="title">{{ lang['dripfeed.runs'] }}</div>
+							  <div class="text">
+								  {% if dripFeed['delivery'] %}
+									<a href="orders?dripfeed={{ dripFeed['id'] }}"> {{ dripFeed['delivery'] }} </a> / {{ dripFeed['runs'] }}
+								  {% else %}
+									{{ dripFeed['delivery'] }} / {{ dripFeed['runs'] }}
+								  {% endif %}
+							  </div>
+							</div>
+						  </div>
+						  <div class="col-lg-auto mt-3 mt-md-0">
+							<div class="g-order-item">
+							  <div class="title">{{ lang['dripfeed.interval'] }}</div>
+							  <div class="text">{{ dripFeed['interval'] }}</div>
+							</div>
+						  </div>
+						  <div class="col-lg-auto mt-3 mt-md-0">
+							<div class="g-order-item">
+							  <div class="title">{{ lang['dripfeed.total_quantity'] }}</div>
+							  <div class="text">{{ dripFeed['total_quantity'] }}</div>
+							</div>
+						  </div>
+						  <div class="col-lg-auto col-12 col-md-12 ms-lg-auto d-flex align-items-center justify-content-center mt-3 mt-lg-0 ms-auto">
+
+					
+						  </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+
+                            		<script>
+                                      $("#openOrder{{ dripFeed['id'] }}").click(function () {
+                                            $("#thisOrder{{ dripFeed['id'] }}").toggleClass("hidden");
+                                        });
+                                     </script>
+				{% endfor %}
+			</div>
+			
+				  <section class="mt-3">
+					<div class="container text-center d-flex justify-content-center">
+					  <nav aria-label="">
+					 {% if pagination["count"] > 1 %}  
+						<ul class="pagination">
+						 {% if pagination["current"] != 1 %}
+						  <li class="page-item pi-pn">
+							<a class="page-link" href="dripfeeds/{{ status }}/{{ pagination["previous"] }}{% if search %}?search={{ search }}{% endif %}" aria-label="Previous"><i class="ri-arrow-left-s-line"></i></a>
+						  </li>
+						{% endif %}
+
+						  {% set r, l = 3, 3 %}
+
+						  {% if pagination['current'] == 1 %}
+							{% set r = 7 %}
+						  {% endif %}
+
+						  {% if pagination['current'] == 2 %}
+							{% set r = 5 %}
+						  {% endif %}
+
+						  {% if pagination['current'] >= pagination['count'] %}
+							{% set l = 5 %}
+						  {% endif %}
+
+						  {% for page in 1..pagination["count"] %}
+							{% if page >= (pagination['current']-l) and page <= (pagination['current']+r) %}
+							  <li{% if i == pagination['current'] %} class="page-item active" {% else %}  class="page-item" {% endif %}><a class="page-link" href="dripfeeds/{{ status }}/{{ page }}{% if search %}?search={{ search }}{% endif %}">{{ page }}</a></li>
+							{%endif%}
+						  {% endfor %}
+
+						  {% if pagination['current'] < pagination['count'] %}
+							<li class="page-item pi-pn">
+							  <a class="page-link" href="dripfeeds/{{ status }}/{{ pagination['next'] }}{% if search %}?search={{ search }}{% endif %}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+							  </a>
+							</li>
+						  {% endif %}
+						</ul>
+						{% endif %}
+					  </nav>
+					</div>
+				  </section>
+				  
+			
+		</div>
+	</section>
+	
+
+</div>
+<a href="https://machinesmm.com/">
+    <img src="" alt="">
+</a>
+
+
+{% include 'footer.twig' %}

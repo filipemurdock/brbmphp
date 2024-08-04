@@ -1,0 +1,995 @@
+{% include 'header.twig' %}
+
+<head>
+<style>
+
+.btn-outline{
+    padding: 12px 30px !important;
+    border: 2px solid #fff !important;
+    color: #fff !important; 
+    background: transparent;
+	text-decoration: none;
+	font-size: 1.3rem !important;
+	border-radius: 8px !important;
+}
+
+.btn-outline:hover {
+	background: #fff !important;
+	color: #181818 !important;
+	text-decoration: none !important;
+
+}
+
+.btn-outline:active {
+	background: #fff !important;
+	color: #181818 !important;
+	text-decoration: none !important;
+
+}
+
+
+.p-padding1{
+
+padding: 20px 0px 40px 0px;
+}
+
+.btn-gadcinza1{
+background: -webkit-gradient(linear, left top, right top, from(#212020), to(#0f0f0f)) #000 !important;
+text-decoration: none !important;
+font-size: 1.3rem !important;
+ padding: 14px 17px !important;
+ border-style: none !important;
+ border-radius: 8px !important;
+ color: #fff !important;
+}
+
+.btn-gadcinza1:hover{
+background:  #000 !important;
+text-decoration: none !important;
+
+}
+
+.btn-gadcinza1:active{
+background:  #000 !important;
+text-decoration: none !important;
+
+}
+
+
+.above-heading {
+background: -webkit-gradient(linear, left top, right top, from(#212020), to(#464646)) #000 !important;
+}
+
+.h1cinza1 {
+color: #fff !important;
+}
+
+
+
+{#// <uniquifier>: Use a unique and descriptive class name #}
+{#// <weight>: Use a value from 100 to 900 #}
+@import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+
+.saira-<uniquifier> {
+  font-family: "Saira", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+html, body, root{
+  font-family: "Saira", sans-serif !important;
+}
+
+
+.fas fa-check-circle .counts-area .count-box i {
+color: #68B82D !important;
+
+}
+
+.porcento{
+    margin-top: -25px;
+    margin-left: 60px;
+}
+
+.bm1 {
+  background: url(themes/nico/assets/icons/bm1.svg);
+  display: inline-block;
+  width: 48px;
+  overflow: visible;
+  line-height: 0;
+  margin-right: 0px;
+  
+}
+
+.shadow{
+box-shadow: 20px 20px 20px #69b92d2b !important;
+}
+
+
+
+.swiper-button-next, .swiper-button-prev{
+color:  #cccccc !important;
+
+}
+
+.homeImg {
+    margin-top: 20px;
+}
+
+.inner{
+padding-left: 20px !important;
+padding-right: 20px !important;
+}
+
+.text-container{
+padding-left: 20px !important;
+padding-right: 20px !important;
+}
+
+.partner {
+
+padding-left: 40px !important;
+padding-right: 40px !important;
+}
+
+.btn-green {
+    background: #000 !important;
+}
+
+</style>
+
+{#<!-- Styles --> #}
+
+   <script src="/assets/nico/js/vendors/jquery-3.2.1.min.js"></script>
+    <link href="/themes/nico/assets/css/bootstrap.css" rel="stylesheet">
+    <link href="/themes/nico/assets/css/fontawesome-all.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link href="/themes/nico/assets/css/swiper.css" rel="stylesheet">
+    <link href="/assets/nico/plugins/aos/dist/aos.css" rel="stylesheet">
+    <link href="/assets/nico/plugins/lineicons/web-font-files/lineicons.css" rel="stylesheet">
+	<link href="/themes/nico/assets/css/styles.css" rel="stylesheet">
+	<link href="/themes/nico/assets/css/dark.css" rel="stylesheet">
+	
+	 <title>BM Ilimitada | Adquira BMS Verificada Ilimtiada e Proxy Residencial</title>
+	
+	
+</head>
+
+<body>
+	<section class="homeHeader">
+        <div class="homeBg">
+
+  <img src="/img/topBg3.png"/> 
+        </div>
+
+        <div class="container">    
+            <div class="hhSide">
+              <div class="col-lg-6">
+						   {% if errorText %}
+							<div class="alert alert-dismissible alert-danger">
+							  <button type="button" class="close" data-dismiss="alert">×</button>
+							  {{ errorText }}
+							</div>
+						  {% endif %}
+						  {% if successText %}
+							<div class="alert alert-dismissible alert-success">
+							  <button type="button" class="close" data-dismiss="alert">×</button>
+							  {{ successText }}
+							</div>
+						  {% endif %}
+ 
+              </div>
+				<div class="homeAnim">
+					<lottie-player id="hoverPlayer" src="https://assets3.lottiefiles.com/temp/lf20_7rPCHc.json" loop autoplay></lottie-player>
+				</div>
+				<div class="homeImg">
+					<img src="/themes/nico/assets/images/brbanner2.png" class="img-fluid img-fluid2">
+				</div>
+
+				<div class="homeAnim2">
+					<lottie-player id="hoverPlayer" src="https://assets10.lottiefiles.com/packages/lf20_bvmhqmmp.json" loop autoplay></lottie-player>
+				</div>
+				<div class="homeText">
+					<h1>Pare de sofrer com bloqueios e <span class="effects">escale sua operação!</span></h1>
+				</div>
+            </div>
+        </div>
+        <div class="homeScroll"></div>
+    </section>
+
+<div class="container d-block d-md-none">
+  <div class="row">
+    <div class="col-12">
+    	<a href="/signup" class="btn btn-green btn-block mb-2">{{ lang['signup.title'] }}</a>
+        <button type="button" data-toggle="modal" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-primary btn-block">{{ lang['signin.title'] }}</button>
+    </div>
+  </div>
+</div>
+
+<div class="homeSection">
+	<div class="container">	
+		<div class="row">	
+			<div class="col-lg-10 offset-lg-1">	
+				<div class="sectionText text-center pb-5">
+                  <h1>Por que você <span class="underline">precisa de nós?</span></h1>
+				</div>
+
+				<div class="EURXs">
+
+					<div class="eam3 homeBant-1">
+						<div class="homeBant-4"><p>5001+ pedidos concluídos</p></div>
+						<div class="homeBant-5"><p>Suporte ao usuário 24/7</p></div>
+					</div>
+
+					<div class="eam3 fga-ddb">
+						<div class="homeBant-6"><p>Contingencia unificada</p></div>
+						<div class="homeBant-4"><p>9,7/10 satisfação</p></div>
+						<div class="homeBant-9"><p>Painel Afiliado</p></div>
+					</div>
+
+					<div class="eam3 homeBant-2">
+						<div class="homeBant-9"><p>Mais de 50 serviços de qualidade e acessíveis</p></div>
+						<div class="homeBant-7"><p>Mais de 760 clientes satisfeitos</p></div>
+					</div>
+					
+					<div class="eam3 homeBant-3">
+						<div class="homeBant-8"><p>Sistema de afiliados</p></div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+	
+		
+   {#<!-- Count Area -->#}
+    <section class="counts-area">
+        <div class="container" data-aos="fade-up">
+          <div class="row gy-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i><img src = "themes/nico/assets/icons/bm2.svg" class="bm1"></i>
+                <div>
+                  <span class="">BMS</span>
+                  <p>ILIMITADAS</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i><img src = "themes/nico/assets/icons/bm1.svg" class="bm1"></i>
+                <div>
+                  <span class="">BMS</span>
+                  <p>REESTABELECIDAS</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i class="fas fa-business-time"></i>
+                <div>
+                  <span class="">BMS</span>
+                  <p>ENVELHECIDAS</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i><img src = "themes/nico/assets/icons/bm3.svg" class="bm1"></i>
+                <div>
+                  <span class="">BMS</span>
+                  <p>VERIFICADAS</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+<div class="homeSection homeDevices">
+            <div class="container">
+                <div class="row align-items-center">
+					<div class="col-lg-6">
+						<div class="nBookimg">
+							<img src="/images/notebook2.png" class="img-fluid">
+						</div>
+					</div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="inner">
+                            <div class="section-title">
+								<div class="sectionText">
+									<h1>Sua contingência em <span class="underline">único lugar!</span></h1>
+								</div>
+                                <p>
+								Chega de complicações e múltiplos serviços! Com o nosso painel exclusivo, você tem tudo o que precisa em um só lugar. Simplifique sua vida e maximize sua eficiência com a nossa solução integrada. Experimente agora e veja a diferença!
+								</p>
+                            </div>
+                            <div class="homeMock">
+                                <div class="homeMockList">
+                                    <div class="icon">
+                                        <img src="/img/proxyicon.png">
+                                    </div>
+                                    <h6>Proxy e SMS</h6>
+                                </div>
+
+                                <div class="homeMockList">
+                                    <div class="icon">
+                                        <img src="/img/bm.png">
+                                    </div>
+                                    <h6>Perfis e BMS</h6>
+                                </div>
+
+                                <div class="homeMockList">
+                                    <div class="icon">
+                                        <img src="/img/wpicon.png">
+                                    </div>
+                                    <h6>Muito++</h6>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Login Modal -->
+<div class="modal fade loginModal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+		<div class="homeLogin login-section">
+			<div class="gcard-2 gcard-shadow fade-1">
+				<div class="gcard-body">
+					<button class="close-btn" type="button" data-dismiss="modal"><i class="ri-close-fill"></i></button>
+                        <form method="post" action="" class="login-signup-form">
+
+						<div class="col-12 col-md mb-3">
+							<label class="logform">{{ lang['signin.username'] }}</label>
+							<input type="text" class="login-input"   name="username">
+						</div>
+						<div class="col-12 col-md mb-3">
+						<div class="d-flex align-items-center justify-content-between">
+							<label class="logform">{{ lang['signin.password'] }}</label>
+							<a href="resetpassword">{{ lang['signin.password.lost'] }}</a>
+						</div>
+							<input type="password" class="login-input" name="password">
+						</div>
+						<div class="col-12 col-md mb-3">
+							<div class="d-flex">
+								<label for="remember" class="login-remember-me">
+									<input type="checkbox" name="remember" value="1" id="remember">
+									<span class="lgn-btn"> {{ lang['signin.remember'] }}</span>
+								</label>
+							</div>
+						</div>
+						{% if settings['recaptcha'] == 2 %}
+						  {% if captcha %}
+							<div class="form-group">
+							  <div class="g-recaptcha" data-sitekey="{{ captchaKey }}"></div>
+							</div>
+						  {% endif %}
+						{% endif %}
+						<div class="col-12 col-md">
+							<button type="submit" class="btn btn-primary btn-block">{{ lang['signin.button'] }}</button>
+						</div>
+					</form>	
+				</div>
+			</div>
+			
+			   {% if google == 2 %}
+                                     
+                                                                                   <br><center> <span class="lgn-btn">OU</span> </center><br>
+                                     
+                                                 <center> <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <a href="/google">
+          <button class="btn btn-primary btn-block" style="background-color: #dd4b39;"
+              type="submit"><i class="fab fa-google me-2"></i> continue com google </button>
+    </a>
+</div>
+</center>
+
+                    						  {% endif %}
+			
+			<a href="/signup" class="btn btn-green btn-lg btn-block mt-3">
+				{{ lang['signup.title'] }}
+			</a>
+		</div>
+    </div>
+  </div>
+</div>
+
+<a href="https://machinesmm.com/">
+    <img src="" alt="">
+</a>
+
+<!-- Header -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-xl-6" style="margin-bottom: 40px;">
+                        <div class="text-container">
+                            <h1 class="h1cinza1" data-aos="fade-up">Enfrentando bloqueios e quer montar sua contingência rapidamente?</h1>
+                            <p class="p-large p-padding1" data-aos="fade-up" data-aos-delay="400">Facebook é uma plataforma crucial para qualquer negócio e promove todos os produtos. Sem ela, otimizar sua empresa é inviável. Conosco, você consegue obter um gerenciador de negócios verificado, um gerenciador de negócios com orçamento ilimitado diário, serviços raros e extremamente úteis que você só encontra aqui, perfis prontos para anúncios e muito mais para o Facebook. Também oferecemos serviços de proxys residenciais, seviço para receber SMS, ferramentas para Wordpress, Instagram, TikTok, YouTube, Twitter, Telegram, Google, software e vários outros do mercado digital.></p>
+                            <a class=" btn-outline" href="/signup" data-aos="fade-up" data-aos-delay="600">Registro<?=lang("get_start_now")?> <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div> 
+                    <div class="col-lg-6 col-xl-6">
+                        <div class="image-container" data-aos="zoom-out" data-aos-delay="200">
+                            <div class="img-wrapper">
+                                <img class="img-fluid" style="box-shadow: 20px 20px 20px #69b92d2b;" src="/themes/nico/assets/icons/block.svg" alt="header hero">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		
+   {#<!-- Count Area -->#}
+    <section class="counts-area">
+        <div class="container" data-aos="fade-up">
+          <div class="row gy-4">
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <span data-purecounter-start="0" data-purecounter-end="90" data-purecounter-duration="1" class="purecounter"></span>
+				  <span class="porcento">%</span>
+                  <p>MENOS BLOQUEIOS</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <span data-purecounter-start="0" data-purecounter-end="47890" data-purecounter-duration="1" class="purecounter"></span>
+                  <p>Horas de Suporte</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <span data-purecounter-start="0" data-purecounter-end="6000" data-purecounter-duration="1" class="purecounter"></span>
+                  <p>Ordens Realizadas</p>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-lg-3 col-md-6">
+              <div class="count-box">
+                <i class="fas fa-check-circle"></i>
+                <div>
+                  <span data-purecounter-start="0" data-purecounter-end="13" data-purecounter-duration="1" class="purecounter"></span>
+                  <p>Anos de Mercado</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+   {#<!-- why-choose-us -->#}
+    <section class="why-choose-us" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 section-header">
+                    <div class="above-heading" data-aos="fade-up" data-aos-delay="200">Nossos Proxys Residenciais <i class="fas fa-server"></i></div> 
+                    <h2 class="h2-heading"  data-aos="fade-up" data-aos-delay="400">Estamos mudando todo o mercado de contingência e midias sociais
+										
+					
+                    </h2>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-lg-3" data-aos="fade-up" data-aos-delay="600">
+                  <div class="box">
+                    <img src="/themes/nico/assets/icons/icon1.svg" class="img-fluid" alt="">
+                    <h3>Extrema qualidade</h3>
+                    <p>Nossos serviços passam por um severo padrão de qualidade</p>
+                  </div>
+                </div>
+      
+                <div class="col-lg-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="800">
+                  <div class="box">
+                    <img src="/themes/nico/assets/icons/icon2.svg" class="img-fluid" alt="">
+                    <h3>Dados ilimitados!</h3>
+                    <p>Utilize quantos GB quiser com nossos proxys dedicados e proprios.</p>
+                  </div>
+                </div>
+      
+                <div class="col-lg-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="1000">
+                  <div class="box">
+                    <img src="/themes/nico/assets/icons/icon3.svg" class="img-fluid" alt="">
+                    <h3>Alta Velocidade</h3>
+                    <p>Servidores em todo o Brasil, garantindo alta velocidade e desempenho onde quer que você esteja.</p>
+                  </div>
+                </div>
+      
+                <div class="col-lg-3 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="1200">
+                  <div class="box">
+                    <img src="/themes/nico/assets/icons/icon5.svg" class="img-fluid" alt="">
+                    <h3>Proxys BR Residencials</h3>
+                    <p>Nossos proxys são de provedores de internet reais, na palma da sua mão</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+	
+    {#<!-- basic-1 -->#}
+    <section class="basic-1">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="image-container" data-aos="zoom-out" data-aos-delay="200">
+                        <img class="img-fluid" src="/themes/nico/assets/icons/suport.svg" alt="Quem Somos">
+                    </div>
+                </div> 
+                <div class="col-lg-6">
+                    <div class="text-container" data-aos="fade-up" data-aos-delay="200">
+                        <h4>QUEM SOMOS</h4>
+                        <h2>Oque Oferecemos para os Clientes</h2>
+                        <p>Estamos ativos para suporte 24 horas por dia e sete vezes por semana com todas as suas demandas e serviços. Estamos aqui prontos para servir você e ajudá-lo com todos os seus pedidos e duvidas, nosso mantra é garantir a satisfação de nossos clientes sempre em primeiro lugar.</p>
+                        <a class="btn btn-gadcinza1 " href="sign-up.html">Ver Serviços <i class="fas fa-layer-group"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   {#} <!-- social-icons -->#}
+    <section class="social-icons" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 section-header"  data-aos="fade-up" data-aos-delay="200">
+                    <div class="above-heading">VASTO LEQUE DE SERVIÇOS E FERRAMENTAS</div>
+                    <h2 class="h2-heading">Variedade de serviços, ambiente centralizado</h2>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-lg-6 mt-5 mt-lg-0 d-flex">
+                  <div class="row align-self-center gy-4" style=" width: 100%;">
+                    <div class="col-md-6 icon" data-aos="zoom-out" data-aos-delay="200">
+                      <div class="feature-box d-flex align-items-center">
+                        <i class="lni lni-instagram-original"></i>
+                        <h3>Instagram</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6 icon" data-aos="zoom-out" data-aos-delay="400">
+                      <div class="feature-box d-flex align-items-center">
+                        <i class="lni lni-facebook-line"></i>
+                        <h3>Facebook</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6 icon" data-aos="zoom-out" data-aos-delay="600">
+                      <div class="feature-box d-flex align-items-center">
+                        <i class="fa fa-server"></i>
+                        <h3>Proxys</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6 icon" data-aos="zoom-out" data-aos-delay="700">
+                      <div class="feature-box d-flex align-items-center">
+                        <i class="fa fa-comments"></i>
+                        <h3>SMS</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6 icon" data-aos="zoom-out" data-aos-delay="850">
+                      <div class="feature-box d-flex align-items-center">
+                        <i class="lni lni-wordpress"></i>
+                        <h3>WordPress</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-6 icon" data-aos="zoom-out" data-aos-delay="1050">
+                      <div class="feature-box d-flex align-items-center">
+                        <i class="lni lni-vmware"></i>
+                        <h3>Outros Serviços</h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6" data-aos="zoom-out" data-aos-delay="200">
+                  <img src="/themes/nico/assets/icons/finger1.svg" class="img-fluid" alt="bmilimitada">
+                </div>
+            </div> 
+        </div>
+    </section>
+
+   {# <!-- feature -->#}
+    <section class="feature">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-12 section-header">
+                    <div class="above-heading" data-aos="fade-up" data-aos-delay="200">CLIENTES LUCRANDO</div>
+                    <h2 class="h2-heading" data-aos="fade-up" data-aos-delay="400">Queremos que nossos clientes lucrem além do limite</h2>
+                </div> 
+            </div>
+            <div class="row feature-icons" data-aos="fade-up">
+                <div class="row">
+                <div class="col-xl-4 text-center" data-aos="fade-right" data-aos-delay="100">
+                    <img src="/themes/nico/assets/icons/partners.svg" class="img-fluid p-4" alt="partners">
+                </div>
+                <div class="partner col-xl-8 d-flex content">
+                    <div class="row align-self-center gy-4">
+    
+                    <div class="col-md-6 icon-box" data-aos="fade-up">
+                        <div class="icon">
+                            <i class="lni lni-consulting"></i>
+                        </div>
+                        <div>
+                            <h4>Revendedores</h4>
+                            <p>Revenda nossos serviços e aumente seu lucro facilmente, os revendedores são cruciais pro BMIlimitada</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon">
+                            <i class="lni lni-phone-set"></i>
+                        </div>
+                        <div>
+                            <h4>Suporte 24/7</h4>
+                            <p>Conte sempre conosco para resolver problemas pendentes a qualquer hora.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon">
+                            <i class="lni lni-star-half"></i>
+                        </div>
+                        <div>
+                            <h4>Sistema de Afiliados</h4>
+                            <p>Recomende-nos aos seus amigos e ganhe saldo ilimitadamente.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon">
+                            <i class="lni lni-checkmark-circle"></i>
+                        </div>
+                        <div>
+                            <h4>Atualizações</h4>
+                            <p>Os serviços são atualizados diariamente para serem melhorados e fornecerem a melhor experiência</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon">
+                            <i class="lni lni-unlink"></i>
+                        </div>
+                        <div>
+                            <h4>Tenha sua Loja</h4>
+                            <p>Torne-se nosso parceiro e revendedor e adquira uma loja para lucrar ++</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
+                        <div class="icon">
+                            <i class="lni lni-investment"></i>
+                        </div>
+                        <div>
+                            <h4>Cupons</h4>
+                            <p>Fique atento ao nosso Telegram, soltamos cupons diariamente.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+  {#<!-- work-process-area -->#}
+    <section class="work-process-area" data-aos="fade-up">
+        <div class="container">
+          <div class="row  justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-12 col-sm-8 col-lg-6">
+              <div class="section-header">
+                <h2>Como funciona?</h2>
+                <p>Seguindo os processos abaixo, você pode fazer qualquer pedido que desejar.</p>
+              </div>
+            </div>  
+          </div>
+          <div class="row justify-content-between">
+              <div class="col-12 col-sm-3 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                  <div class="single_work_step">
+                      <div class="step-icon"><i>1</i></div>
+                      <h5>Registre-se e faça login</h5>
+                      <p>Criar uma conta é o primeiro passo, então você precisa fazer login.</p>
+                  </div>
+              </div>
+              <div class="col-12 col-sm-3 col-md-3" data-aos="fade-up" data-aos-delay="400">
+                  <div class="single_work_step">
+                      <div class="step-icon"><i>2</i></div>
+                      <h5>Adicione Saldo</h5>
+                      <p>Em seguida, escolha um método de pagamento e adicione fundos à sua conta.</p>
+                  </div>
+              </div>
+              <div class="col-12 col-sm-3 col-md-3" data-aos="fade-up" data-aos-delay="500">
+                  <div class="single_work_step">
+                      <div class="step-icon"><i>3</i></div>
+                      <h5>Selecione o serviço</h5>
+                      <p>Selecione os serviços que deseja e prepare-se para receber mais publicidade.</p>
+                  </div>
+              </div>
+              <div class="col-12 col-sm-3 col-md-3" data-aos="fade-up" data-aos-delay="600">
+                  <div class="single_work_step">
+                      <div class="step-icon"><i>4</i></div>
+                      <h5>Receber seu pedido</h5>
+                      <p>Voa lá! agora aproveite seu pedido e lucre muito.</p>
+                  </div>
+              </div>
+          </div>
+        </div>
+    </section>
+
+	 {#<!-- FAQ -->#}
+    <section class="faqs" data-aos="fade-up" data-aos-duration="2000">
+        <div class="container  justify-content-center">
+            <div class="row">
+                <div class="col-lg-12 section-header">
+                    <div class="above-heading">F.A.Q</div>
+                    <h2 class="h2-heading">Algumas perguntas + frequentes</h2>
+                </div> 
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="faq-block__card">
+                                <div class="card">
+                                    <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-1" aria-expanded="false" aria-controls="#faq-block-10-1">
+                                        <div class="faq-block__header-title">
+                                            <h4><i class="far fa-question-circle"></i> Oque é um Proxy?</h4>
+                                        </div>
+                                        <div class="faq-block__header-icon">
+                                            <i class="fas fa-chevron-circle-down fa-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="faq-block__body collapse" id="faq-block-10-1">
+                                        <div class="faq-block__body-description">
+                                            <p>Um proxy redireciona sua conexão com a Internet por meio de um servidor externo, atuando como intermediário entre seu dispositivo e os sites que você acessa. Isso mantém sua navegação totalmente protegida, ocultando seu endereço IP real. Ideal para agências de marketing que gerenciam várias contas de redes sociais, um proxy evita o cruzamento de dados, tornando suas operações de marketing digital mais rápidas e seguras.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="faq-block__card">
+                                <div class="card">
+                                    <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-2" aria-expanded="false" aria-controls="#faq-block-10-2">
+                                        <div class="faq-block__header-title">
+                                            <h4><i class="far fa-question-circle"></i> Preciso Ser "EXPERT" para usar?</h4>
+                                        </div>
+                                        <div class="faq-block__header-icon">
+                                            <i class="fas fa-chevron-circle-down fa-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="faq-block__body collapse" id="faq-block-10-2">
+                                        <div class="faq-block__body-description">
+                                            <p>Absolutamente não! pegamos na sua mão caso seja leigo, te guiamos com suporte independentemente da plataforma que está a usar.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="faq-block__card">
+                                <div class="card">
+                                    <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-3" aria-expanded="false" aria-controls="#faq-block-10-3">
+                                        <div class="faq-block__header-title">
+                                            <h4><i class="far fa-question-circle"></i> Como o Proxy influência na contingência?</h4>
+                                        </div>
+                                        <div class="faq-block__header-icon">
+                                            <i class="fas fa-chevron-circle-down fa-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="faq-block__body collapse" id="faq-block-10-3">
+                                        <div class="faq-block__body-description">
+                                            <p>Hoje, um proxy é fundamental para garantir a excelência em suas estratégias de contingência. Essa ferramenta eficaz impede o cruzamento de dados, evitando a perda de contas e clientes. Não arrisque mais - proteja suas operações com um proxy confiável.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="faq-block__card">
+                                <div class="card">
+                                    <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-4" aria-expanded="false" aria-controls="#faq-block-10-4">
+                                        <div class="faq-block__header-title">
+                                            <h4><i class="far fa-question-circle"></i> Há alguma limitação de uso ou restrição de velocidade para os proxies?
+</h4>
+                                        </div>
+                                        <div class="faq-block__header-icon">
+                                            <i class="fas fa-chevron-circle-down fa-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="faq-block__body collapse" id="faq-block-10-4">
+                                        <div class="faq-block__body-description">
+                                            <p>1Com nossos serviços, você não terá limitações nem cobranças adicionais por GB utilizado. Nossa velocidade é lider de mercado chegando até 3GB ou mais, dependendo da proximidade com nossos servidores. Não bloqueamos sites, mas os proxies IPv6 funcionam apenas com sites que utilizam o protocolo IPv6. A maioria das redes sociais já adotou esse protocolo mais moderno e seguro. No entanto, sites que ainda não estão preparados para IPv6, como TikTok e Twitter, só funcionarão com nosso Proxy IPv4.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="faq-block__card">
+                                <div class="card">
+                                    <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-5" aria-expanded="false" aria-controls="#faq-block-10-5">
+                                        <div class="faq-block__header-title">
+                                            <h4><i class="far fa-question-circle"></i> Quantos IPs de proxy receberei? Eles variam?</h4>
+                                        </div>
+                                        <div class="faq-block__header-icon">
+                                            <i class="fas fa-chevron-circle-down fa-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="faq-block__body collapse" id="faq-block-10-5">
+                                        <div class="faq-block__body-description">
+                                            <p>A quantidade de IPs depende do tipo de proxy que você escolher. Proxies estáticos fornecem um único IP por proxy e são cobrados mensalmente. Proxies rotativos mudam o IP periodicamente e são cobrados por GB usado.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="faq-block__card">
+                                <div class="card">
+                                    <div class="faq-block__header collapsed" data-toggle="collapse" data-target="#faq-block-10-6" aria-expanded="false" aria-controls="#faq-block-10-6">
+                                        <div class="faq-block__header-title">
+                                            <h4><i class="far fa-question-circle"></i> Quantas contas de Facebook ou Instagram posso usar por proxy?</h4>
+                                        </div>
+                                        <div class="faq-block__header-icon">
+                                            <i class="fas fa-chevron-circle-down fa-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="faq-block__body collapse" id="faq-block-10-6">
+                                        <div class="faq-block__body-description">
+                                            <p>Para sua segurança e a dos seus perfis, use uma única conta de rede social por proxy para evitar duplicidade no mesmo endereço IP. Colocar mais de um perfil por proxy pode causar bloqueios.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                
+                </div>
+            </div>
+        </div>
+    </section>	
+		
+
+   {# <!-- Testimonials -->#}
+    <div class="slider-2">
+        <div class="container" data-aos="fade-up" data-aos-duration="2000">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-lg-8">
+                    <div class="section-header">
+                        <h2>Oque dizem sobre nós?</h2>
+                        <p>Nosso serviço tem uma extensa lista de clientes construída com base em anos de confiança. Leia o que nossos compradores pensam sobre nossa gama de serviços.</p>
+                    </div>
+                </div>  
+            </div>
+            <div class="row">
+                <div class="col-lg-12">      
+                    <div class="slider-container">
+                        <div class="swiper-container text-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="image-wrapper">
+                                        <img class="img-fluid" src="/themes/nico/assets/images/testimonial-1.jpg" alt="alternative">
+                                    </div>
+                                    <div class="text-wrapper">
+                                        <div class="testimonial-text">Maria Luiza | Co-Produtora</div>
+                                        <div class="testimonial-author">Depois de tentar vários sites que afirmam ter 'entrega rápida', estou feliz por finalmente ter encontrado este serviço. Além do pagamento ser muito fácil, o suporte não te deixa na mão</div>
+                                    </div> 
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="image-wrapper">
+                                        <img class="img-fluid" src="/themes/nico/assets/images/testimonial-2.jpg" alt="alternative">
+                                    </div>
+                                    <div class="text-wrapper">
+                                        <div class="testimonial-text">João Mateus | CEO - NaveDigital</div>
+                                        <div class="testimonial-author">O Faturamento da minha empresa aumentou bruscamento pois depois que conheci os serviçõs do BMIlimitada os bloqueios sumiram.</div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="image-wrapper">
+                                        <img class="img-fluid" src="/themes/nico/assets/images/testimonial-3.jpg" alt="alternative">
+                                    </div>
+                                    <div class="text-wrapper">
+                                        <div class="testimonial-text">Rodrigo Coutinho | Gestor de Trafego</div>
+                                        <div class="testimonial-author">Estava em uma maré de frustações e bloqueios, comprei alguns proxys e bms com bom limite minha contingência agora está fluida.</div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div> 
+
+
+  {#  <!-- Payments Method -->#}
+    <section class="payment-methods" data-aos="fade-up">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 section-header" data-aos="fade-up"  data-aos-delay="200">
+                    <div class="above-heading">Metodos de Pagamentos</div>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="slider-container" data-aos="fade-up"  data-aos-delay="400">
+                        <div class="swiper-container image-slider">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+								<img class="img-fluid" src="themes/nico/assets/icons/payments/usdcicon.svg" alt="Dolar">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="img-fluid" src="themes/nico/assets/icons/payments/pixicon.svg" alt="pix">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="img-fluid" src="themes/nico/assets/icons/payments/btcicon.svg" alt="bitcoin">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img class="img-fluid" src="themes/nico/assets/icons/payments/ethicon.svg" alt="etherum">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </section>
+	
+</body>	
+		
+		
+		
+		
+		
+{#<!-- Vendor -->#}
+<script src="/assets/nico/plugins/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/nico/plugins/aos/dist/aos.js"></script>
+<script src="/themes/nico/assets/js/bootstrap.min.js"></script>
+<script src="/themes/nico/assets/js/jquery.easing.min.js"></script> 
+<script src="/themes/nico/assets/js/swiper.min.js"></script>
+<script src="/themes/nico/assets/js/scripts.js"></script>
+{#<!-- Script js -->#}
+<script src="/assets/nico/js/process.js"></script>
+<script src="/assets/nico/js/general.js"></script>
+<?=htmlspecialchars_decode(get_option('embed_javascript', ''), ENT_QUOTES)?>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    /**
+     * Initiate Pure Counter 
+     */
+    new PureCounter();
+    /**
+     * Animation on scroll
+     */
+    function aos_init() {
+        AOS.init({
+        duration: 1000,
+        easing: "ease-in-out",
+        once: true,
+        mirror: false
+        });
+    }
+    window.addEventListener('load', () => {
+        aos_init();
+    });
+    
+</script>
+
+
+<!--footer section start-->
+
+{% include 'footer.twig' %}

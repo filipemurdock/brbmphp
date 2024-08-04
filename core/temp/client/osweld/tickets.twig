@@ -1,0 +1,149 @@
+{% include 'header.twig' %}
+
+		<div class="g-dash-content">
+            <section class="mt-4 mb-2">
+               <div class="container-fluid">
+                <div class="gcard-2 gcard-shadow fade-1 mb-5">
+                  <div class="gcard-body gi-card">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+                        <div class="gcard-icon gi-1">
+                          <i class="ri-customer-service-2-line"></i>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <span class="gi-title">{{ lang['tickets.title'] }}</span>
+                        <p class="gi-text">Certifique-se de verificar a página <a href="/faq">FAQ</a> antes de abrir um caso de suporte.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="row mb-3">
+						<div class="col-lg-6">
+							<div class="gcard ticket-page mb-3">
+								<div class="gcard-header">
+                                    <div class="row align-items-center">
+                                      <div class="col d-flex align-items-center">
+                                          <div class="ch-g-ticon">
+                                            <div class="gcard-head-icon">
+                                              <i class="ri-customer-service-2-line"></i>
+                                            </div>
+                                          </div>
+                                          <div class="ch-text">
+                                            <h3 class="gcard-title">Criar solicitação de suporte </h3>
+                                          </div>
+                                      </div>
+                                    </div>
+								</div>
+								<div class="gcard-body">
+									  {% if error %}
+										<div class="alert alert-dismissible alert-danger {% if site['rtl'] %} rtl-alert {% endif %}">
+										  <button type="button" class="close" data-dismiss="alert">×</button>
+										  {{ errorText }}
+										</div>
+									  {% elseif success %}
+										<div class="alert alert-dismissible alert-success {% if site['rtl'] %} rtl-alert {% endif %}">
+										  <button type="button" class="close" data-dismiss="alert">×</button>
+										  {{ successText }}
+										</div>
+									  {% endif %}
+								
+									  <form method="post" action="tickets">
+										<div class="form-group">
+										  <label for="subject" class="control-label">{{ lang['tickets.subject'] }}</label>
+											<select class="form-control" id="subject" name="subject">
+											  {% for subjects in orders %}
+											   <option value"{{ subjects['subject'] }}">{{ subjects['subject'] }}</option>
+											  {% endfor %}
+											</select>  
+										</div>
+										<div class="form-group">
+										  <label for="message" class="control-label">{{ lang['tickets.message'] }}</label>
+										  <textarea class="form-control" rows="7" id="message" name="message">{{ data['message'] }}</textarea>
+										</div>
+										<button type="submit" class="btn btn-primary btn-block">{{ lang['tickets.button'] }}</button>
+									  </form>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="gcard">
+								<div class="gcard-header">
+                                    <div class="row align-items-center">
+                                      <div class="col d-flex align-items-center">
+                                          <div class="ch-g-ticon">
+                                            <div class="gcard-head-icon">
+                                              <i class="ri-coupon-line"></i>
+                                            </div>
+                                          </div>
+                                          <div class="ch-text">
+                                            <h3 class="gcard-title">Meus pedidos de suporte</h3>
+                                          </div>
+                                      </div>
+                                    </div>
+								</div>
+								  <div class="gcard-body gc-scroll">
+									  {% if ticketList %}
+											{% for ticket in ticketList %}
+											<a href="tickets/{{ ticket['ticket_id'] }}">
+                                             {% if ticket["support_new"] == 2 %}
+											  <div class="d-flex tickets new align-items-center">
+                                              {% else %}
+                                              <div class="d-flex tickets align-items-center">  
+                                              {% endif %}
+													 <div class="avatar me-3">
+														 <div class="tickets-img">
+															<span>{{ user['username']|first|capitalize }}</span>
+														 </div>
+													 </div>
+													  <div class="user-name">
+														  <h6 class="font-weight-bold">#{{ ticket['ticket_id'] }} -  {% if ticket['new'] == 1 %}
+															<strong>{{ ticket['subject'] }}</strong>
+														  {% else %}
+															{{ ticket['subject'] }}
+														  {% endif %} </h6>
+														 <span class="d-block">
+															{% if ticket['status'] == lang['tickets.status.answered'] %}
+															   <span class="g-ticket-status completed">
+																	{{ ticket['status'] }}
+															   </span>
+															{% endif %}               
+															{% if ticket['status'] == lang['tickets.status.pending'] %}
+																<span class="g-ticket-status pending">
+																	{{ ticket['status'] }}
+																</span>
+															{% endif %}
+															{% if ticket['status'] == lang['tickets.status.closed'] %}
+																 <span class="g-ticket-status closed">
+																	{{ ticket['status'] }}
+																  </span>
+															{% endif %}
+														 </span>
+														 <span class="date">{{ ticket['lastupdate_time'] }}</span>
+													   </div>
+												 </div>
+											  </a>
+											{% endfor %}
+									  {% else %}
+										<div class="nothing-found">
+										  <div class="gcard-2 gcard-shadow fade-1">
+											<div class="gcard-body p-4 p-lg-5 text-center">
+											  <div style="font-size: 64px;">
+												<i class="ri-error-warning-line"></i>
+											  </div>
+											  <p>Você não tem solicitações de suporte ativas.</p>
+											</div>
+										  </div>
+										</div>
+									  {% endif %}
+								  </div>
+							</div>
+						</div>
+                    </div>
+               </div>
+            </section>
+         </div>
+      </div>
+
+
+{% include 'footer.twig' %}

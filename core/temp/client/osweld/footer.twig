@@ -1,0 +1,311 @@
+ <div class="modal fade" id="popupModal" role="dialog" >
+    <div class="modal-dialog">
+        <div class="card" style="position: relative;display: -ms-flexbox;display: flex;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(0,0,0,.125);border-radius: 0.25rem;">
+            <div class="text-right cross"> <i class="fa fa-times" style="margin-right: .5rem;"></i> </div>
+            <div class="card-body text-center"> <img height="150" src="{{ site['url'] }}/assets/img/modal-icon.png">
+                <h4 id="modal-title">DUYURU!</h4>
+                <p id="modal-content"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+  {% if user['auth'] %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.all.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+
+<script> 
+function _0x5037(_0x51155c,_0x3bfc53){var _0x1c98de=_0x1c98();return _0x5037=function(_0x503724,_0xfa4af8){_0x503724=_0x503724-0x1c4;var _0x362e63=_0x1c98de[_0x503724];return _0x362e63;},_0x5037(_0x51155c,_0x3bfc53);}var _0x181f3b=_0x5037;function _0x1c98(){var _0x365d3a=['ajax','Failed\x20to\x20retrieve\x20broadcast\x20notification','/broadcast','setTime','15IKatzH','509406PRekEz','toUTCString','BROADCAST_DESCRIPTION','8kCCmCM','BROADCAST_TITLE','length','trim','BROADCAST_URL','4152055QiVAJz','log','14615415OjjMti','getTime','ready','location','href','BROADCAST_ACTION','split','isConfirmed','BROADCAST_ICON','3733212cpeUft','substring','replace','513572JSLqjU','fire','406933RgKPuP','5788272LIMloI','hidden','pathname','shift'];_0x1c98=function(){return _0x365d3a;};return _0x1c98();}(function(_0x59a6a6,_0x5dd33a){var _0x1e93a1=_0x5037,_0x305d7b=_0x59a6a6();while(!![]){try{var _0x2fea71=-parseInt(_0x1e93a1(0x1d6))/0x1+-parseInt(_0x1e93a1(0x1e0))/0x2+parseInt(_0x1e93a1(0x1df))/0x3*(parseInt(_0x1e93a1(0x1d4))/0x4)+-parseInt(_0x1e93a1(0x1c6))/0x5+parseInt(_0x1e93a1(0x1d1))/0x6+-parseInt(_0x1e93a1(0x1d7))/0x7+-parseInt(_0x1e93a1(0x1e3))/0x8*(-parseInt(_0x1e93a1(0x1c8))/0x9);if(_0x2fea71===_0x5dd33a)break;else _0x305d7b['push'](_0x305d7b['shift']());}catch(_0x36d20d){_0x305d7b['push'](_0x305d7b['shift']());}}}(_0x1c98,0x8af47),$(document)[_0x181f3b(0x1ca)](function(){var _0x3a379a=_0x181f3b,_0x274ced=window[_0x3a379a(0x1cb)][_0x3a379a(0x1d9)][_0x3a379a(0x1d3)]('/',''),_0x42949f=[];$[_0x3a379a(0x1db)]({'url':_0x3a379a(0x1dd),'dataType':'json','data':{'page':_0x274ced},'success':function(_0x1a9cde){_0x42949f=_0x1a9cde,_0x2f6e30();},'error':function(_0x3c531f,_0x45b223,_0x23b614){var _0x12c7f3=_0x3a379a;console[_0x12c7f3(0x1c7)](_0x12c7f3(0x1dc));}});function _0x2f6e30(){var _0x5f3654=_0x3a379a;if(_0x42949f['length']>0x0){var _0x3b21d2=_0x42949f[_0x5f3654(0x1da)](),_0x3148b7='notification-'+_0x3b21d2['id'];_0x5eaf8d(_0x3148b7)===null?Swal[_0x5f3654(0x1d5)]({'icon':_0x3b21d2[_0x5f3654(0x1d0)],'title':_0x3b21d2[_0x5f3654(0x1e4)],'html':_0x3b21d2[_0x5f3654(0x1e2)],'confirmButtonText':_0x3b21d2[_0x5f3654(0x1cd)],'showCloseButton':!![]})['then'](_0x164c4b=>{var _0x184a63=_0x5f3654;_0x164c4b[_0x184a63(0x1cf)]&&(_0x570d09(_0x3148b7,_0x184a63(0x1d8),0x1e),_0x2f6e30(),_0x3b21d2[_0x184a63(0x1c5)]&&(window[_0x184a63(0x1cb)][_0x184a63(0x1cc)]=_0x3b21d2[_0x184a63(0x1c5)]));}):_0x2f6e30();}}function _0x5eaf8d(_0x198c64){var _0x5219f2=_0x3a379a,_0x458d3d=_0x198c64+'=',_0x181182=document['cookie'][_0x5219f2(0x1ce)](';');for(var _0x9438ea=0x0;_0x9438ea<_0x181182[_0x5219f2(0x1e5)];_0x9438ea++){var _0x1cff2e=_0x181182[_0x9438ea][_0x5219f2(0x1c4)]();if(_0x1cff2e['indexOf'](_0x458d3d)===0x0)return _0x1cff2e[_0x5219f2(0x1d2)](_0x458d3d[_0x5219f2(0x1e5)],_0x1cff2e['length']);}return null;}function _0x570d09(_0x5cf4ab,_0x41fb9f,_0x4217a4){var _0x5c04f6=_0x3a379a,_0x44df83=new Date();_0x44df83[_0x5c04f6(0x1de)](_0x44df83[_0x5c04f6(0x1c9)]()+_0x4217a4*0x18*0x3c*0x3c*0x3e8);var _0x5bda24=';\x20expires='+_0x44df83[_0x5c04f6(0x1e1)]();document['cookie']=_0x5cf4ab+'='+_0x41fb9f+_0x5bda24+';\x20path=/';}}));
+</script>
+  
+  {% else %}
+			<footer id="footer" class="footer-bg mt-0">
+				<div class="container text-center my-3 py-5">
+					<a href="/">
+                    {% if site["logo"] %}
+                      <img src="{{ site['logo'] }}" alt="{{ site["site_name"] }}" title="{{ site["site_name"] }}" height="55" class="mb-4">
+                    {% else %}
+                     {{ site["site_name"] }}
+                    {% endif %}
+					</a>
+					<p class="mb-4">Siga-nos nas <strong>mídias sociais</strong>!</strong></p>
+					<ul class="ficons ficons-big ficons-dark-2">
+						<li class="ficons-instagram"><a href="#" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+						<li class="ficons-facebook"><a href="#" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+						<li class="ficons-twitter"><a href="https://t.me/bmilimitadas" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a></li>
+						
+					</ul>
+				</div>
+				<div class="copyright footer-alt-bg py-4">
+					<div class="container text-center py-2">
+						<p class="mb-0 text-2 ls-0">Copyright 2023 {{ site["site_name"] }} - Todos os direitos reservados.</p>
+					</div>
+				</div>
+			</footer>
+  {% endif %}
+ 
+ {% if user['auth'] %}  
+	 <div class="g-overlay"></div>
+     <div class="bs-toast">
+         <div class="bs-toast-content">
+            <div class="toast-text">Copiar para área de transferência</div>
+         </div>
+    </div>
+</div>
+  
+{% endif %}
+
+{% if user['auth'] %}
+<script>
+    var userSpent = {{ user['spent'] }};
+if (userSpent <= 5000) {
+	var userlevel = "Bronz";
+} else if (userSpent > 5000 && userSpent <= 25000) {
+	var userlevel = "Gümüş";
+} else if (userSpent > 25000 && userSpent <= 50000) {
+	var userlevel = "Altın";
+} else if (userSpent > 50000 && userSpent <= 100000) {
+	var userlevel = "Elmas";
+} else if (userSpent > 100000) {
+	var userlevel = "Platin";
+}
+var placer = document.getElementById("placePercent");
+var progress = document.getElementById("statusProgress");
+var currentStatus = document.getElementById("currentStatus");
+var nextStatus = document.getElementById("nextStatus");
+var remain = document.getElementById("remain");
+switch (userlevel) {
+	case "Bronz":
+		var cal = (userSpent / 50).toFixed(2);
+		progress.setAttribute("style", "width:" + cal + "%;");
+		placer.innerText = cal + "%";
+		currentStatus.innerText = 'Membro Bronze';
+		nextStatus.innerText = 'Membro Prata';
+        remain.innerText = 5000 - userSpent;
+		break;
+	case "Gümüş":
+		var userSpent = userSpent;
+		var cal = (userSpent / 250).toFixed(2);
+		progress.setAttribute("style", "width:" + cal + "%;");
+		placer.innerText = cal + "%";
+		currentStatus.innerText = 'Membro Prata';
+		nextStatus.innerText = 'Membro de Ouro';
+        remain.innerText = 25000 - userSpent;
+		break;
+	case "Altın":
+		var userSpent = userSpent;
+		var cal = (userSpent / 500).toFixed(2);
+		progress.setAttribute("style", "width:" + cal + "%;");
+		placer.innerText = cal + "%";
+		currentStatus.innerText = 'Membro de Ouro';
+		nextStatus.innerText = 'Membro Diamante';
+        remain.innerText = 50000 - userSpent;
+		break;
+	case "Elmas":
+		var userSpent = userSpent;
+		var cal = (userSpent / 1000).toFixed(2);
+		progress.setAttribute("style", "width:" + cal + "%;");
+		placer.innerText = cal + "%";
+		currentStatus.innerText = 'Membro Diamante';
+		nextStatus.innerText = 'Membro Platinum';
+        remain.innerText = 100000 - userSpent;
+		break;
+	case "Platin":
+		var cal = 100;
+		progress.setAttribute("style", "width:" + cal + "%;");
+		placer.innerText = cal + "%";
+		currentStatus.innerText = 'Membro Platinum';
+		nextStatus.innerText = '--';
+		break;
+	default:
+		placer.innerHTML = `<b style="color:red">ERR%</b>`;
+		currentStatus.innerHTML = `<b style="color:red">nenhum dado encontrado.</b>`;
+		nextStatus.innerHTML = `<b style="color:red">n/a</b>`;
+        remain.innerHTML = `<b style="color:red">n/a</b>`;
+}
+var getText = document.getElementById("placePercent").innerText;
+var parse = parseInt(getText);
+document.getElementById("placePercent").innerText = parse + '%';
+var getTextSaldo = document.getElementById("saldo").innerText;
+var semr = getTextSaldo.replace('R$ ', '');
+var splitDividir = parseFloat(semr).toFixed(2);
+document.getElementById("saldo").innerText = 'R$ ' + splitDividir; 
+</script>     
+{% endif %}
+<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  {% for script in scriptList %}
+  <script type="text/javascript" src="{{ script }}"></script>
+  {% endfor %}
+
+  {{ footerCode }}
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+    function popupShow(item, index){
+      $('#modal-title').html(item['baslik']);
+      $('#modal-content').html(item['icerik']);
+      $('#popupModal').modal('show');
+  }
+$.post( "/popup", function( data ) {
+  data['field'].forEach(popupShow);
+    
+    
+});
+</script>
+  
+{% if user['auth'] %}
+<script>
+const nwoCategories = document.querySelector('.nwo-categories');
+
+if (nwoCategories) {
+  const nwoCatSwiper = new Swiper('.nwo-categories', {
+    slidesPerView: 'auto',
+    spaceBetween: 10,
+  });
+}
+</script> 
+<script>
+const newOrderCats = document.getElementById('new-order-cats');
+
+if (newOrderCats) {  
+    const orderFormCats = document.getElementById('neworder_category');
+    var realData = orderFormCats.innerHTML;
+
+    const dCatBtns = document.querySelectorAll('.nwo-cat-btn');
+    if (dCatBtns[0]) {
+        [...dCatBtns].forEach(btn => {
+            btn.addEventListener('click', e => {
+                const val = btn.getAttribute('data-change-cat');
+                const orderFormCats = document.getElementById('neworder_category');
+                const options = document.querySelectorAll('#neworder_category-copy option');
+
+                const dCatbtns = document.querySelectorAll('.nwo-cat-btn');
+                [...dCatbtns].forEach(bt => {
+                    bt.classList.remove('active');
+                });
+                btn.classList.add('active');
+
+                const newOptions = [];
+                [...options].forEach(el => {
+                    if (el.innerText.toLowerCase().includes(val.toLowerCase())) {
+                        newOptions.push(el);
+                    }
+                });
+                const newOptionsHtml = [];
+                [...newOptions].forEach(el => {
+                    newOptionsHtml.push(el.outerHTML);
+                });
+                orderFormCats.innerHTML = newOptionsHtml.join('');
+
+                $('#neworder_category').trigger('change');
+            });
+        })
+    }
+
+    /**
+     * copy order form data hidden
+     */
+    setTimeout(() => {
+        const orderFormCopy = document.createElement('select');
+        orderFormCopy.setAttribute('id', 'neworder_category-copy');
+        orderFormCopy.style.display = 'none';
+        orderFormCopy.innerHTML = realData;
+        orderFormCats.parentNode.insertBefore(orderFormCopy, orderFormCats);
+    }, 1000)
+
+    const nocWrapper = document.getElementById('noc-wrapper');
+    nocWrapper.style.display = 'none';
+    setTimeout(() => {
+        nocWrapper.style.display = 'block';
+    }, 1001);
+}    
+</script>
+<script>
+
+function change_mode() {
+
+    var app = document.getElementsByTagName("BODY")[0];
+
+    if (localStorage.lightMode == "dark") {
+        localStorage.lightMode = "light";
+        app.setAttribute("class", "light");
+    } else {
+        localStorage.lightMode = "dark";
+        app.setAttribute("class", "dark");
+    }
+    console.log("lightMode = " + localStorage.lightMode);
+}
+</script>
+<script>
+    var app = document.getElementsByTagName("BODY")[0];
+     if (localStorage.lightMode == "dark") {
+         app.setAttribute("class", "dark");
+    }
+</script>
+            
+<script>
+    var app = document.getElementsByTagName("BODY")[0];
+      if (localStorage.themeSelect == "default") {
+          app.setAttribute("class", "default");
+     }
+</script>      
+<script>
+    function getUrlParameter(sParam) {
+        var sPageURL = decodeURIComponent(window.location.search.substring(1));
+        var sURLVariables = sPageURL.split('&');
+        var sParameterName;
+        var i;
+        for (i = 0; i < sURLVariables.length; i++) {
+            sParameterName = sURLVariables[i].split('=');
+            if (sParameterName[0] === sParam) {
+                return sParameterName[1] === undefined ? true : sParameterName[1];
+            }
+        }
+    }
+
+    var select_service_id = getUrlParameter("select_service_id");
+    if (select_service_id) {
+        var selectSerCatID = window.modules.siteOrder.services[select_service_id].cid;
+        let orderCat = document.getElementById('neworder_category');
+        let orderSer = document.getElementById('neworder_services');
+
+        $(function () {
+            orderCat.querySelector('[selected]').removeAttribute('selected');
+            console.log(selectSerCatID);
+            orderCat.querySelector('[value="'+ selectSerCatID +'"]').setAttribute('selected', 'selected');
+            orderCat.value = selectSerCatID;
+
+            var event = document.createEvent('HTMLEvents');
+            event.initEvent('change', true, false);
+            orderCat.dispatchEvent(event);
+
+            setTimeout(() => {
+                let controlSel = orderSer.querySelector('[selected]')
+                if (controlSel) {
+                    controlSel.removeAttribute('selected');
+                }
+                console.log(select_service_id);
+                orderSer.querySelector('[value="'+ select_service_id +'"]').setAttribute('selected', 'selected');
+                orderSer.value = select_service_id;
+                orderSer.dispatchEvent(event);
+
+            }, 500);
+        });
+    }
+</script>
+<!--<script type="text/javascript" src="js/main.js?v={{ random(50, 100) }}"></script>-->
+{% else %}
+<script type="text/javascript">
+    localStorage.clear();
+</script>  
+{% endif %}  
+
+<a href="https://machinesmm.com/">
+    <img src="" alt="">
+</a>
+</body>
+</html>

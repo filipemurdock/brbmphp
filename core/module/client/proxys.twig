@@ -1,0 +1,60 @@
+{% include 'header.twig' %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Proxies</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="../../../css/panel/osweld/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Lista de Proxies</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Service Name</th>
+                    <th>Order Status</th>
+                    <th>Proxies</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{ order.order_id }}</td>
+                        <td>{{ order.service_name }}</td>
+                        <td>{{ order.order_status }}</td>
+                        <td>
+                            {% if order.proxies %}
+                                <button class="toggle-proxies btn btn-primary">Show Proxies</button>
+                                <div class="proxy-list" style="display: none;">
+                                    <ul>
+                                        {% for proxy in order.proxies %}
+                                            <li>{{ proxy }}
+                                                <button class="refill-btn btn btn-warning">Refill</button>
+                                                <button class="copy-btn btn btn-info" data-proxy="{{ proxy }}">Copy</button>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% else %}
+                                Nenhum proxy encontrado
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">Nenhum pedido encontrado.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <script src="/proxys.js"></script>
+</body>
+</html>
+
+{% include 'footer.twig' %}

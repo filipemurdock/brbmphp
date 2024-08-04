@@ -1,0 +1,95 @@
+{% if settings['register_page']  ==  2 %} 
+
+
+
+
+
+{% include 'header.twig' %}
+<!-- Variáveis Principais *conteúdo* -->
+<div class="signup-screen">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <span class="page-title">Cadastrar</span>
+      <form action="" method="post">
+
+        {% if errorText %}
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ errorText }}
+        </div>
+        {% endif %}
+        {% if successText %}
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          {{ successText }}
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+          <label for="username" class="control-label">Nome de Usuário</label>
+          <input type="text" class="form-control" id="username" value="" name="username">
+        </div>
+
+        {% if settings['name_secret'] == 2 %}
+        <div class="form-group">
+          <label for="firstname" class="control-label">Seu Nome</label>
+          <input type="text" class="form-control" id="firstname" value="" name="first_name">
+        </div>
+        <div class="form-group">
+          <label for="lastname" class="control-label">Sobrenome</label>
+          <input type="text" class="form-control" id="lastname" value="" name="last_name">
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+          <label for="email" class="control-label">Email</label>
+          <input type="email" class="form-control" id="email" value="" name="email">
+        </div>
+
+        {% if settings['skype_area'] == 2 %}
+        <div class="form-group">
+          <label for="telephone" class="control-label">Número de Telefone (+55 XX XXXXX-XXXX)</label>
+          <input type="text" class="form-control" id="telephone" value="" name="telephone">
+        </div>
+        {% endif %}
+
+        <div class="form-group">
+          <label for="password" class="control-label">Sua Senha</label>
+          <input type="password" class="form-control" id="password" value="" name="password">
+        </div>
+
+        <div class="form-group">
+          <label for="confirm" class="control-label">Confirmar Senha</label>
+          <input type="password" class="form-control" id="confirm" value="" name="password_again">
+        </div>
+
+        {% if captcha %}
+        <div class="form-group">
+          <div class="g-recaptcha" data-sitekey="{{ captchaKey }}"></div>
+        </div>
+        {% endif %}
+
+        {% if settings['terms_checkbox'] == 2 %}
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="terms" value="1">{{ lang['signup.accept_terms_text'] }}
+          </label>
+        </div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-blue">Cadastrar</button>
+        <span class="pull-right pull-right-middle">Já tem uma conta? <a href="/">Entrar</a></span>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+            <div id="lnc"></div>
+
+
+
+
+{% include 'footer.twig' %}
+{% endif %} 

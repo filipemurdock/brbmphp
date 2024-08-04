@@ -1,0 +1,198 @@
+{% include 'header.twig' %}
+{% if user['auth'] %}
+
+{% else %}
+<style>.g-dash-content {padding-top: 125px}</style>
+{% endif %}
+<style>body.light .g-sitem .avgtime {font-size: 11px;color: #8b98b8;}</style>
+<div class="g-dash-content">
+<section class="dashboard-head-wrapper">
+<div class="dashboard-head card-border">
+<img src="../img/mascoteservicopng.png" class="mascot-img">
+<div class="dhead-body">
+<h2 class="title">
+Ativação por SMS</h2>
+<p class="text">
+Ative seu número facilmente em plataformas sociais como Facebook e Instagram com nosso serviço de ativação por SMS. Receba um código de confirmação imediato e seguro, ideal para proteger seu perfil e garantir uma experiência de registro tranquila. Perfeito para quem busca privacidade, evitando o uso de números pessoais em cadastros online.
+</p>
+</div>
+</div>
+</section>
+
+<style>
+    #sam {
+        display: none; /* Oculta por padrão */
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+    }
+
+
+    .services {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px;
+		flex-direction: column;
+		align-items: normal;
+		
+}
+    
+
+    .service {
+        background-color: rgba(31, 46, 20, 0.8);
+        border: 2px solid #69b92d;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .service:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .icon {
+        font-size: 24px;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .name {
+        font-weight: bold;
+        margin-bottom: 10px;
+		margin-right: 50px;
+    }
+
+    .price {
+        color: #fff;
+        margin: 10px 0;
+    }
+
+		.btn {
+	padding: 10px;
+    margin-top: 15px;
+	background: #000000 !important;
+
+		}
+
+    .buy-button:hover {
+        background-color: #45a049;
+    }
+
+    .service-info {
+        margin-top: 40px;
+		display: flex;
+		gap: 20px;
+
+    }
+	
+	.service-info-title {
+        margin-top: 40px;
+    }
+
+    .info-block {
+        background-color: rgba(31, 46, 20, 0.8);
+        border: 2px solid #69b92d;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		
+	}	
+	
+	 .unit-price {
+        font-size: 12px;
+        color: #ccc;
+        margin-bottom: 5px;
+    }
+	
+	.g-ticon{
+	 padding-right: 14px !important;
+    font-size: 26px !important;
+	}
+
+
+    @media (max-width: 768px) {
+        .service {
+            width: calc(50% - 40px);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .service {
+            width: 100%;
+        }
+    }
+</style>
+
+    <div class="services">
+        <div class="service">
+			<span class="g-ticon">
+			<i class="fab fa-facebook-f" style="color: #a3a3a3;"></i></span>
+            <span class="name">Facebook</span>
+			<span class="unit-price">PREÇO/UNID.</span>
+            <span class="price">R$ 2,00</span>
+            <button onclick="location.href='/?select_service_id=1119&category_id=57'" class="btn btn-primary btn-block">COMPRAR</button>
+        </div>
+        <div class="service">
+		<span class="g-ticon">
+			<i class="fab fa-instagram" style="color: #a3a3a3;"></i></span>
+            <span class="name">Instagram</span>
+			<span class="unit-price">PREÇO/UNID.</span>
+            <span class="price">R$ 2,00</span>
+            <button onclick="location.href='/?select_service_id=1120&category_id=57'" class="btn btn-primary btn-block">COMPRAR</button>
+        </div>
+        <div class="service">
+		<span class="g-ticon">
+			<i class="fab fa-google" style="color: #a3a3a3;"></i></span>
+            <span class="name">Google</span>
+			<span class="unit-price">PREÇO/UNID.</span>
+            <span class="price">R$ 2,50</span>
+            <button onclick="location.href='/?select_service_id=1121&category_id=57'" class="btn btn-primary btn-block">COMPRAR</button>
+        </div>
+	<div class="service">
+			<span class="g-ticon">
+			<i class="fab fa-google" style="color: #a3a3a3;"></i></span>
+            <span class="name">Gmail</span>
+			<span class="unit-price">PREÇO/UNID.</span>
+            <span class="price">R$ 2,50</span>
+            <button onclick="location.href='/?select_service_id=1119&category_id=57'" class="btn btn-primary btn-block">COMPRAR</button>
+        </div>
+			<div class="service">
+			<span class="g-ticon">
+			<i class="fab fa-youtube" style="color: #a3a3a3;"></i></span>
+            <span class="name">Youtube</span>
+			<span class="unit-price">PREÇO/UNID.</span>
+            <span class="price">R$ 2,50</span>
+            <button onclick="location.href='/?select_service_id=1119&category_id=57'" class="btn btn-primary btn-block">COMPRAR</button>
+        </div>
+		<div class="service">
+			<span class="g-ticon">
+			<i class="fab fa-whatsapp" style="color: #a3a3a3;"></i></span>
+            <span class="name">WhatsApp</span>
+			<span class="unit-price">PREÇO/UNID.</span>
+            <span class="price">R$ 8,00</span>
+            <button onclick="location.href='/?select_service_id=1119&category_id=57'" class="btn btn-primary btn-block">COMPRAR</button>
+        </div>
+    </div>
+	<div class="service-info-title">
+        <h2>Entenda este serviço</h2>
+    </div>
+    <div class="service-info">
+        <div class="info-block">
+            <p>A ativação por SMS é a maneira mais fácil de verificar seu número durante o registro em plataformas sociais como Facebook e Instagram.</p>
+        </div>
+        <div class="info-block">
+            <p>O código de confirmação é enviado para o número especificado no momento da compra. Para concluir o registro, é necessário inseri-lo no site ou no aplicativo.</p>
+        </div>
+        <div class="info-block">
+            <p>Este serviço é útil para você que não possui vários números ou não pretende utilizar seu número pessoal para fazer cadastros em plataformas sociais.</p>
+        </div>
+    </div>
+</div>
+
+{% include 'footer.twig' %}

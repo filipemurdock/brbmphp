@@ -1,0 +1,68 @@
+{% include 'header.twig' %}
+
+{% if user['auth'] %}
+
+{% else %}
+<style>.g-dash-content {padding-top: 125px}</style>
+{% endif %}
+
+<div class="g-dash-content">
+   <section class="pt-4">
+     {% if user['auth'] %}
+      <div class="container-fluid">
+     {% else %}
+      <div class="container">
+     {% endif %}
+		<div class="row">
+			{% for post in blogList %}
+			<div class="col-lg-4">
+				<div class="gcard gnyBlog">
+					<div class="gcard-body">
+						<div class="blog-img-wrapper">
+                            {% if post['blog_image'] %}
+							<img src="{{ post['blog_image'] }}" alt="{{ post['blog_title'] }}" class="img-fluid">
+								{% else %}
+							<img src="assets/osweld/img/blank.jpg" alt="{{ post['blog_title'] }}" class="img-fluid">
+							{% endif %}
+                        </div>
+						<div class="blog-title blog-border">
+                            <h2>{{ post['blog_title'] }}</h2>
+                        </div>
+						<div class="blog-footer">
+                            <div class="row align-items-center">
+                                <div class="col">
+                                    <div class="gnyBlogWr">
+                                        <a target="_blank" href="https://t.me/share/url?url={{ site['url'] }}/blog/{{ post['url'] }}" class="gnyBlogBtn">
+                                            <i class="ri-send-plane-fill"></i>
+                                        </a>
+                                        <a target="_blank" href="http://www.twitter.com/share?url={{ site['url'] }}/blog/{{ post['url'] }}" class="gnyBlogBtn">
+                                            <i class="ri-twitter-line"></i>
+                                        </a>
+                                        <a target="_blank" href="http://www.reddit.com/submit?url={{ site['url'] }}/blog/{{ post['url'] }}" class="gnyBlogBtn">
+                                            <i class="ri-reddit-line"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-auto ms-auto">
+                                    <a href="{{ site['url'] }}/blog/{{ post['url'] }}" class="blog-read-more">
+                                        <span>{{ lang['blog.read'] }}</span>
+                                        <i class="ri-arrow-right-line ms-3"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>						
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+      </div>
+   </section>
+
+
+</div>
+<a href="https://machinesmm.com/">
+    <img src="" alt="">
+</a>
+
+{% include 'footer.twig' %}

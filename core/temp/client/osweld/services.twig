@@ -1,0 +1,361 @@
+{% include 'header.twig' %}
+
+{% if user['auth'] %}
+
+{% else %}
+
+<head>
+<style>
+body.light .g-sitem .avgtime {
+font-size: 11px;color: #8b98b8;
+}
+
+.wpicon{
+  display: inline-block !important;
+  width: 48px !important;
+  overflow: visible !important;
+  line-height: 0 !important;
+  margin-right: 0px !important;
+}
+
+
+
+.g-dash-content {padding-top: 125px}
+
+.service-image {
+   width: 50px; /* Ajuste o tamanho conforme necessário */
+   height: 50px;
+   object-fit: cover;
+   margin-right: 10px;
+}
+
+
+</style>
+</head>
+
+{% endif %}
+
+<div class="g-dash-content">
+<section class="dashboard-head-wrapper">
+<div class="dashboard-head card-border">
+<img src="../img/mascoteservicopng.png" class="mascot-img">
+<div class="dhead-body">
+<h2 class="title">
+Gama de Serviços para Marketing Digital
+</h2>
+<p class="text">
+Explore uma seleção exclusiva de serviços com preços imbatíveis e disponibilidade limitada. Nossa lista inclui gerenciadores de negócios, perfis do Facebook, proxies brasileiros, ativação SMS, e muito mais. Não perca essa oportunidade única de obter serviços de alta qualidade a preços reduzidos. Confira as opções abaixo e aproveite antes que acabem!
+</p>
+</div>
+</div>
+</section>
+   <section class="pt-4">
+     {% if user['auth'] %}
+      <div class="container-fluid">
+     {% else %}
+      <div class="container">
+     {% endif %}
+         <div class="gcard gcard-border">
+            <div class="gcard-body p-3">
+               <div class="row align-items-center">
+                  <div class="col-lg">
+                     <div class="g-search">
+                        <div class="g-ticon">
+                           <i class="ri-search-line"></i>
+                        </div>
+                        <input type="text" class="textbox" name="query" id="filterServicesInput" placeholder="Procurar serviço" data-search-service="#service-table">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section class="pt-4">
+     {% if user['auth'] %}
+      <div class="container-fluid">
+     {% else %}
+      <div class="container">
+     {% endif %}
+							<div class="nothing-found" style="display: none;">
+							  <div class="gcard-2 gcard-shadow fade-1">
+								<div class="gcard-2-body p-4 p-lg-5 text-center">
+								  <div style="font-size: 64px;">
+									<i class="ri-search-eye-line w-color"></i>
+								  </div>
+								  <h3>Nenhum resultado encontrado!</h3>
+<p>Tente novamente com outra palavra.</p>
+								</div>
+							  </div>
+							</div>
+         
+		{% for category in serviceCategory %}
+		  <div class="g-category" data-category="{{ category.id }}" data-platform="{{ category['category_name']|split(' -')[0]}}" data-filter-table-category-id="{{ category.id }}">
+			 <div class="g-sitemh" data-filter-table-category-id="{{ category.id }}">
+				<h2 class="g-sitemt">
+						{% if category["category_id"] == "57" %}
+							<i class="fas fa-comments"></i>
+						{% elseif category["category_id"] == "52" %}
+						<img class="wpicon" src="images/services/Proxy1.svg" style="
+							width: 38px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">						{% elseif category["category_id"] == "61" %}
+							<i class="fas fa-code" style="
+								padding-right: 10px;
+								font-size: 30px;
+								display: inline-block;
+							"></i>
+						{% elseif category["category_id"] == "59" %}
+						<img class="wpicon" src="images/services/wp.svg" style="
+							width: 38px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+						{% elseif category["category_id"] == "60" %}
+						<img class="wpicon" src="images/services/wp.svg" style="
+							width: 38px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+						{% elseif category["category_id"] == "56" %}
+						<img class="wpicon" src="images/services/perfisZRD.svg" style="
+							width: 50px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+						{% elseif category["category_id"] == "55" %}
+						<img class="wpicon" src="images/services/perfis.svg" style="
+							width: 50px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 0px;
+							display: inline-block;
+						">
+						{% elseif category["category_id"] == "51" %}
+						<img class="wpicon" src="images/services/telegram.svg" style="
+							width: 38px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+						{% elseif category["category_id"] == "50" %}
+						<img class="wpicon" src="images/services/instagram.png" style="
+							width: 38px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+						{% elseif category["category_id"] == "47" %}
+				<img class="wpicon" src="images/services/bmverified.svg" style="
+							width: 60px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+						{% elseif category["category_id"] == "54" %}
+				<img class="wpicon" src="images/services/bmverified.svg" style="
+							width: 60px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+				{% elseif category["category_id"] == "46" %}
+				<img class="wpicon" src="images/services/bmilimitada2.svg" style="
+							width: 60px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+			{% elseif category["category_id"] == "44" %}
+				<img class="wpicon" src="images/services/bmdefault.svg" style="
+							width: 60px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+				{% elseif category["category_id"] == "45" %}
+				<img class="wpicon" src="images/services/bm1300.svg" style="
+							width: 60px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+			{% elseif category["category_id"] == "58" %}
+				<img class="wpicon" src="images/services/fanpage.svg" style="
+							width: 60px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+			{% elseif category["category_id"] == "49" %}
+				<img class="wpicon" src="images/services/promotion.svg" style="
+							width: 40px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+			{% elseif category["category_id"] == "62" %}
+				<img class="wpicon" src="images/services/scripts.svg" style="
+							width: 100px;
+							overflow: visible;
+							line-height: 0;
+							margin-right: 10px;
+							display: inline-block;
+						">
+					{% else %}
+						<i class="fas fa-box"></i>
+					{% endif %}
+					{{ category["category_name"] }}
+				</h2>
+			 </div>
+			
+				<div class="g-sheader" data-filter-table-category-id="{{ category.id }}">
+					 <div class="gnyserArea">
+						<div class="g-sitem mb-2">
+						   <div class="s-row s-title">
+							  <div class="s-col s-col-sm">
+								 {{ lang['services.id'] }}
+							  </div>
+							  <div class="s-col s-title">
+								 {{ lang['services.name'] }}
+							  </div>
+							  <div class="s-col s-col-md">
+								 {{ lang['services.price'] }}
+							  </div>
+							  <div class="s-col s-col-lg">
+								 Min. - Max.
+							  </div>
+							  <div class="s-col s-col-md">
+								 Detalhe do serviço
+							  </div>
+						   </div>
+						</div>
+					 </div>
+				</div>
+				
+				
+				<div class="gnysWrapper">
+				   <div class="gnyserArea">
+					{% for service in category['services'] %}
+					  <div class="g-sitem" data-service-id="{{ service['service_id'] }}" data-platform="{{ category['category_name']|split(' -')[0]}}"  data-filter-table-category-id="{{ category.id }}">
+						 <div class="s-row">
+							<div class="s-col s-col-sm s-col-id">
+							   <span class="sp-serv-sm" data-filter-table-service-id="{{ service['service_id'] }}">{{ service["service_id"] }}</span>
+							</div>
+							
+							{#TROCA POR BLOCO COM IMAGEM #}
+							<div class="s-col s-title">
+   <span class="g-stitle" data-filter-table-service-name="true">
+      {% if service["service_image"] %}
+         <img src="{{ service["service_image"] }}" alt="{{ service["service_name"] }}" class="service-image" style="width:40px; height: 36px; object-fit: cover; margin-right: 10px;">
+      {% endif %}
+      {{ service["service_name"] }}
+      {% if avarageTime %}<div class="align-items-center gap-1 mt-1 avgtime">{{ service["service_speed"] }}</div>{% endif %}
+   </span>
+</div>
+
+							<div class="s-col s-col-md s-col-c" data-title="1K Ücreti">
+							   <span class="sp-serv-sm">
+									{{ service["service_price"] }} {{ site['currency'] }}
+							   </span>
+							</div>
+							<div class="s-col s-col-lg s-col-c" data-title="Min-Maks">
+							   <span class="min">{{ service["service_min"] }}</span> - <span class="max">{{ service["service_max"] }}</span>
+							</div>
+							<div class="s-col s-col-md s-col-btn text-center">
+							   <button class="btn btn-primary btn-rounded btn-sm" onclick="modalOpen(`serviceDetail{{ service['service_id']|escape('html') }}`, {
+                      serviceModalTitle: `{{ service['service_name']|escape('html') }}`,
+                      serviceModalId: '{{ service['service_id']|escape('html') }}',
+                      serviceModalText: `{{service['service_description']|escape('html')}}`,
+                      serviceModalLink: `<a href='{{ site['url'] }}/?select_service_id={{ service['service_id'] }}&category_id={{category['category_id']}}' class='btn btn-primary btn-block'>Comprar</a>`})">Detalhes</button>   
+							</div>
+							<div class="modal-wrapper" id="serviceDetail{{ service['service_id'] }}">
+								<div class="mbo-wrapper">
+									<div class="modal-box">
+										<div class="m-header">
+											  <div class="codewin-head m-close">
+												  <div class="codewin-buttons">
+														<div class="btn-mac mac-full"></div>
+														<div class="btn-mac mac-mini"></div>
+														<div class="btn-mac mac-close"></div>
+												  </div>
+											  </div>
+										</div>
+										<div class="m-body">
+											<div id="serviceModaltext" class="mb-4"> 
+													 <div class="modal-flex">
+														<div class="mf-text">
+														   <div class="d-flex text-center">
+															  <span>{{ service['name'] }}</span>
+														   </div>
+														</div>
+													 </div>
+													 <div class="modal-flex">
+														<div class="mf-title">{{ lang['services.id'] }}</div>
+														<div class="mf-text">
+														   <div class="d-flex">
+															  <span>{{ service['service_id'] }}</span>
+															  <div>
+																<i class="ri-file-copy-line cursor-pointer pl-2" onclick="copyToClipboard('{{ service['service_id'] }}')"></i>
+															  </div>
+														   </div>
+														</div>
+													 </div>
+													 <div class="modal-flex">
+														<div class="mf-title">{{ lang['services.price'] }}</div>
+														<div class="mf-text">
+														   <strong>
+															{{ service["service_price"] }} {{ site['currency'] }}
+														   </strong>
+														</div>
+													 </div>
+													 <div class="modal-flex">
+														 <div class="modal-desc" id="gnySdesc">
+															{{service['service_description']}}
+														 </div>
+													 </div>
+													 <div class="modal-flex">
+														<div class="mf-title">Valor</div>
+														<div class="mf-text">Min. <span class="mf-color">{{ service["service_min"] }}</span> Min. <span class="mf-color">{{ service["service_min"] }}</span></div>
+													 </div>
+
+											</div>
+											{% if user['auth'] %}
+											<span id="serviceModalLink"><a href="{{ site['url'] }}/?select_service_id={{ service['service_id'] }}&category_id={{category['category_id']}}" class="btn btn-primary btn-block">Comprar</a></span>
+											{% endif %}
+										</div>
+									</div>
+								</div>
+							</div>
+						 </div>
+					  </div>	  
+					  {% endfor %}	
+					</div>
+				</div>
+					
+			</div>
+			{% endfor %}
+		</div>
+	</section>
+
+</div>
+
+{% include 'footer.twig' %}

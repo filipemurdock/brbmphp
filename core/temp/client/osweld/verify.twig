@@ -1,0 +1,147 @@
+{% include 'header.twig' %}
+
+    {% if user['auth'] %}
+
+    {% else %}
+    <style>.g-dash-content {padding-top: 125px}</style>
+    {% endif %}
+
+    <div class="g-dash-content">
+       <section class="pt-4">
+         {% if user['auth'] %}
+          <div class="container-fluid">
+         {% else %}
+          <div class="container">
+         {% endif %}
+                <div class="gcard-2 gcard-shadow fade-1 mb-5">
+                  <div class="gcard-body gi-card">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+                        <div class="gcard-icon gi-1">
+                          <i class="ri-file-list-3-line"></i>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <span class="gi-title">{{ lang['verify.title'] }}</span>
+                        <p class="gi-text">Antes de começar a usar o site, você deve verificar sua conta.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="row mb-3">
+						<div class="col-lg-12">
+							<div class="gcard">
+								  <div class="gcard-body">
+                                    
+								  {% if errorText %}
+									<div class="alert alert-dismissible alert-danger">
+									  <button type="button" class="close" data-dismiss="alert">&times;</button>
+									  {{ errorText }}
+									</div>
+								  {% endif %}
+								  {% if successText %}
+									<div class="alert alert-dismissible alert-success">
+									  <button type="button" class="close" data-dismiss="alert">&times;</button>
+									  {{ successText }}
+									</div>
+								  {% endif %}
+
+								{% if verify %}
+									<form method="post" action="/verify/mail">
+
+									  <div class="form-group">
+										<label for="username" class="control-label">{{ lang['verify.email'] }}</label>
+										<input type="text" class="form-control"  placeholder="{{ user['email'] }}" disabled>
+									  </div>
+										{% if settings['recaptcha'] == 2 %}
+									   {% if captcha %}
+										<div class="form-group">
+										  <div class="g-recaptcha" data-sitekey="{{ captchaKey }}"></div>
+										</div>
+										{% endif %}
+									  {% endif %}
+
+										<button type="submit" class="btn btn-primary click">{{ lang['verify.submit'] }}</button>
+										<span class="pull-right pull-right-middle"><a href="#" data-toggle="modal" data-target="#editAccount">{{ lang['verify.edit'] }}</a></span>
+									</form>
+									
+							  <div id="editAccount" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+								  <div class="modal-content">
+									<div class="modal-header">
+									  <button type="button" class="close" data-dismiss="modal">&times;</button>
+									  <h4 class="modal-title">{{ lang['verify.edit.title'] }}</h4>
+									</div>
+									<div class="modal-body">
+									  <form method="post" action="/verify/edit">
+										<div class="form-group">
+										  <label for="username" class="control-label">{{ lang['verify.email'] }}</label>
+										  <input type="text" name="email" class="form-control"  value="{{ user['email'] }}">
+										</div>
+									</div>
+									<div class="modal-footer">
+									  <button type="submit" class="btn btn-primary">{{ lang['verify.edit.submit'] }}</button></form>
+									  <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang['verify.edit.close'] }}</button>
+									</div>
+								  </div>
+								</div>
+							  </div>       
+							{% else %}
+								<form method="post" action="/verify/sms">
+
+								  <div class="form-group">
+									<label for="username" class="control-label">{{ lang['verify.telephone'] }}</label>
+									<input type="text" class="form-control"  placeholder="{{ user['telephone'] }}" disabled>
+								  </div>
+									{% if settings['recaptcha'] == 2 %}
+								   {% if captcha %}
+									<div class="form-group">
+									  <div class="g-recaptcha" data-sitekey="{{ captchaKey }}"></div>
+									</div>
+									{% endif %}
+								  {% endif %}
+
+									<button type="submit" class="btn btn-primary click">{{ lang['verify.submit'] }}</button>
+									<span class="pull-right pull-right-middle"><a href="#" data-toggle="modal" data-target="#editAccount">{{ lang['verify.edit'] }}</a></span>
+								</form>
+
+							  <div id="editAccount" class="modal fade" role="dialog">
+								<div class="modal-dialog">
+								  <div class="modal-content">
+									<div class="modal-header">
+									  <button type="button" class="close" data-dismiss="modal">&times;</button>
+									  <h4 class="modal-title">{{ lang['verify.edit.title'] }}</h4>
+									</div>
+									<div class="modal-body">
+									  <form method="post" action="/verify/edit">
+										<div class="form-group">
+										  <label for="username" class="control-label">{{ lang['verify.telephone'] }}</label>
+										  <input type="text" name="telephone" class="form-control"  value="{{ user['telephone'] }}">
+										</div>
+									</div>
+									<div class="modal-footer">
+									  <button type="submit" class="btn btn-primary">{{ lang['verify.edit.submit'] }}</button></form>
+									  <button type="button" class="btn btn-default" data-dismiss="modal">{{ lang['verify.edit.close'] }}</button>
+									</div>
+								  </div>
+								</div>
+							  </div>     
+							  
+							{% endif %}
+	
+							</div>
+						</div>
+                    </div>
+               </div>
+            </section>
+         </div>
+      </div>
+
+{% for lang in site['languages'] %}
+  {% if lang['active'] %}
+    <script src="https://www.google.com/recaptcha/api.js?hl={{ lang['code'] }}"></script>
+  {% endif %}
+{% endfor %}
+<script src="https://www.google.com/recaptcha/api.js"></script>
+
+{% include 'footer.twig' %}

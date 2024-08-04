@@ -1,0 +1,280 @@
+{% include 'header.twig' %} <style>#bellIcon {
+    pointer-events: none;
+    opacity: 0.5; 
+    cursor: not-allowed; 
+}
+</style>  
+
+
+
+ <div class="page-container">
+    <div class="container">        <div class="row">
+            <span class="page-title"><i class="fi fi-rr-clipboard-list-check"></i> Serviços</span>
+            <div class="col-md-12">
+   
+   
+   
+      <div class="page-search-box service">
+        <div class="serach-box-input">
+          <form>
+        
+        <script>
+    $(document).ready(function () {
+     
+        $('#category-select').select2();
+
+   
+        $('#category-select').on('change', function () {
+   
+            var selectedCategoryId = $(this).val();
+
+     
+            $('.category-box').hide();
+
+           
+            $('.category-box[data-filter-table-category-id="' + selectedCategoryId + '"]').show();
+
+           
+            $('.service-box').hide();
+
+            $('.service-box[data-filter-table-category-id="' + selectedCategoryId + '"]').show();
+        });
+    });
+</script>
+        
+           <select id="category-select" class="form-control">
+    <option value="">Selecione uma categoria</option>
+    {% for category in serviceCategory %}
+        <option value="{{ category['category_id'] }}">{{ category['category_name'] }}</option>
+    {% endfor %}
+</select>
+
+
+            <input class="form-control" name="searchservice" id="search-service" placeholder="Pesquisar serviço...">
+            <button class="search-input-btn"><i class="fi fi-rr-search"></i></button>
+          </form>
+        </div>
+      </div>
+
+
+                <div class="service-list">
+                {% for category in serviceCategory %}
+                    <div class="category-box select-service" data-filter-table-category-id="{{ category["category_id"] }}">
+                        <span>{{ category["category_name"] }}</span>
+                    </div>
+
+                    {% for service in category['services'] %}
+                        <div class="service-box select-service" data-filter-table-category-id="{{ category["category_id"] }}">
+                            <div class="service-box-left">
+                                <div class="service-top">
+                                    <span>{{ service["service_id"] }} - {{ service["service_name"] }}</span>
+                                </div>
+                                <div class="service-bottom">
+                                    <span>Min : <b>{{ service["service_min"] }}</b></span>
+                                    <span>Max : <b>{{ service["service_max"] }}</b></span>
+                                </div>
+                            </div>
+                            <div class="service-box-right">
+                                <a class="btn btn-border">{{ currency['symbol'] }}{{ (service["service_price"]*currency["value"]) }}</a>
+                                <a href="{{ site['url'] }}/?select_service_id={{ service['service_id'] }}&category_id={{category['category_id']}}" class="btn btn-blue">Comprar</a>
+                                
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if user['auth'] == 1 %}
+    <div class="bottom-navigaiton">
+        <a class="bottom-item " href="/">
+            <i class="fi fi-rr-shopping-cart"></i>
+        </a>
+        <a class="bottom-item active " href="/services">
+            <i class="fi fi-rr-clipboard-list-check"></i>
+        </a>
+        <a class="bottom-item " href="/orders">
+            <i class="fi fi-rr-bags-shopping"></i>
+        </a>
+        <a class="bottom-item " href="/addfunds">
+            <i class="fi fi-rr-money-check"></i>
+        </a>
+        <a class="bottom-item " href="/api">
+            <i class="fi fi-rr-display-code"></i>
+        </a>
+    </div>
+{% endif %}
+
+<div id="lnc"></div>
+<div id="voiceerror" class="notification"><i class="fa fa-times"></i>The browser does not support</div>
+<div id="voiceclose">
+    <lottie-player src="https://cdn.fsksoft.com/voice.json" background="transparent" speed="1" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+    <lottie-player src="https://cdn.fsksoft.com/voicebar.json" class="voice-bar" background="transparent" speed="1" style="width: 250px;" loop autoplay></lottie-player>
+    I listen to you, tell me your platform name or request
+</div>
+</div>
+</div>
+
+<div class="notify-box">
+    <div class="notify-top">
+        <span>Duyurular</span>
+        <i class="fa fa-times" onclick="notifyClose()"></i>
+    </div>
+    <div class="notify-list" id="notify-list">
+    </div>
+</div>
+
+<div class="modal_container" id="modal-container99999999">
+    <div class="modal_content">
+        <div class="modal_close close-modal99999999" title="Close">
+            <span>Voice Search</span>
+            <i class="fa fa-times"></i>
+        </div>
+        <div class="modal-content">
+            <div id="search-value"></div>
+        </div>
+        <div class="modal-bottom-btn">
+            <button class="btn btn-border close-modal99999999">Close</button>
+            <button class="btn btn-blue search-modal-btn">Search</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal_container" id="modal-container02">
+    <div class="modal_content">
+        <div class="modal_close close-modal02" title="Close">
+            <span>Loading..</span>
+            <i class="fa fa-times"></i>
+        </div>
+        <div class="modal-content">
+            <div class="progress">
+                <div class="progress-value" id="uploadProgress"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal_container" id="modal-containerPopup">
+    <div class="modal_content">
+        <div class="modal_close">
+            <span id="popupbaslik"></span>
+            <i class="fa fa-times" onclick="closePopup()"></i>
+        </div>
+        <div class="modal-content">
+            <div id="popupsistemi">
+            </div>
+        </div>
+        <div class="progress-bar-modal">
+            <span class="bar-modal">
+                <span class="progress-modal"></span>
+            </span>
+        </div>
+        <div id="popupbutton">
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'footer.twig' %}
+
+    <script src="../assets/css/smm/jquery.js"></script>
+<script src="../assets/css/smm/gtrans.js"></script>
+  
+    <script src="../assets/css/smm/trans.js"></script>
+     
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.full.min.js"></script>
+   <script type="text/javascript" src="https://cdn.fsksoft.com/lottie-player.js"></script>
+                     <script type="text/javascript" src="https://cdn.mypanel.link/global/y36ux7zr5qki5pqw.js"></script>
+                     <script type="text/javascript" src="https://cdn.mypanel.link/global/sa2eqd3a988sw7ft.js"></script>
+                     <script type="text/javascript" src="https://cdn.mypanel.link/global/nxhbpu9ke4jtyxwl.js"></script>
+                     
+                    <!-- <script type="text/javascript" src="https://cdn.mypanel.link/global/tq6tyf6s2kgijr9z.js"></script> -->
+                     
+                     
+                     <script type="text/javascript" src="https://cdn.mypanel.link/gnbaxm/lq0moskwr9jlpfo7.js"></script>
+                     <script type="text/javascript" src="https://cdn.mypanel.link/global/0w2hljawkmhq5aq0.js"></script>
+                     <script type="text/javascript">
+      window.modules.layouts = {"theme_id":2,"auth":1,"live":true,"csrftoken":"NAbxi-GIgkU7tFTkyq86m_e_9o5ew37IOphp0Xv9kJpWZ4nCoO67N3fjZJL5-Q3rpsvGwhyrMpJT_CWyMoTCrw=="};
+   </script>
+   
+   
+     <script type="text/javascript">
+      window.modules.select = [];
+   </script>
+                        <script>
+         $(document).ready(function () {
+            const e = new URLSearchParams(window.location.search);
+            if (null !== e.get("searchservice")) {
+               const t = e.get("searchservice");
+               document.getElementById("search-service"), $(".select-service").filter(function () {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(t.toLowerCase()) > -1)
+               })
+            }
+         });
+         var api = "sa"
+    
+         }), $(document).ready(function () {
+            $.ajax({
+               type: "POST",
+               url: "?",
+               dataType: "json",
+               data: {
+                  apikey: +api
+               },
+               success: function (e) {
+                  for (var t in e) {
+                     var o = e[t],
+                        a = o.popup_durum,
+                        p = o.popup_baslik,
+                        i = o.popup_aciklama,
+                        s = o.popup_view,
+                        u = o.popup_resim,
+                        r = o.button_durum,
+                        n = o.button_yazi,
+                        l = o.button_link,
+                        z = o.site_error;
+                     viewtime = Number(+s), popupview = !1;
+                     var c = o.popup_closetime;
+                     if (c /= 1e3, c += 2.3, popupctime = o.popup_closetime, "aktif" == a && (localStorage.getItem("popupacilis") ? Number(localStorage.getItem("popupacilis")) + viewtime < Math.floor(Date.now() / 1e3) && (popupview = !0, localStorage.setItem("popupacilis", Math.floor(Date.now() / 1e3))) : (localStorage.setItem("popupacilis", Math.floor(Date.now() / 1e3)), popupview = !0), popupview && setTimeout(function () {
+                           document.getElementById("modal-containerPopup").classList.add("show-modal"), setTimeout(function () {
+                              document.getElementById("modal-containerPopup").classList.remove("show-modal")
+                           }, popupctime)
+                        }, 2e3)), setTimeout(() => {
+                           document.querySelector(".progress-modal").style.animation = "loader " + c + "s 2"
+                        }, 500), "aktif" == r) var d = `<div class="modal-bottom-btn" id="popupbutton"><a href="${l}" class="btn btn-blue">${n}</a></div>`;
+                     else d = "";
+                     
+                     if (u.length == 0) {
+                        var pimage = ''
+                     } else {
+                        var pimage = `<img class="popupimg" src="${u}">`
+                     }
+                     document.head.appendChild(document.createElement("style")).innerHTML = ".loader_element:before {animation: getWidth " + c + "s ease-in;}", popupbaslik, $("#popupbaslik").html(p), $("#popupbutton").html(d), $("#popupsistemi").append(`<div class='popupaciklama'>${i}</div>${pimage}`);$("body").append(z);
+                  }
+               }
+            })
+         });
+         function closePopup(){
+            var closepopup = document.getElementById('modal-containerPopup');
+            closepopup.classList.remove("show-modal");
+         }
+   </script>
+   
+   
+   
+   
+   
+
+</script><script type="text/javascript" src="{{ site["url"] }}/public/modern/js/ajax.js">
+
+
+
+
+
+ 
+   
+
+   

@@ -1,0 +1,237 @@
+{% include 'header.twig' %}
+
+<style>#bellIcon {
+    pointer-events: none;
+    opacity: 0.5; 
+    cursor: not-allowed; 
+}
+</style>
+
+  <!-- Main variables *content* -->
+            <div class="page-container">
+    <div class="addfunds-page">
+        <span class="page-title">M茅todos de Pagamento</span>
+        <div class="payment-list" id="method-drop"></div>
+        <div class="payment-page-bottom">
+                 
+                 
+                 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+<!-- Seu script JavaScript -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var methodSelect = document.getElementById('payment_method');
+        var samDiv = document.getElementById('sam');
+        var cpfInput = document.getElementById('cpf');
+        var cpfErrorMessage = document.getElementById('cpf-error-message');
+        var form = document.getElementById('seu-form-id'); // Substitua 'seu-form-id' pelo ID do seu formulário
+
+        function toggleSamVisibility() {
+            samDiv.style.display = (methodSelect.value === '52') ? 'block' : 'none';
+            cpfInput.required = (methodSelect.value === '52');
+        }
+
+        function validateCpfInput() {
+            cpfInput.value = cpfInput.value.replace(/\D/g, '');
+
+            if (cpfInput.value.length !== 11) {
+                cpfErrorMessage.textContent = 'CPF Deve Ser Valido!';
+            } else {
+                cpfErrorMessage.textContent = '';
+            }
+        }
+
+        function handleSubmit(event) {
+            if (methodSelect.value === '52') {
+                validateCpfInput();
+
+                if (cpfErrorMessage.textContent !== '') {
+                    event.preventDefault();
+                }
+            }
+        }
+
+        methodSelect.addEventListener('change', toggleSamVisibility);
+        cpfInput.addEventListener('input', validateCpfInput);
+        form.addEventListener('submit', handleSubmit);
+
+        toggleSamVisibility();
+    });
+</script>
+
+<style>
+    #sam {
+        display: none; /* Oculta por padrão */
+    }
+
+    .error-message {
+        color: red;
+        font-size: 12px;
+    }
+</style>
+
+                    <form method="post" action="addfunds">
+
+
+  {% if error %}
+          <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ errorText }}
+          </div>
+        {% endif %}
+        {% if success %}
+          <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ successText }}
+          </div>
+		  
+{#<meta http-equiv="refresh" content="0; URL=/" />#}
+        {% endif %}
+
+               <div class="payment-page-left">
+                   <span class="payment-title"><i class="fi fi-rr-money-check"></i> Recarregar</span>
+                                                      
+                                                      
+                   <label for="amount" class="control-label"><span id="amount_label">Forma de pagamento</span></label>
+                   <select class="form-control" id="payment_method" name="payment_type">
+                 {% for payment in paymentsList %}
+    <option value="{{ payment['id'] }}" data-id="{{ payment['method_get'] }}"data-inst="{{ payment['inst']|escape }}" {% if data['payment_type'] == payment['id'] %} selected {% endif %}>{{ payment['method_name'] }}</option>
+{% endfor %}
+
+                  </select>
+              
+				
+<div id="addfund_fields">
+                   
+                       <div id="sam">
+        <div class="form-group">
+            <label class="fla" for="cpf">CPF </label>
+            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite Seu CPF">
+            <span class="error-message" id="cpf-error-message"></span>
+        </div>
+    </div>
+                 
+                   <label for="amount" class="control-label"><span id="amount_label">Valor</span></label>
+                  <input class="form-control" name="payment_amount" value="{{ data['payment_amount'] }}">
+                  
+                 <br>
+                   <button type="submit" class="btn btn-blue">GERAR QR-CODE</button>
+               </div>  </div>
+           </form>
+                                  <div class="payment-page-right">
+                <span class="payment-title">Hist贸rico</span>
+                <div class="payment-history">
+                    
+                   {% for payment in lastPaymentsList %}
+                                      <div class="history-box">
+                        <div class="history-left">
+                            <div class="history-top">
+                                <span>{{payment['payment_method']}}</span>
+                            </div>
+                            <div class="history-bottom">
+                                <span>ID : {{payment['id']}} - </span>
+                                <span>{{payment['created_at']}}</span>
+                            </div>
+                        </div>
+                        <div class="history-right">
+                            <span class="history-amount  color-green ">
+                                                  {{ payment['amount']|number_format(2) }} 
+                                                    </span>
+                        </div>
+                    </div>{% endfor %}
+                                    </div>
+            </div>
+                    </div>
+    </div>
+</div>
+                        <div class="bottom-navigaiton">
+                                 <a class="bottom-item " href="/">
+                                    <i class="fi fi-rr-shopping-cart"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/services">
+                                    <i class="fi fi-rr-clipboard-list-check"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/orders">
+                                    <i class="fi fi-rr-bags-shopping"></i>
+                                    </a>
+                                 <a class="bottom-item active" href="/addfunds">
+                                    <i class="fi fi-rr-money-check"></i>
+                                    </a>
+                                 <a class="bottom-item " href="/api">
+                                    <i class="fi fi-rr-display-code"></i>
+                                    </a>
+                           </div>
+                        
+
+
+            <div id="lnc"></div>
+                        <div id="voiceerror" class="notification"><i class="fa fa-times"></i>The browser does not support</div>
+            <div id="voiceclose">
+               <lottie-player src="https://cdn.fsksoft.com/voice.json"  background="transparent"  speed="1"  style="width: 50px; height: 50px;"  loop  autoplay></lottie-player>
+               <lottie-player src="https://cdn.fsksoft.com/voicebar.json" class="voice-bar" background="transparent"  speed="1"  style="width: 250px;"  loop  autoplay></lottie-player>
+               I listen to you, tell me your platform name or request
+            </div>
+         </div>
+      </div>
+      <div class="notify-box">
+         <div class="notify-top">
+            <span>Duyurular</span>
+            <i class="fa fa-times" onclick="notifyClose()"></i>
+         </div>
+         <div class="notify-list" id="notify-list">
+         </div>
+      </div>
+      <div class="modal_container" id="modal-container99999999">
+         <div class="modal_content">
+            <div class="modal_close close-modal99999999" title="Close">
+               <span>Voice Search</span>
+               <i class="fa fa-times"></i>
+            </div>
+            <div class="modal-content">
+               <div id="search-value"></div>
+            </div>
+            <div class="modal-bottom-btn">
+               <button class="btn btn-border close-modal99999999">Close</button>
+               <button class="btn btn-blue search-modal-btn">Search</button>
+            </div>
+         </div>
+      </div>
+      <div class="modal_container" id="modal-container02">
+         <div class="modal_content">
+            <div class="modal_close close-modal02" title="Close">
+               <span>Loading..</span>
+               <i class="fa fa-times"></i>
+            </div>
+            <div class="modal-content">
+               <div class="progress">
+                  <div class="progress-value" id="uploadProgress"></div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="modal_container" id="modal-containerPopup">
+         <div class="modal_content">
+            <div class="modal_close">
+               <span id="popupbaslik"></span>
+               <i class="fa fa-times" onclick="closePopup()"></i>
+            </div>
+            <div class="modal-content">
+               <div id="popupsistemi">
+               </div>
+            </div>
+            <div class="progress-bar-modal">
+               <span class="bar-modal">
+               <span class="progress-modal"></span>
+               </span>
+            </div>
+            <div id="popupbutton">
+            </div>
+         </div>
+      </div>
+      <input type="hidden" value="0.8448" id="guncelbakiye">
+
+ 
+ 
+ 
+{% include 'footer.twig' %}

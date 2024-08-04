@@ -1,0 +1,112 @@
+{% include 'header.twig' %}
+
+
+  <!-- Main variables *content* -->
+  
+  
+  
+  
+  
+  
+            <div class="page-container">
+   <!-- <div class="ticket-page">
+        <div class="ticket-list">
+            <span class="page-title"><i class="fi fi-rr-headphones"></i> Your support requests</span>
+            
+                    </div> -->
+                    
+                     <div class="page-container">
+    <div class="ticket-page">
+        <div class="ticket-list">
+            <span class="page-title"><i class="fi fi-rr-headphones"></i> Your support requests</span>
+                                                <div class="ticket-box">
+                                                    {% for ticket in ticketList %}
+                        <div class="ticket-top">
+                            <span class="ticket-id">ID : {{ ticket['ticket_id'] }}</span>
+                            <span class="ticket-subject">{{ ticket['subject'] }}</span>
+                            <span class="ticket-date">{{ ticket['lastupdate_time'] }}</span>
+                        </div>
+                        <div class="ticket-bottom">
+                            <div class="btn btn-border ticket-status">{{ ticket['status'] }}</div>
+                            <a class="btn btn-blue" href="tickets/{{ ticket['ticket_id'] }}">Go<i class="fas fa-arrow-right"></i></a>
+                        </div>{% endfor %}
+                    </div>
+                            
+                    </div>
+                    
+                    
+        <div class="ticket-content">
+            <div class="ticket-create">
+                <lottie-player src="https://cdn.fsksoft.com/ticket.json" class="ticket-img" background="transparent"  speed="1"  style="width: 400px;"  loop  autoplay></lottie-player>
+                <span>Welcome &nbsp;{{ user["username"]  }}</span>
+                <button type="button" class="btn btn-blue" onclick="openModalID('01')">Create support request</button>
+            </div>
+        
+        <div class="modal_container ticket" id="modal-container01">
+            <div class="modal_content">
+                <div class="modal_close close-modal01" title="Close">
+                    <span>Support request</span>
+                    <i class="fa fa-times"></i>
+                </div>
+                <div class="modal-content">
+
+      {% if error %}
+        <div class="alert alert-dismissible alert-danger {% if site['rtl'] %} rtl-alert {% endif %}">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ errorText }}
+        </div>
+      {% elseif success %}
+        <div class="alert alert-dismissible alert-success {% if site['rtl'] %} rtl-alert {% endif %}">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ successText }}
+        </div>
+      {% endif %}
+
+
+        
+          <form method="post" action="tickets">
+              <div class="alert alert-dismissible alert-danger ticket-danger " style="display: none">
+                            <button type="button" class="close">&times;</button>
+                            <div></div>
+                        </div>
+                        <div class="ticket-modal-subject">
+                            <label for="subject" class="control-label">Subject</label>
+              
+<select  type="text" class="form-control" id="subject" name="subject">
+                                  <option  value="Order">Order</option>
+                                  <option  value="Service">Service</option>
+                                  <option  value="Child Panel">Child Panel</option>
+                                  <option  value="API">API</option>
+                                  <option  value="Bug Report">Bug Report</option>
+                                  <option  value="-Request">Request</option>
+                                  <option  value="Other">Other</option>
+                              </select>
+           </div>
+            <div class="ticket-message" id="">
+                            <label for="message" class="control-label">Your Message</label>
+              <textarea class="form-control" rows="7" id="message" name="message">{{ data['message'] }}</textarea>
+              
+              
+              
+            <!--  <div class="modal-bottom-btn">
+                    <button class="btn btn-border close-modal01">Close</button>
+                    <button type="submit" class="btn btn-blue search-modal-btn" onclick="ticketForm()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+              
+              
+              
+            </div>
+            
+            
+            <button type="submit" class="btn btn-blue search-modal-btn">{{ lang['tickets.button'] }}</button>
+          </form>
+        </div></div></div></div></div>
+        
+        
+        
+
+{% include 'footer.twig' %}

@@ -1,0 +1,5 @@
+  <?php
+
+$title .= "FAQ | BMIlimitada";
+
+?>

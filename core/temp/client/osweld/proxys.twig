@@ -1,0 +1,437 @@
+{% include 'header.twig' %} 
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.5/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../css/panel/osweld/style.css">
+	    <script src="/proxys2.js"></script>
+		    <script src="/js/panel/osweld/script.js"></script>
+
+	<script src="/proxys.jss"></script>
+	
+<title> "Meus Proxys | BMIlimitada" </title>
+
+<style>
+
+.g-dash2{
+padding-top: 90px !Important;
+}
+
+
+	
+.header-btn{
+display: none;
+}
+.btn-info {
+  color: #fff;
+  background-color: #58b8171f !important;
+  border-color: #58b817 !important;
+  }
+  
+  .btn-info:hover {
+  color: #fff;
+  background-color: #3b7b10  !important;
+  border-color: #58b817 !important;
+}
+  
+	
+.btn-blue {
+padding-right: 30px !important;
+color: #a4a4a4 !important;
+padding-left: 10px !important;
+margin-right: -10px !important;
+}
+
+.btn{
+padding: 5px 10px;
+
+}
+
+#footer.footer-bg{
+	background: linear-gradient(to left, #121314, #212121) !important;
+	margin-bottom : 0px !important;
+	margin-top: 20px !important;
+
+}
+
+.footer-alt-bg {
+	background: linear-gradient(to left, #121314, #212121)  !important;
+	padding-top: 10px !important;
+}
+
+
+#footer.footer-bg p {
+	color: #fff
+}
+
+#footer .ficons {
+	margin: 0;
+	padding: 0;
+	width: auto
+}
+
+#footer .ficons li {
+	display: inline-block;
+	margin: side-values(-1px 1px 0 0);
+	padding: 0;
+	border-radius: 100%;
+	overflow: visible
+}
+
+#footer .ficons li a {
+	transition: all .2s ease;
+	border-radius: 100%;
+	display: block;
+	height: 28px;
+	line-height: 28px;
+	width: 28px;
+	text-align: center;
+	color: #333 !important;
+	text-decoration: none;
+	font-size: 12.8px;
+	font-size: .8rem
+}
+
+#footer .ficons.ficons-dark-2 li a {
+background: none !important;
+
+}
+
+.footer-alt-bg{
+{# display: none !important; #}
+}
+
+
+
+.table {
+    color: #b1b1b1;
+}
+
+#footer ~ *  .g-dash {
+    display: none;
+}
+
+.b-menu-wrapper{
+} 
+
+.btn-show-proxies {
+
+margin-top: 10px !important;
+}
+
+
+.g-dash {
+	padding-left: 320px;
+	padding-right: 50px;
+	/* margin-top: 50px !important; */
+	transition: 250ms all;
+	min-height: 70px !important;
+	padding-bottom: 20px !important;
+	padding-top: 0px !important;
+}
+
+.g-dash .container {
+	max-width: 1400px;
+}
+
+.g-dash .g-dash-btn {
+	position: fixed;
+	top: 14px;
+	left: 14px;
+}
+
+.g-dash .g-dash-btn:focus {
+	border: none;
+	outline: 0;
+}
+
+.g-dash .g-dash-btn .ri-close-line,
+.g-dash .g-dash-btn .ri-menu-line {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+}
+
+.g-dash .g-dash-btn .ri-close-line {
+	transform: scale(0) translate(-50%, -50%);
+	transition: .2s ease;
+}
+
+.g-dash .g-dash-btn .ri-menu-line {
+	transition: .2s ease;
+	transform: translate(-50%, -50%);
+}
+
+@media (max-width: 992px) {
+	.g-dash {
+		padding-left: 50px;
+	}
+	
+	@media (max-width: 600px) {
+    .g-dash {
+        padding-left: 10px;
+		padding-right: 10px;
+    }
+}
+
+	.g-dash.g-bar .g-sidebar {
+		transform: translateX(0);
+	}
+
+	.g-dash.g-bar .g-dash-btn {
+		left: 300px;
+	}
+
+	.g-dash.g-bar .g-dash-btn .ri-close-line {
+		transform: scale(1) translate(-50%, -50%);
+	}
+
+	.g-dash.g-bar .g-dash-btn .ri-menu-line {
+		transform: scale(0) translate(-50%, -50%);
+	}
+
+	.g-dash .g-sidebar {
+		transform: translateX(-110%);
+		transition: .24s ease;
+		box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3);
+	}
+
+	.g-dash .g-sidebar .g-logo .gnyLm {
+		
+	}
+
+	.g-dash.g-bar .g-dash-header {
+		left: -200px;
+	}
+
+	.g-dash.g-bar .g-sidebar {
+		width: 80px;
+		transition: 250ms all;
+	}
+
+	.g-dash.g-bar .g-menu-list .g-menu-link .g-menu-text {
+		display: none !important;
+	}
+
+	.g-dash.g-bar .g-menu-list {
+		padding: 0 10px;
+	}
+
+	.g-dash.g-bar .g-userarea .gnyUside {
+		display: none;
+	}
+
+	.g-dash.g-bar .g-userbox {
+		padding: 10px;
+	}
+
+	.g-dash.g-bar .g-user-arrow {
+		display: none;
+	}
+
+	.g-dash.g-bar .g-dash-content {
+		margin-left: -200px;
+		transition: 250ms all;
+	}
+
+	.g-dash.g-bar .g-dash-btn {
+		left: 300px;
+	}
+
+	.g-dash.g-bar .g-sidebar .g-logo .gnyMl {
+		display: none;
+	}
+
+	.g-dash.g-bar .g-sidebar .g-logo .gnyLm {
+		width: 60px;
+		padding: 20px 0;
+		display: block;
+		transition: 250ms all;
+	}
+}
+
+.sm-header{
+display: none !important;
+
+}
+
+/* Regras quando .g-bar está presente */
+
+        .g-dash.g-bar #orders-container,
+		.g-dash.g-bar h2
+										  {
+            margin-left: -200px; /* Estilo aplicado quando a classe g-bar está presente */
+            transition: margin-left 250ms; /* Transição suave */
+        }
+
+
+
+/* Estilo padrão para orders-container e h2 sem .g-bar */
+        #orders-container,
+		h2 {
+            margin-left: 0; /* Estilo padrão */
+            transition: margin-left 250ms; /* Transição suave */
+        }
+		
+		/* Estilo específico para telas menores que 992px */
+@media (max-width: 992px) {
+    .g-dash.g-bar #orders-container,
+	.g-dash.g-bar h2	{
+        margin-left: 45px; /* Estilo aplicado para telas menores que 992px */
+    }
+}
+
+@media (max-width: 600px) {
+    .g-dash.g-bar #orders-container, 
+	.g-dash.g-bar h2 {
+        margin-left: 65px;
+    }
+}
+
+
+.row-btn{
+display: none;
+
+}
+
+.h2title{
+background-color: #00000024;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 13px;
+    border-bottom: solid 3px #69b92d;
+	color: #a6a6a6;
+}
+
+
+</style>
+
+</head>
+<body id="appDashboard">
+    <div class="g-dash" style="
+    padding-top: 90px !important;
+">
+		        <h2 class="h2title">Meus Proxies</h2>
+        <div id="orders-container">
+            {% for order in orders %}
+                <div class="gcard mb-3">
+                   <div class="card-header">
+
+    <strong class="service-name">{{ order.service_name }}</strong>
+</div>
+                    <div class="card-body">
+                        <p><strong>Ordem ID:</strong> {{ order.order_id }}</p>
+                        <p><strong>Status do Pedido:</strong> 
+    <span class="g-status {{ order.order_status|replace({' ': ''}) }}">
+        {{ order.order_status|replace({
+            'inprogress': 'Em Progresso', 
+            'pending': 'Pendente', 
+            'partial': 'Parcial', 
+            'canceled': 'Cancelado', 
+            'processing': 'Processando', 
+            'completed': 'Concluído'
+        }) }}
+    </span>
+</p>
+                        <p>Elegível para Troca: 
+                            {% if order.eligible_for_refill == "1" %}
+                                1 Troca </br>
+                            {% elseif order.eligible_for_refill == "2" %}
+                                2 Trocas  </br>
+                            {% else %}
+                                Não  </br>
+                            {% endif %}
+
+                        <button class="btn btn-info btn-show-proxies" data-toggle="collapse" data-target="#order-{{ order.order_id }}-proxies">Show Proxies</button>
+                        <div id="order-{{ order.order_id }}-proxies" class="collapse mt-3">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Proxy URL</th>
+                                        <th>Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% set proxies = order.order_url|split('\n') %}
+                                    {% set proxy_count = proxies|length %}
+                                    {% set quantity = order.order_quantity %}
+                                    {% for proxy in proxies %}
+                                        <tr>
+                                            <td>{{ proxy }}</td>
+                                            <td>
+ <button class="btn btn-blue btn-copy ri-file-copy-line me-2 btn-md mr-1" data-proxy="{{ proxy }}" onclick="copyToClipboard('')">
+                     <i class="ri-file-copy-line me-2"></i>
+                    <span></span> 
+ </button>
+
+ 
+{% if order.order_status == 'completed' or order.order_status == 'concluido' %}
+    {% if order.eligible_for_refill == 1 or order.eligible_for_refill == 2 %}
+        <button class="btn btn-warning btn-replace refillOrder" data-proxy="{{ proxy }}" data-order-id="{{ order.order_id }}" data-service-id="{{ order.service_id }}">
+            <i class="ri-restart-line me-2"></i>
+            <span></span>
+        </button>
+    {% endif %}
+{% endif %}                          
+</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <p>Nenhum pedido encontrado.</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+<script>
+function authMenuToggle() {
+            var menuElements = document.getElementsByClassName('g-dash');
+            if (menuElements.length > 0) { // Verifica se existem elementos com essa classe
+                for (var i = 0; i < menuElements.length; i++) {
+                    menuElements[i].classList.toggle('active');
+                }
+            } else {
+                console.error('Elements with class "menu" not found.');
+            }
+        }
+		
+		</script>
+
+
+		<script>
+ function rightMenuToggle() {
+   $('.app-rightbar').toggleClass('active')
+     }
+
+</script>
+
+   
+   <script>
+   function authMenuToggle() {
+            var menuElements = document.getElementsByClassName('g-dash');
+            if (menuElements.length > 0) { // Verifica se existem elementos com essa classe
+                for (var i = 0; i < menuElements.length; i++) {
+                    menuElements[i].classList.toggle('g-bar');
+                }
+            } else {
+                console.error('Elements with class "menu" not found.');
+            }
+        }
+		
+   
+    </script>
+</html>
+
+
+
+{% include 'footer.twig' %}

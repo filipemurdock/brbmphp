@@ -1,0 +1,21 @@
+[10-Oct-2023 09:20:21 America/Sao_Paulo] PHP Notice:  Undefined index: live_access_token in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 44
+[10-Oct-2023 09:20:22 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 09:20:33 America/Sao_Paulo] PHP Notice:  Undefined index: live_access_token in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 44
+[10-Oct-2023 09:20:33 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 09:30:17 America/Sao_Paulo] PHP Notice:  Undefined index: live_access_token in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 44
+[10-Oct-2023 09:30:17 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 09:30:21 America/Sao_Paulo] PHP Notice:  Undefined index: live_access_token in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 44
+[10-Oct-2023 09:30:22 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 09:43:48 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 09:43:49 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 10:37:52 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 10:37:53 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 10:37:54 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 10:38:05 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 10:39:06 America/Sao_Paulo] PHP Notice:  Undefined index: external_reference in /home2/apklabnl/appsam.site/lib/pay/mercadopago/notificacao.php on line 52
+[10-Oct-2023 13:47:42 UTC] PHP Notice:  Undefined variable: user in /home2/apklabnl/appsam.site/lib/pay/mercadopago/index.php on line 18
+[10-Oct-2023 13:47:42 UTC] PHP Notice:  Trying to access array offset on value of type null in /home2/apklabnl/appsam.site/lib/pay/mercadopago/index.php on line 18
+[10-Oct-2023 14:10:36 UTC] PHP Notice:  Undefined variable: user in /home2/apklabnl/appsam.site/lib/pay/mercadopago/index.php on line 18
+[10-Oct-2023 14:10:36 UTC] PHP Notice:  Trying to access array offset on value of type null in /home2/apklabnl/appsam.site/lib/pay/mercadopago/index.php on line 18
+[24-Nov-2023 19:49:17 UTC] PHP Notice:  Undefined variable: user in /home/apklabn1/indexsam.shop/lib/pay/mercadopago/index.php on line 18
+[24-Nov-2023 19:49:17 UTC] PHP Notice:  Trying to access array offset on value of type null in /home/apklabn1/indexsam.shop/lib/pay/mercadopago/index.php on line 18

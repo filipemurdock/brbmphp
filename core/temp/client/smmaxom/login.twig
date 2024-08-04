@@ -1,0 +1,353 @@
+{% include 'header.twig' %}
+
+    <!-- Main variables *content* -->
+            <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="home-section">
+          <div class="col-md-12">
+            <div class="home-section-box">
+              <div class="home-section-top">
+                <div class="home-badge">{{ site["site_name"]  }}</div>
+                <span>Painel SMM TOP 1 do Mundo!</span>
+                <h1>Impulsione e promova a sua rede social com o <b></b> {{ site["site_name"]  }}</h1>
+              </div>
+              <div class="home-section-cener">
+                <span>Serviços SMM mais baratos e de alta qualidade!</span>
+              </div>
+              <div class="home-section-bottom">
+                <a class="btn btn-border" href="/services">Lista de preços</a>
+                <a class="btn btn-blue" href="/signup">inscreva-se</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+          
+              </div>
+    </div>
+  </div>
+  <div class="home-section-banner"></div>
+  <div class="login-section">
+    <div class="login-section-bg"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="login-box ">
+            <form method="post" action="/">
+                
+                {% if errorText %}
+        <div class="alert alert-dismissible alert-danger">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ errorText }}
+        </div>
+      {% endif %}
+      {% if successText %}
+        <div class="alert alert-dismissible alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          {{ successText }}
+        </div>
+      {% endif %}
+                
+              <div class="login-box-item">
+                <input type="text" class="login-label" id="username" name="username" value="" placeholder=" {{ lang["signin.username"] }}">
+              </div>
+              <div class="login-box-item">
+                <input type="password" class="login-label" id="password" name="password" value="" placeholder="Password"><a href="/resetpassword">Esqueci Minha Senha</a></span>
+              </div>
+                            <div class="login-box-item checkbox-hidden">
+                <input type="checkbox"  name="LoginForm[remember]" value="1" id="remember">
+                <label class="login-remember-box" for="remember">
+                  <i class="fa fa-bookmark"></i>
+                </label>
+               
+                <button type="submit" class="btn btn-blue login-btn"> {{ lang["signin.title"] }}</button>
+                
+                    {% if google == 2 %}
+    <a href="/google" class="btn btn-blue"><i class="fab fa-google"></i>&nbsp;Google Login</a>
+{% endif %}
+              </div>
+              
+             
+              
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="social-slider">
+    <div class="social-item"><span>Instagram</span><i class="fab fa-instagram"></i><i class="fab fa-instagram absolute-icon"></i></div>
+    <div class="social-item"><span>TikTok</span><i class="fab fa-tiktok"></i><i class="fab fa-tiktok absolute-icon"></i></div>
+    <div class="social-item"><span>Instagram</span><i class="fab fa-instagram"></i><i class="fab fa-instagram absolute-icon"></i></div>
+    <div class="social-item"><span>Dailymotion</span><i class="fab fa-dailymotion"></i><i class="fab fa-dailymotion absolute-icon"></i></div>
+    <div class="social-item"><span>Tumblr</span><i class="fab fa-tumblr"></i><i class="fab fa-tumblr absolute-icon"></i></div>
+    <div class="social-item"><span>Reddit</span><i class="fab fa-reddit"></i><i class="fab fa-reddit absolute-icon"></i></div>
+    <div class="social-item"><span>Dailymotion</span><i class="fab fa-dailymotion"></i><i class="fab fa-dailymotion absolute-icon"></i></div>
+    <div class="social-item"><span>Pinterest</span><i class="fab fa-pinterest"></i><i class="fab fa-pinterest absolute-icon"></i></div>
+    <div class="social-item"><span>Spotify</span><i class="fab fa-spotify"></i><i class="fab fa-spotify absolute-icon"></i></div>
+    <div class="social-item"><span>Instagram</span><i class="fab fa-instagram"></i><i class="fab fa-instagram absolute-icon"></i></div>
+    <div class="social-item"><span>Twitter</span><i class="fab fa-twitter"></i><i class="fab fa-twitter absolute-icon"></i></div>
+    <div class="social-item"><span>Telegram</span><i class="fab fa-telegram"></i><i class="fab fa-telegram absolute-icon"></i></div>
+    <div class="social-item"><span>Tumblr</span><i class="fab fa-tumblr"></i><i class="fab fa-tumblr absolute-icon"></i></div>
+    <div class="social-item"><span>Vimeo</span><i class="fab fa-vimeo-v"></i><i class="fab fa-vimeo-v absolute-icon"></i></div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <span class="user-home-title">O Que o Painel <b>{{ site["site_name"]  }} tem oferecer ?</b></span>
+        <div class="feature-list">
+          <div class="feature-box">
+         <span>Ampla gama de serviços</span>
+             <small>Estamos ao seu dispor com o atendimento em no nosso painel.</small>
+            <svg enable-background="new 0 0 884.15 393.74" version="1.1" viewBox="0 0 884.15 393.74" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+              <path d="m784.13 392.63h-684.12c-13.85 0-25.08-11.23-25.08-25.08v-100.75c0-13.85 11.23-25.08 25.08-25.08h684.12c13.85 0 25.08 11.23 25.08 25.08v100.75c0 13.85-11.23 25.08-25.08 25.08z" fill="var(--tp-300)" stroke="var(--tp-400)" stroke-miterlimit="10" stroke-width="2"/>
+              <line x1="74.93" x2="809.21" y1="317.17" y2="317.17" fill="none" stroke="var(--tp-400)" stroke-miterlimit="10" stroke-width="2"/>
+              <text transform="translate(100.78 363.37)" font-family="'GILROY'" font-size="24.915px">
+                <tspan x="0" y="0">Min : 50   Max : 50000 TP. : </tspan>
+                <tspan x="320.25" y="0" fill="var(--tp-green)">13 Minutos</tspan>
+              </text>
+              <path d="m819.53 291.94h-754.92c-13.85 0-25.08-11.23-25.08-25.08v-115.3c0-13.85 11.23-25.08 25.08-25.08h754.92c13.85 0 25.08 11.23 25.08 25.08v115.3c0 13.85-11.23 25.08-25.08 25.08z" fill="var(--tp-300)" stroke="var(--tp-400)" stroke-miterlimit="10" stroke-width="2"/>
+              <line x1="39.54" x2="844.61" y1="209.21" y2="209.21" fill="none" stroke="var(--tp-400)" stroke-miterlimit="10" stroke-width="2"/>
+              <text transform="translate(67.873 259.87)" font-family="'GILROY'" font-size="27.317px">
+                <tspan x="0" y="0">Min : 10   Max : 5000 TP. : </tspan>
+                <tspan x="329.19" y="0" fill="var(--tp-green)">25 Minutos</tspan>
+              </text>
+              <text transform="translate(741.14 178.98)" font-family="'GILROY'" font-size="27.317px">R$4.99 </text>
+              <path d="m859.07 181.71h-833.99c-13.85 0-25.08-11.23-25.08-25.08v-131.55c0-13.85 11.23-25.08 25.08-25.08h833.99c13.85 0 25.08 11.23 25.08 25.08v131.55c0 13.85-11.23 25.08-25.08 25.08z" fill="var(--tp-300)" stroke="var(--tp-400)" stroke-miterlimit="10" stroke-width="2"/>
+              <line x2="884.15" y1="85.85" y2="85.85" fill="none" stroke="var(--tp-400)" stroke-miterlimit="10" stroke-width="2"/>
+              <text transform="translate(29.021 57.647)" font-family="'GILROY'" font-size="30px"> Twitch Views</text>
+              <text transform="translate(31.121 146.48)" font-family="'GILROY'" font-size="30px">
+                <tspan x="0" y="0">Min : 50   Max : 10000 TP. : </tspan>
+                <tspan x="380.42" y="0" fill="var(--tp-green)">20 Minutos</tspan>
+              </text>
+              <text transform="translate(770.51 57.647)" font-family="'GILROY'" font-size="30px">1.99 $</text>
+              <path d="m858.95 166.31h-206.3c-5.75 0-10.42-4.66-10.42-10.42v-37.31c0-5.75 4.66-10.42 10.42-10.42h206.31c5.75 0 10.42 4.66 10.42 10.42v37.31c-0.01 5.75-4.67 10.42-10.43 10.42z" fill="var(--tp-site-color)"/>
+              <text transform="translate(693.26 149.44)" fill="#F6F6F6" font-family="'GILROY'" font-size="34.464px">  Buy</text>
+              <path d="m818.42 275.48h-169.95c-5.75 0-10.42-4.66-10.42-10.42v-28.01c0-5.75 4.66-10.42 10.42-10.42h169.95c5.75 0 10.42 4.66 10.42 10.42v28.01c0 5.75-4.67 10.42-10.42 10.42z" fill="var(--tp-site-color)"/>
+              <text transform="translate(680.92 261.31)" fill="#F6F6F6" font-family="'GILROY'" font-size="28.947px">  Buy</text>
+              <path d="m782.49 378.12h-155.53c-5.75 0-10.42-4.66-10.42-10.42v-24.32c0-5.75 4.66-10.42 10.42-10.42h155.53c5.75 0 10.42 4.66 10.42 10.42v24.32c0 5.76-4.66 10.42-10.42 10.42z" fill="var(--tp-site-color)"/>
+              <text transform="translate(654.61 365.37)" fill="#F6F6F6" font-family="'GILROY'" font-size="26.76px">  Buy</text>
+            </svg>
+          </div>
+          <div class="feature-box white">
+          <span>Sistema totalmente automático</span>
+             <small>Tudo é feito em tempo real e entregue.</small>
+            <?xml version="1.0" encoding="utf-8"?>
+            <svg version="1.1" id="katman_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 884.1 393.7" style="enable-background:new 0 0 884.1 393.7;" xml:space="preserve">
+              <path style="fill:var(--tp-100);" d="M751,232.9c0.5-1.9,0.3-4-0.8-5.7L734.6,200c-1.4-2.3-3.8-3.8-6.5-3.8c-1.3,0-2.6,0.4-3.8,1
+                                                   l-8.2,4.7c-3.3-2.5-6.9-4.5-10.7-6.2v-9.4c0-4.2-3.4-7.5-7.5-7.5h-31.4c-4.2,0-7.5,3.4-7.5,7.5v9.4c-3.8,1.7-7.4,3.8-10.7,6.2
+                                                   l-8.2-4.7c-1.1-0.7-2.4-1-3.8-1c-2.7,0-5.2,1.4-6.5,3.8L614,227.2c-1,1.7-1.3,3.8-0.8,5.7c0.5,1.9,1.8,3.6,3.5,4.6l8.2,4.7
+                                                   c-0.2,2.1-0.3,4.1-0.3,6.2c0,2.1,0.1,4.2,0.3,6.2l-8.2,4.7c-1.7,1-3,2.6-3.5,4.6c-0.5,1.9-0.3,4,0.8,5.7l15.7,27.2
+                                                   c1.4,2.3,3.8,3.8,6.5,3.8c1.3,0,2.6-0.3,3.8-1l8.2-4.7c3.3,2.5,6.9,4.5,10.7,6.2v9.4c0,2,0.8,3.9,2.2,5.3c1.4,1.4,3.3,2.2,5.3,2.2
+                                                   h31.4c4.2,0,7.5-3.4,7.5-7.5V301c3.8-1.7,7.4-3.8,10.7-6.2l8.2,4.7c1.1,0.7,2.4,1,3.8,1c2.7,0,5.2-1.4,6.5-3.8l15.7-27.2
+                                                   c1-1.7,1.3-3.8,0.8-5.7c-0.5-1.9-1.8-3.6-3.5-4.6l-8.2-4.7c0.2-2,0.3-4.1,0.3-6.2c0-2.1-0.1-4.1-0.3-6.2l8.2-4.7
+                                                   C749.2,236.5,750.5,234.8,751,232.9L751,232.9z M682.1,281.1c-18.1,0-32.7-14.7-32.7-32.7c0-18.1,14.7-32.7,32.7-32.7
+                                                   s32.7,14.7,32.7,32.7C714.9,266.4,700.2,281.1,682.1,281.1L682.1,281.1z M709.7,155.5c-0.3,1.3-0.2,2.6,0.5,3.8l10.4,18
+                                                   c0.9,1.5,2.5,2.5,4.3,2.5c0.9,0,1.7-0.2,2.5-0.7l5.4-3.1c2.2,1.6,4.6,3,7.1,4.1v6.2c0,1.3,0.5,2.6,1.5,3.5c0.9,0.9,2.2,1.5,3.5,1.5
+                                                   h20.8c2.7,0,5-2.2,5-5V180c2.5-1.1,4.9-2.5,7.1-4.1l5.4,3.1c0.8,0.4,1.6,0.7,2.5,0.7c1.8,0,3.4-1,4.3-2.5l10.4-18
+                                                   c0.7-1.1,0.8-2.5,0.5-3.8c-0.3-1.3-1.2-2.4-2.3-3l-5.4-3.1c0.1-1.3,0.2-2.7,0.2-4.1c0-1.4-0.1-2.8-0.2-4.1l5.4-3.1
+                                                   c1.1-0.7,2-1.7,2.3-3c0.3-1.3,0.2-2.6-0.5-3.8l-10.4-18c-0.9-1.5-2.5-2.5-4.3-2.5c-0.9,0-1.7,0.2-2.5,0.7l-5.4,3.1
+                                                   c-2.2-1.6-4.6-3-7.1-4.1v-6.2c0-2.7-2.2-5-5-5h-20.8c-2.7,0-5,2.2-5,5v6.2c-2.5,1.1-4.9,2.5-7.1,4.1l-5.4-3.1
+                                                   c-0.8-0.4-1.6-0.7-2.5-0.7c-1.8,0-3.4,1-4.3,2.5l-10.4,18c-0.7,1.1-0.8,2.5-0.5,3.8c0.3,1.3,1.2,2.4,2.3,3l5.4,3.1
+                                                   c-0.1,1.4-0.2,2.7-0.2,4.1c0,1.4,0.1,2.8,0.2,4.1l-5.4,3.1C710.8,153.1,710,154.2,709.7,155.5L709.7,155.5z M755.2,123.5
+                                                   c12,0,21.7,9.7,21.7,21.7s-9.7,21.7-21.7,21.7c-12,0-21.7-9.7-21.7-21.7S743.3,123.5,755.2,123.5L755.2,123.5z M821.9,225.2
+                                                   l-3.7-2.1c0.1-0.9,0.2-1.9,0.2-2.8s-0.1-1.9-0.2-2.8l3.7-2.1c0.8-0.5,1.4-1.2,1.6-2.1c0.2-0.9,0.1-1.8-0.3-2.6l-7.1-12.4
+                                                   c-0.6-1.1-1.7-1.7-3-1.7c-0.6,0-1.2,0.2-1.7,0.5l-3.7,2.2c-1.5-1.1-3.2-2.1-4.9-2.8v-4.3c0-1.9-1.5-3.4-3.4-3.4h-14.3
+                                                   c-1.9,0-3.4,1.5-3.4,3.4v4.3c-1.7,0.8-3.4,1.7-4.9,2.8l-3.7-2.2c-0.5-0.3-1.1-0.5-1.7-0.5c-1.2,0-2.4,0.7-3,1.7l-7.1,12.4
+                                                   c-0.5,0.8-0.6,1.7-0.3,2.6c0.2,0.9,0.8,1.6,1.6,2.1l3.7,2.1c-0.1,0.9-0.2,1.9-0.2,2.8c0,1,0.1,1.9,0.2,2.8l-3.7,2.1
+                                                   c-0.8,0.5-1.4,1.2-1.6,2.1c-0.2,0.9-0.1,1.8,0.3,2.6l7.1,12.4c0.6,1.1,1.7,1.7,3,1.7c0.6,0,1.2-0.2,1.7-0.5l3.7-2.2
+                                                   c1.5,1.1,3.2,2.1,4.9,2.8v4.3c0,0.9,0.4,1.8,1,2.4c0.6,0.6,1.5,1,2.4,1h14.3c1.9,0,3.4-1.5,3.4-3.4v-4.3c1.7-0.8,3.4-1.7,4.9-2.8
+                                                   l3.7,2.2c0.5,0.3,1.1,0.5,1.7,0.5c1.2,0,2.4-0.7,3-1.7l7.1-12.4c0.5-0.8,0.6-1.7,0.3-2.6C823.2,226.4,822.7,225.6,821.9,225.2
+                                                   L821.9,225.2z M792.1,235.1c-8.2,0-14.9-6.7-14.9-14.9c0-8.2,6.7-14.9,14.9-14.9c8.2,0,14.9,6.7,14.9,14.9S800.3,235.1,792.1,235.1
+                                                   L792.1,235.1z" />
+              <path style="fill:var(--tp-100);" d="M133.1,238.5c0.5,1.9,1.8,3.6,3.5,4.6l8.2,4.7c-0.2,2.1-0.3,4.1-0.3,6.2c0,2.1,0.1,4.2,0.3,6.2
+                                                   l-8.2,4.7c-1.7,1-3,2.6-3.5,4.6c-0.5,1.9-0.3,4,0.8,5.7l15.7,27.2c1.3,2.3,3.8,3.8,6.5,3.8c1.3,0,2.6-0.3,3.8-1l8.2-4.7
+                                                   c3.3,2.5,6.9,4.5,10.7,6.2v9.4c0,4.2,3.4,7.5,7.5,7.5h31.4c2,0,3.9-0.8,5.3-2.2c1.4-1.4,2.2-3.3,2.2-5.3v-9.4
+                                                   c3.8-1.7,7.4-3.8,10.7-6.2l8.2,4.7c1.1,0.7,2.4,1,3.8,1c2.7,0,5.2-1.4,6.5-3.8l15.7-27.2c1-1.7,1.3-3.8,0.8-5.7
+                                                   c-0.5-1.9-1.8-3.6-3.5-4.6l-8.2-4.7c0.2-2,0.3-4.1,0.3-6.2c0-2.1-0.1-4.1-0.3-6.2l8.2-4.7c1.7-1,3-2.6,3.5-4.6
+                                                   c0.5-1.9,0.3-4-0.8-5.7l-15.7-27.2c-1.4-2.3-3.8-3.8-6.5-3.8c-1.3,0-2.6,0.3-3.8,1l-8.2,4.7c-3.3-2.5-6.9-4.5-10.7-6.2V192
+                                                   c0-4.2-3.4-7.5-7.5-7.5h-31.4c-4.2,0-7.5,3.4-7.5,7.5v9.4c-3.8,1.7-7.4,3.8-10.7,6.2l-8.2-4.7c-1.1-0.7-2.4-1-3.8-1
+                                                   c-2.7,0-5.2,1.4-6.5,3.8l-15.7,27.2C132.9,234.5,132.6,236.6,133.1,238.5L133.1,238.5z M202,286.7c-18.1,0-32.7-14.7-32.7-32.7
+                                                   c0-18.1,14.7-32.7,32.7-32.7s32.7,14.7,32.7,32.7C234.7,272.1,220.1,286.7,202,286.7L202,286.7z M174.5,161.1
+                                                   c-0.3-1.3-1.2-2.4-2.3-3l-5.4-3.1c0.1-1.3,0.2-2.7,0.2-4.1c0-1.4-0.1-2.7-0.2-4.1l5.4-3.1c1.1-0.7,2-1.7,2.3-3
+                                                   c0.3-1.3,0.2-2.6-0.5-3.8l-10.4-18c-0.9-1.5-2.5-2.5-4.3-2.5c-0.9,0-1.7,0.2-2.5,0.7l-5.4,3.1c-2.2-1.6-4.6-3-7.1-4.1v-6.2
+                                                   c0-2.7-2.2-5-5-5h-20.8c-2.7,0-5,2.2-5,5v6.2c-2.5,1.1-4.9,2.5-7.1,4.1L101,117c-0.8-0.4-1.6-0.7-2.5-0.7c-1.8,0-3.4,1-4.3,2.5
+                                                   l-10.4,18c-0.7,1.1-0.8,2.5-0.5,3.8c0.3,1.3,1.2,2.4,2.3,3l5.4,3.1c-0.1,1.4-0.2,2.7-0.2,4.1c0,1.4,0.1,2.8,0.2,4.1l-5.4,3.1
+                                                   c-1.1,0.7-2,1.7-2.3,3c-0.3,1.3-0.2,2.6,0.5,3.8l10.4,18c0.9,1.5,2.5,2.5,4.3,2.5c0.9,0,1.7-0.2,2.5-0.7l5.4-3.1
+                                                   c2.2,1.6,4.6,3,7.1,4.1v6.2c0,2.7,2.2,5,5,5h20.8c1.3,0,2.6-0.5,3.5-1.5c0.9-0.9,1.5-2.2,1.5-3.5v-6.2c2.5-1.1,4.9-2.5,7.1-4.1
+                                                   l5.4,3.1c0.8,0.4,1.6,0.7,2.5,0.7c1.8,0,3.4-1,4.3-2.5l10.4-18C174.6,163.8,174.8,162.4,174.5,161.1L174.5,161.1z M128.9,129.2
+                                                   c12,0,21.7,9.7,21.7,21.7c0,12-9.7,21.7-21.7,21.7c-12,0-21.7-9.7-21.7-21.7C107.2,138.9,116.9,129.2,128.9,129.2L128.9,129.2z
+                                                   M62.3,230.8c-0.8,0.5-1.4,1.2-1.6,2.1c-0.2,0.9-0.1,1.8,0.3,2.6l7.1,12.4c0.6,1.1,1.7,1.7,3,1.7c0.6,0,1.2-0.2,1.7-0.5l3.7-2.2
+                                                   c1.5,1.1,3.2,2.1,4.9,2.8v4.3c0,1.9,1.5,3.4,3.4,3.4h14.3c0.9,0,1.8-0.4,2.4-1c0.6-0.6,1-1.5,1-2.4v-4.3c1.7-0.8,3.4-1.7,4.9-2.8
+                                                   l3.7,2.2c0.5,0.3,1.1,0.5,1.7,0.5c1.2,0,2.4-0.7,3-1.7l7.1-12.4c0.5-0.8,0.6-1.7,0.3-2.6c-0.2-0.9-0.8-1.6-1.6-2.1l-3.7-2.1
+                                                   c0.1-0.9,0.2-1.9,0.2-2.8c0-0.9-0.1-1.9-0.2-2.8l3.7-2.1c0.8-0.5,1.4-1.2,1.6-2.1c0.2-0.9,0.1-1.8-0.3-2.6l-7.1-12.4
+                                                   c-0.6-1.1-1.7-1.7-3-1.7c-0.6,0-1.2,0.2-1.7,0.5l-3.7,2.2c-1.5-1.1-3.2-2.1-4.9-2.8v-4.3c0-1.9-1.5-3.4-3.4-3.4H84.9
+                                                   c-1.9,0-3.4,1.5-3.4,3.4v4.3c-1.7,0.8-3.4,1.7-4.9,2.8l-3.7-2.2c-0.5-0.3-1.1-0.5-1.7-0.5c-1.2,0-2.4,0.7-3,1.7L61,216.2
+                                                   c-0.5,0.8-0.6,1.7-0.3,2.6c0.2,0.9,0.8,1.6,1.6,2.1L66,223c-0.1,0.9-0.2,1.9-0.2,2.8c0,1,0.1,1.9,0.2,2.8L62.3,230.8L62.3,230.8z
+                                                   M92.1,240.8c-8.2,0-14.9-6.7-14.9-14.9c0-8.2,6.7-14.9,14.9-14.9c8.2,0,14.9,6.7,14.9,14.9C107,234.1,100.3,240.8,92.1,240.8
+                                                   L92.1,240.8z" />
+              <path style="fill:var(--tp-100);" d="M555.6,147.1c-0.8-1-1.8-1.7-3.1-1.9l-27.3-4.2c-1.5-4.8-3.5-9.7-6.1-14.6c1.8-2.5,4.5-6,8.1-10.5
+                                                   c3.6-4.5,6.1-7.8,7.6-9.9c0.8-1.1,1.2-2.2,1.2-3.4c0-1.4-0.3-2.5-1-3.3c-3.6-5.1-11.8-13.5-24.6-25.4c-1.2-1-2.4-1.5-3.7-1.5
+                                                   c-1.5,0-2.7,0.4-3.6,1.3l-21.2,16c-4.1-2.1-8.6-3.9-13.4-5.5L464,56.6c-0.1-1.3-0.7-2.4-1.7-3.2c-1-0.8-2.3-1.3-3.7-1.3h-33.2
+                                                   c-2.9,0-4.7,1.4-5.4,4.2c-1.3,5-2.7,14.2-4.3,27.8c-4.7,1.5-9.2,3.4-13.6,5.7l-20.6-16c-1.3-1-2.6-1.5-3.9-1.5
+                                                   c-2.2,0-6.9,3.6-14.1,10.7c-7.2,7.1-12.1,12.5-14.7,16.1c-0.9,1.3-1.3,2.4-1.3,3.4c0,1.2,0.5,2.4,1.5,3.6c6.7,8.1,12,14.9,16,20.6
+                                                   c-2.5,4.6-4.4,9.2-5.8,13.7l-27.8,4.2c-1.1,0.2-2,0.8-2.8,1.9c-0.8,1.1-1.2,2.2-1.2,3.4v33.2c0,1.3,0.4,2.5,1.2,3.5
+                                                   c0.8,1,1.8,1.7,3.1,1.9l27.3,4c1.4,4.9,3.4,9.8,6.1,14.8c-1.8,2.5-4.5,6-8.1,10.5c-3.6,4.5-6.1,7.8-7.6,9.9
+                                                   c-0.8,1.1-1.2,2.2-1.2,3.4c0,1.3,0.3,2.4,1,3.4c3.9,5.4,12.1,13.7,24.6,25.1c1.1,1.1,2.3,1.6,3.7,1.6c1.5,0,2.7-0.4,3.7-1.3
+                                                   l21.1-16c4.1,2.1,8.6,3.9,13.4,5.5l4.2,27.5c0.1,1.3,0.7,2.4,1.7,3.2c1,0.8,2.3,1.3,3.7,1.3h33.2c2.9,0,4.7-1.4,5.4-4.2
+                                                   c1.3-5,2.7-14.2,4.3-27.8c4.7-1.5,9.2-3.4,13.6-5.7l20.6,16.1c1.4,0.9,2.7,1.3,3.9,1.3c2.2,0,6.9-3.5,14-10.6
+                                                   c7.2-7.1,12.1-12.4,14.8-16.1c0.9-1,1.3-2.1,1.3-3.4c0-1.3-0.5-2.5-1.5-3.7c-7.2-8.8-12.5-15.6-16-20.6c2-3.7,3.9-8.2,5.8-13.6
+                                                   l27.6-4.2c1.2-0.2,2.2-0.8,3-1.9c0.8-1.1,1.2-2.2,1.2-3.4v-33.2C556.8,149.3,556.4,148.1,555.6,147.1L555.6,147.1z M469.1,193.9
+                                                   c-7.5,7.5-16.5,11.2-27,11.2c-10.6,0-19.6-3.7-27-11.2c-7.5-7.5-11.2-16.5-11.2-27c0-10.6,3.7-19.6,11.2-27
+                                                   c7.5-7.5,16.5-11.2,27-11.2c10.6,0,19.6,3.7,27,11.2c7.5,7.5,11.2,16.5,11.2,27C480.3,177.4,476.6,186.4,469.1,193.9L469.1,193.9z" />
+            </svg>
+          </div>
+          <div class="feature-box">
+            <span>O mdlhor  Sistema de suporte</span>
+            <small>Nossa equipe de suporte sempre ajudará você</small>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="katman_1" x="0px" y="0px" viewBox="0 0 884.1 393.7" style="enable-background:new 0 0 884.1 393.7;" xml:space="preserve">
+              <path style="fill:var(--tp-300);stroke:var(--tp-400);stroke-width:2;stroke-miterlimit:10;" d="M790.9,393.1H106.8c-13.9,0-25.1-11.2-25.1-25.1  V267.2c0-13.9,11.2-25.1,25.1-25.1h684.1c13.9,0,25.1,11.2,25.1,25.1V368C816,381.8,804.7,393.1,790.9,393.1z"/>
+              <line style="fill:none;stroke:var(--tp-400);stroke-width:2;stroke-miterlimit:10;" x1="81.7" y1="317.6" x2="816" y2="317.6"/>
+              <text transform="matrix(1 0 0 1 107.521 363.8083)" style="fill:var(--tp-green); font-family:'GILROY'; font-size:29.9181px;">Sua solicitação de suporte chegamos a uma solução</text>
+              <path style="fill:var(--tp-300);stroke:var(--tp-400);stroke-width:2;stroke-miterlimit:10;" d="M833.8,293.2H63.9c-13.9,0-25.1-11.2-25.1-25.1  V149.7c0-13.9,11.2-25.1,25.1-25.1h769.9c13.9,0,25.1,11.2,25.1,25.1v118.4C858.8,281.9,847.6,293.2,833.8,293.2z"/>
+              <line style="fill:none;stroke:var(--tp-400);stroke-width:2;stroke-miterlimit:10;" x1="38.8" y1="208.9" x2="858.8" y2="208.9"/>
+              <text transform="matrix(1 0 0 1 67.6489 260.506)" style="fill:var(--tp-green); font-family:'GILROY'; font-size:29.9181px;">Sua solicitação de suporte chegamos a uma solução</text>
+              <path style="fill:var(--tp-300);stroke:var(--tp-400);stroke-width:2;stroke-miterlimit:10;" d="M857.9,181.2H26.3c-13.9,0-25.1-11.2-25.1-25.1  V25.1C1.2,11.2,12.4,0,26.3,0h831.6c13.9,0,25.1,11.2,25.1,25.1v131.1C882.9,170,871.7,181.2,857.9,181.2z"/>
+              <line style="fill:none;stroke:var(--tp-400);stroke-width:2;stroke-miterlimit:10;" x1="1.2" y1="90.6" x2="882.9" y2="90.6"/>
+              <text transform="matrix(1 0 0 1 30.1479 57.4892)" style="font-family:'GILROY'; font-size:29.9181px;">ID do Suporte  : 29</text>
+              <text transform="matrix(1 0 0 1 32.2416 146.0839)" style="fill:var(--tp-green); font-family:'GILROY'; font-size:29.9181px;">Sua solicitação de suporte chegamos a uma solução</text>
+              <text transform="matrix(1 0 0 1 769.6122 57.4892)" style="font-family:'GILROY'; font-size:29.9181px;">Pedido</text>
+              <path style="fill:var(--tp-site-color);" d="M850.9,159.1H765c-5.9,0-10.7-4.8-10.7-10.7v-26.1c0-5.9,4.8-10.7,10.7-10.7h85.9  c5.9,0,10.7,4.8,10.7,10.7v26.1C861.6,154.3,856.8,159.1,850.9,159.1z"/>
+              <text transform="matrix(1 0 0 1 786.9296 146.0839)" style="fill:#F6F6F6; font-family:'GILROY'; font-size:30px;">ir</text>
+              <path style="fill:var(--tp-site-color);" d="M831,275.3H745c-5.9,0-10.7-4.8-10.7-10.7v-26.1c0-5.9,4.8-10.7,10.7-10.7H831  c5.9,0,10.7,4.8,10.7,10.7v26.1C841.6,270.5,836.9,275.3,831,275.3z"/>
+              <text transform="matrix(1 0 0 1 766.9647 262.2842)" style="fill:#F6F6F6; font-family:'GILROY'; font-size:30px;">ir</text>
+              <path style="fill:var(--tp-site-color);" d="M786.7,379.3h-85.9c-5.9,0-10.7-4.8-10.7-10.7v-26.1c0-5.9,4.8-10.7,10.7-10.7h85.9  c5.9,0,10.7,4.8,10.7,10.7v26.1C797.3,374.5,792.6,379.3,786.7,379.3z"/>
+              <text transform="matrix(1 0 0 1 722.6702 366.3107)" style="fill:#F6F6F6; font-family:'GILROY'; font-size:30px;">ir</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="order-step-bg">
+    <svg version="1.1" id="katman_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+         viewBox="0 0 1920 600" style="enable-background:new 0 0 1920 600;" xml:space="preserve">
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-15,349c111,76.4,276.4,162.5,473.9,153.7
+                                                                                   c123.9-5.5,136.5-42.8,300-79.1c301.6-66.9,589.5-13.3,732.8,13.4c236.9,44.1,378.6,109.8,447.8,44.8"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-15.6,338.7c111,76.4,272.2,154.9,469.6,146.1
+                                                                                   c123.9-5.5,145.6-36.1,309.1-72.4c301.6-66.9,580.9-11.1,724.2,13.3c238.9,39.9,382.6,109.8,452.7,50"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-16.3,328.3c111,76.4,267.9,147.3,465.3,138.6
+                                                                                   c123.9-5.5,154.7-29.4,318.2-65.7c301.6-66.9,572.2-8.5,715.6,13.1c240.9,36.3,386.6,109.8,457.6,55.2"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-16.9,318c111,76.4,263.6,139.7,461,131
+                                                                                   c123.9-5.5,163.8-22.7,327.3-59c301.6-66.9,563.5-6.2,706.9,12.9c242.9,32.4,390.6,109.8,462.6,60.4"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-17.6,307.7c111,76.4,259.3,132.1,456.7,123.4
+                                                                                   c123.9-5.5,172.9-16,336.4-52.3c301.6-66.9,554.9-3.9,698.3,12.7c244.9,28.4,394.5,109.7,467.5,65.6"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-18.2,297.4c111,76.4,255,124.6,452.4,115.8
+                                                                                   c123.9-5.5,182-9.3,345.5-45.6c301.6-66.9,546.3-1.6,689.6,12.6c246.9,24.4,398.5,109.7,472.5,70.8"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-18.9,287.1c111,76.4,250.7,117,448.1,108.2
+                                                                                   c123.9-5.5,191.1-2.6,354.6-38.9c301.6-66.9,537.6,0.7,681,12.4c248.9,20.3,402.5,109.7,477.4,76"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-19.5,276.8c111,76.4,246.4,109.4,443.8,100.7
+                                                                                   c123.9-5.5,200.2,4.1,363.7-32.2c301.6-66.9,529,2.9,672.4,12.2c251,16.2,406.4,109.7,482.3,81.2"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-20.2,266.4c111,76.4,242.1,101.8,439.5,93.1
+                                                                                   c123.9-5.5,209.3,10.8,372.8-25.5c301.6-66.9,520.4,5.2,663.7,12c253.1,12.1,410.4,109.6,487.3,86.4"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-20.8,256.1c111,76.4,237.8,94.2,435.2,85.5
+                                                                                   c123.9-5.5,218.4,17.5,381.9-18.8c301.6-66.9,511.8,7.4,655.1,11.9c255.1,7.9,414.4,109.6,492.2,91.7"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-21.5,245.8c111,76.4,233.5,86.6,430.9,77.9
+                                                                                   c123.9-5.5,227.5,24.2,391-12.1c301.6-66.9,503.1,9.6,646.4,11.7c257.2,3.8,418.3,109.6,497.2,96.9"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-22.1,235.5c111,76.4,229.2,79.1,426.6,70.3
+                                                                                   c123.9-5.5,236.6,30.9,400.1-5.3c301.6-66.9,494.6,14.2,637.8,11.5c259.2-4.9,422.3,109.6,502.1,102.1"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-22.8,225.2c111,76.4,224.9,71.5,422.3,62.7
+                                                                                   c123.9-5.5,245.7,37.6,409.2,1.4c301.6-66.9,485.9,13.9,629.2,11.3c261.3-4.7,426.3,109.6,507.1,107.3"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-23.4,214.8c111,76.4,220.6,63.9,418,55.2
+                                                                                   c123.9-5.5,254.8,44.3,418.3,8.1c301.6-66.9,477.3,16.1,620.5,11.2c263.4-9,430.3,109.5,512,112.5"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-24.1,204.5c111,76.4,216.3,56.3,413.7,47.6
+                                                                                   c123.9-5.5,263.9,51.1,427.4,14.8c301.6-66.9,468.7,18.2,611.9,11c265.4-13.3,434.2,109.5,516.9,117.7"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-24.7,194.2c111,76.4,212,48.7,409.4,40
+                                                                                   c123.9-5.5,273,57.8,436.5,21.5c301.6-66.9,460.1,20.3,603.3,10.8c267.5-17.7,438.2,109.5,521.9,122.9"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-25.4,183.9c111,76.4,207.7,41.1,405.1,32.4
+                                                                                   c123.9-5.5,282.1,64.5,445.6,28.2c301.6-66.9,451.4,22.4,594.6,10.6c269.5-22.1,442.2,109.5,526.8,128.1"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-26,173.6c111,76.4,203.4,33.6,400.8,24.8
+                                                                                   c123.9-5.5,291.2,71.2,454.7,34.9c301.6-66.9,442.8,24.4,586,10.4c271.6-26.5,446.1,109.4,531.8,133.3"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-26.7,163.3c111,76.4,199.1,26,396.5,17.3
+                                                                                   c123.9-5.5,300.3,77.9,463.8,41.6c301.6-66.9,434.2,26.5,577.3,10.3c273.6-31,450.1,109.4,536.7,138.5"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-27.3,152.9c111,76.4,194.8,18.4,392.2,9.7
+                                                                                   c123.9-5.5,309.4,84.6,472.9,48.3c301.6-66.9,425.5,28.5,568.7,10.1c275.6-35.5,454.1,109.4,541.6,143.7"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-28,142.6c111,76.4,190.5,10.8,387.9,2.1
+                                                                                   c123.9-5.5,318.5,91.3,482,55c301.6-66.9,416.9,30.5,560.1,9.9c277.6-40,458.1,109.4,546.6,149"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-28.6,132.3c111,76.4,186.2,3.2,383.6-5.5
+                                                                                   c123.9-5.5,327.6,98,491.1,61.7c301.6-66.9,408.2,32.6,551.4,9.7c279.6-44.5,462,109.3,551.5,154.2"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-29.3,122c111,76.4,181.9-4.3,379.3-13.1
+                                                                                   c123.9-5.5,336.7,104.7,500.2,68.4c301.6-66.9,399.5,34.4,542.8,9.6c281.6-49.5,466,109.3,556.5,159.4"/>
+      <path style="fill:none;stroke:var(--tp-site-color);stroke-miterlimit:10;" d="M-29.9,111.7c111,76.4,177.6-11.9,375-20.7
+                                                                                   c123.9-5.5,345.8,111.4,509.3,75.1c301.6-66.9,390.9,36.5,534.1,9.4c283.6-53.7,470,109.3,561.4,164.6"/>
+    </svg><div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <span class="user-home-title"><b>Como</b> Funciona?</span>
+      <div class="order-step-list">
+        <div class="order-step-box">
+          <span>Criar Conta</span>
+        </div>
+        <div class="order-step-box">
+          <span>Adicionar Saldo</span>
+        </div>
+        <div class="order-step-box">
+          <span>Realizar o pedido</span>
+        </div>
+        <div class="order-step-box">
+          <span>só aguarda</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <span class="user-home-title"><b>Perguntas Frequentes</b></span>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title">O que é Painel SMM e como ele difere do painel revendedor SMM e do painel filho?</span><span class="icon" aria-hidden="true"></span></button>
+          <div class="accordion-content">
+            <p>Painel SMM, também conhecido como painel de marketing em mídias sociais, é um portal web onde você pode comprar serviços de marketing em mídias sociais para quase qualquer site de rede social.
+              Se você fornecer a seus clientes a capacidade de revender (em massa e Whitelabel) seus serviços de painel de mídia social com API (ou manualmente), ele se torna um painel revendedor SMM.
+              O painel filho é uma subsidiária do seu provedor de serviços SMM, e todos os seus serviços estão vinculados ao painel desse provedor de serviços. Clique aqui para obter informações adicionais sobre o painel filho e como começar um negócio online com ele.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title">Como escolher o melhor provedor de painel SMM?</span><span class="icon" aria-hidden="true"></span></button>
+          <div class="accordion-content">
+            <p>Além de observar seus serviços de mídia social, preste atenção também ao suporte deles (é crucial) e aos seus serviços estáveis e de alta qualidade. Alguns proprietários de painéis oferecem serviços de baixa qualidade para obter lucro extra. Na SMMraja, temos um rastreador para todos os nossos serviços que informa a velocidade e estabilidade de um serviço de mídia social.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title">Quais serviços de SMM você oferece?</span><span class="icon" aria-hidden="true"></span></button>
+          <div class="accordion-content">
+            <p>Nos diga o que você precisa e talvez tenhamos isso, e se não encontrar, entre em contato conosco, e o disponibilizaremos para você. Atualmente, estamos oferecendo serviços para todas as principais plataformas de mídia social.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title">Quais métodos de pagamento você aceita?</span><span class="icon" aria-hidden="true"></span></button>
+          <div class="accordion-content">
+            <p>Desde cartão de crédito até Perfect Money, cartões a criptomoedas. Aceitamos tudo, incluindo transferências bancárias. Oferecemos 150+ opções de pagamento para adicionar fundos à sua carteira.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% include 'footer.twig' %}

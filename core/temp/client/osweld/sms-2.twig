@@ -1,0 +1,362 @@
+{% include 'header.twig' %}
+<style>
+    table, td, th {
+        color: #fff; /* Define a cor do texto como branco */
+    }
+	
+.btn-blue {
+padding-right: 50px !important;
+color: #a4a4a4 !important;
+}
+
+.h2title{
+background-color: #00000024;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 13px;
+    border-bottom: solid 3px #69b92d;
+	color: #a6a6a6;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+
+
+
+
+</style>
+<div class="g-dash-content">
+<h2 class="h2title">Meus SMS</h2>
+    <section class="pt-4">
+        <div class="container-fluid">
+            <div class="gcard gcard-border">
+                <div class="gcard-body p-3">
+                    <div class="row align-items-center">
+                        <div class="col-md-auto col-12">
+                            <div id="order-page" class="well well-float table-responsive">
+                                <table id="orders_table" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="color: white;">ID</th>
+                                            <th style="color: white;">Data</th>
+                                            <th style="color: white;">Número</th>
+                                            <th style="color: white;">SMS</th>
+                                            <th style="color: white;">Serviço</th>
+                                            <th style="color: white;">Status</th>
+                                            <th style="color: white;">Expira</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for order in orders %}
+                                        <tr>
+                                            <td style="color: white;">{{ order['id'] }}</td>
+                                            <td style="color: white;">{{ order['date'] }}</td>
+                                            <td>
+                                                {% if order['status'] == "inprogress" %}
+                                                    {{ order['sms_number'] }}
+       <button class="btn btn-blue btn-md mr-1" onclick="copyToClipboard('{{ order['sms_number'] }}')">
+	                       <i class="ri-file-copy-line me-2"></i>
+                    <span>{{ lang['orders.button.copy'] }}</span>
+                </button>
+                                                {% else %}
+                                                    {{ order['sms_number'] }}
+                                                {% endif %}
+                                            </td>
+                                            <td><a target="_blank" href="{{ order['link'] }}" style="color: white;">{{ order['link'] }}</a></td>
+                                            <td style="color: white;">{{ order['service'] }}</td>
+								
+                                            <td>
+<div style="line-height:1; cursor:pointer; padding:8px 12px; text-align:center; border-radius:5px; color:white; 
+background:
+    {% if order['status'] == "Concluído" %}
+        #00b67a40; border: 1px solid #00B67A 
+    {% elseif order['status'] == "refilling" %}
+        #0077b3; border: 1px solid #0077b3
+    {% elseif order['status'] == "Em progresso" %}
+        #029fff40; border: 1px solid #029fff
+    {% elseif order['status'] == "Pendente" %}
+        #fbbc0524; border: 1px solid #fbbc05
+    {% elseif order['status'] == "error" %}
+        #ff3e7c2e; border: 1px solid #ff3e7c
+    {% elseif order['status'] == "Cancelado" %}
+        #ff3e7c2e; border: 1px solid #ff3e7c
+    {% else %}
+        #ff6b1d; border: 2px solid #ff6b1d
+    {% endif %};
+">
+    {% if order['status'] == "Concluído" %}
+        Concluído
+    {% elseif order['status'] == "Em progresso" %}
+        Em progresso
+    {% elseif order['status'] == "Pendente" %}
+        Pendente
+    {% elseif order['status'] == "Erro" %}
+        Erro
+    {% elseif order['status'] == "Cancelado" %}
+        Cancelado
+    {% else %}
+        Status Desconhecido
+    {% endif %}
+</div>
+                                            </td>
+                                            <td style="color: white;">
+                                                {% if order['status'] == "inprogress" and order['expiration_time'] %}
+                                                    <span id="countdown-{{ order['id'] }}"></span>
+                                                    <script>
+                                                        var countDownDate{{ order['id'] }} = new Date("{{ order['expiration_time'] }}").getTime();
+                                                        var x{{ order['id'] }} = setInterval(function() {
+                                                            var now = new Date().getTime();
+                                                            var distance = countDownDate{{ order['id'] }} - now;
+                                                            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                                            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                                            document.getElementById("countdown-{{ order['id'] }}").innerHTML = minutes + "m " + seconds + "s ";
+                                                            if (distance < 0) {
+                                                                clearInterval(x{{ order['id'] }});
+                                                                document.getElementById("countdown-{{ order['id'] }}").innerHTML = "Expirado";
+                                                            }
+                                                        }, 1000);
+                                                    </script>
+                                                {% else %}
+                                                    -
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                           
+                            {% if pagination["count"] > 1 %}
+                            <ul class="pagination">
+                                {% if pagination["current"] > 1 %}
+                                    <li>
+                                        <a href="refill/{{ status }}/{{ pagination["previous"] }}{% if search %}?search={{ search }}{% endif %}" aria-label="Previous" style="color: white;">
+                                            <span aria-hidden="true">‹</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% set r, l = 3, 3 %}
+                                {% if pagination['current'] == 1 %}
+                                    {% set r = 7 %}
+                                {% endif %}
+                                {% if pagination['current'] == 2 %}
+                                    {% set r = 5 %}
+                                {% endif %}
+                                {% if pagination['current'] >= pagination['count'] %}
+                                    {% set l = 5 %}
+                                {% endif %}
+                                {% for page in 1..pagination["count"] %}
+                                    {% if page >= (pagination['current'] - l) and page <= (pagination['current'] + r) %}
+                                        <div style="border:1px solid rgb(128,128,128); padding:4px; margin-left:8px; min-width:21px; text-align:center;">
+                                            <li{% if page == pagination['current'] %} class="active" {% endif %}>
+                                                <a href="refill/{{ status }}/{{ page }}{% if search %}?search={{ search }}{% endif %}" style="color: white;">{{ page }}</a>
+                                            </li>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if pagination['current'] < pagination['count'] %}
+                                    <li>
+                                        <a style="margin-left:8px;"
+                                            href="refill/{{ status }}/{{ pagination['next'] }}{% if search %}?search={{ search }}{% endif %}" aria-label="Next" style="color: white;">
+                                            <span aria-hidden="true">›</span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+{% include 'footer.twig' %}
+<script>
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('Número copiado: ' + text);
+        }, function(err) {
+            console.error('Erro ao copiar: ', err);
+        });
+    }
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let updateInterval = null;
+
+    function fetchOrders() {
+        fetch('/api/endpoint.php')
+            .then(response => response.json())
+            .then(data => {
+                updateTable(data);
+                manageUpdateInterval(data);
+            })
+            .catch(error => console.error('Erro ao buscar pedidos:', error));
+    }
+
+  function updateTable(orders) {
+        const tableBody = document.querySelector('#orders_table tbody');
+        tableBody.innerHTML = '';
+
+        orders.forEach(order => {
+            const row = document.createElement('tr');
+            const statusStyles = getStatusStyles(order.status);
+            row.innerHTML = `
+                <td>${order.id}</td>
+                <td>${order.date}</td>
+                <td>
+                    ${order.sms_number ? `<span>${order.sms_number}</span> 
+                    <button class="btn btn-blue btn-md mr-1" onclick="copyToClipboard('${order.sms_number}')">
+                        <i class="ri-file-copy-line me-2"></i>
+                        <span>{{ lang['orders.button.copy'] }}</span>
+                    </button>` : 'Número não disponível'}
+                </td>
+                <td><a target="_blank" href="${order.link}">${order.link}</a></td>
+                <td>${order.service}</td>
+                <td>
+                    <div style="background-color:${statusStyles.backgroundColor}; border: 2px solid ${statusStyles.borderColor}; color:${statusStyles.color}; border-radius:${statusStyles.borderRadius}; padding:${statusStyles.padding}; text-align:${statusStyles.textAlign}; line-height:${statusStyles.lineHeight}; cursor:${statusStyles.cursor};">
+                        ${getStatusName(order.status)}
+                    </div>
+                </td>
+                <td>
+                    ${order.status === 'inprogress' && order.expiration_time ? `<span id="countdown-${order.id}"></span>` : '-'}
+                </td>
+            `;
+            tableBody.appendChild(row);
+
+            // Iniciar o cronômetro apenas se o status for "inprogress" e expiration_time for válido
+            if (order.status === 'inprogress' && order.expiration_time) {
+                startCountdown(order.id, order.expiration_time);
+            }
+        });
+    }
+
+    function startCountdown(id, expirationTime) {
+        const countdownElement = document.getElementById(`countdown-${id}`);
+        const countDownDate = new Date(expirationTime).getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            if (distance < 0) {
+                clearInterval(x);
+                countdownElement.innerHTML = 'Expirado';
+                return;
+            }
+
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            countdownElement.innerHTML = `${minutes}m ${seconds}s`;
+        }, 1000);
+    }
+
+   function getStatusStyles(status) {
+    switch (status) {
+        case 'completed':
+            return {
+                backgroundColor: '#00b67a40',
+                borderColor: '#00B67A',
+                color: 'white',
+                borderRadius: '5px',
+                padding: '8px 12px',
+                textAlign: 'center',
+                lineHeight: '1',
+                cursor: 'pointer'
+            };
+        case 'refilling':
+        case 'inprogress':
+            return {
+                backgroundColor: '#029fff40',
+                borderColor: '#029fff',
+                color: 'white',
+                borderRadius: '5px',
+                padding: '8px 12px',
+                textAlign: 'center',
+                lineHeight: '1',
+                cursor: 'pointer'
+            };
+        case 'pending':
+            return {
+                backgroundColor: '#fbbc0524',
+                borderColor: '#fbbc05',
+                color: 'white',
+                borderRadius: '5px',
+                padding: '8px 12px',
+                textAlign: 'center',
+                lineHeight: '1',
+                cursor: 'pointer'
+            };
+        case 'error':
+        case 'canceled':
+            return {
+                backgroundColor: '#ff3e7c2e',
+                borderColor: '#ff3e7c',
+                color: 'white',
+                borderRadius: '5px',
+                padding: '8px 12px',
+                textAlign: 'center',
+                lineHeight: '1',
+                cursor: 'pointer'
+            };
+        default:
+            return {
+                backgroundColor: '#ff6b1d',
+                borderColor: '#ff6b1d',
+                color: 'white',
+                borderRadius: '5px',
+                padding: '8px 12px',
+                textAlign: 'center',
+                lineHeight: '1',
+                cursor: 'pointer'
+            };
+    }
+}
+
+function getStatusName(status) {
+    switch (status) {
+        case 'completed': return 'Concluído';
+        case 'inprogress': return 'Em progresso';
+        case 'pending': return 'Pendente';
+        case 'canceled': return 'Cancelado';
+        default: return 'Status desconhecido'; // Retorno padrão para status não reconhecido
+    }
+}
+
+    function updateOrders() {
+        fetch('update_orders.php')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    console.error('Erro ao atualizar pedidos:', data.error);
+                    return;
+                }
+                updateTable(data);
+                manageUpdateInterval(data);
+            })
+            .catch(error => console.error('Erro ao atualizar pedidos:', error));
+    }
+
+    function manageUpdateInterval(orders) {
+        const hasActiveOrders = orders.some(order => order.status === 'pending' || order.status === 'inprogress');
+
+        if (hasActiveOrders && !updateInterval) {
+            updateInterval = setInterval(updateOrders, 30000);
+        } else if (!hasActiveOrders && updateInterval) {
+            clearInterval(updateInterval);
+            updateInterval = null;
+        }
+    }
+
+    // Buscar pedidos inicialmente
+    fetchOrders();
+});
+</script>
+
+

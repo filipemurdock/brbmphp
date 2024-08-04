@@ -1,0 +1,282 @@
+<html lang="en">
+<head>
+  <base href="{{ site["url"] }}">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if pagetitle %}  {{ pagetitle }}  {% else %} {{ title }} {% endif %} </title>
+  <meta name="keywords" content="{% if pagekeywords %} {{ pagekeywords }} {% else %} {{ site["keywords"]}}  {% endif %}">
+  <meta name="description" content="{% if pagedescription %} {{ pagedescription }} {% else %} {{ site['description'] }}  {% endif %}">
+  {% if site['favicon'] %}
+    <link rel="shortcut icon" type="image/ico" href="{{ site['favicon'] }}" />
+  {% endif %}
+
+  
+
+      <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+      <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css'>
+      <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+      
+                                    <link rel="stylesheet" type="text/css" href="css/public/smmaxom/cdn.mypanel.link/xa7q8dl2crflgi1t.css">
+                        <link rel="stylesheet" type="text/css" href="css/public/smmaxom/cdn.mypanel.link/libs/bootstrap-datetimepicker/4.17.47/bootstrap-datetimepicker.min.css">
+                        <link rel="stylesheet" type="text/css" href="css/public/smmaxom/cdn.mypanel.link/css/font-awesome/css/all.min.css">
+                         
+                                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+            <link rel='stylesheet' href="https://masterv2.fsksoft.com/panel-setting-css.php?dom=sosyalatlas.com">
+           
+	  <script>
+      var htmlcontent = document.querySelector("HTML");
+      function colorApp() {
+         let getmode = localStorage.getItem("lightMode")
+         if(getmode == "auto"){
+            var getauto = window.matchMedia("(prefers-color-scheme: dark)").matches
+            if (getauto == true){
+               htmlcontent.setAttribute("class", "dark")
+            } else {
+               htmlcontent.setAttribute("class", "light")
+            }
+         } else {
+            if (getmode == "light") {
+               htmlcontent.setAttribute("class", "light");
+            } else {
+               htmlcontent.setAttribute("class", "dark");
+            }
+         }
+      }
+      colorApp()
+     </script>
+  </head>
+ 
+
+{% if user['auth'] %}
+
+<body>
+            <div class="app-container">
+      <div class="page-sidebar">
+         <div class="sidebar">
+        
+            <div class="sidebar-content">
+               <div class="sidebar-menu">
+                  <div class="setting-wrapper header-links"><a href="/"><div class="d-flex align-items-center py-3"> 
+	{% if site["logo"] %}
+									  <img src="{{ site['logo'] }}" width="200"  alt="{{ site["site_name"] }}" title="{{ site["site_name"] }}">
+									{% else %}
+									  {{ site["site_name"] }}
+									{% endif %}
+								  </a>
+
+               
+            </div>
+      
+    </div>    
+    <br>
+<script>
+function toggleLang(){
+    $('#langHD').toggleClass('opened');
+}
+</script>
+              
+ 
+    <a {% if active_menu == "neworder" %} class="menu-item active" {% else %} class="menu-item " href="/" {% endif %}>
+                                    <i class="fi fi-rr-shopping-cart"></i>
+                                    <span>Novo Pedido</span>
+                  </a>
+                                    <a {% if active_menu == "services" %} class="menu-item active" {% else %} class="menu-item " href="/services" {% endif %}>
+                                    <i class="fi fi-rr-clipboard-list-check"></i>
+                                    <span>Serviços</span>
+                  </a>
+                                    <a {% if active_menu == "orders" %} class="menu-item active" {% else %} class="menu-item " href="/orders" {% endif %}>
+                                    <i class="fi fi-rr-bags-shopping"></i>
+                                    <span>Meus Pedidos</span>
+                  </a>
+                                    <a {% if active_menu == "addfunds" %} class="menu-item active" {% else %} class="menu-item " href="/addfunds" {% endif %}>
+                                    <i class="fi fi-rr-money-check"></i>
+                                    <span>Recarregar</span>
+                  </a>
+                                   <a {% if active_menu == "api" %} class="menu-item active" {% else %} class="menu-item " href="/api" {% endif %}>
+                                    <i class="fi fi-rr-display-code"></i>
+                                    <span>API</span>
+                  {#</a>#}
+                  {#                 <a {% if active_menu == "refer" %} class="menu-item active" {% else %} class="menu-item " href="/refer" {% endif %}>#}
+                  {#                  <i class="fi fi-rr-piggy-bank"></i>#}
+                  {#                  <span>Affiliates</span>#}
+                  {#</a>#}
+                                    <a {% if active_menu == "child-panels" %} class="menu-item active" {% else %} class="menu-item " href="/child-panels" {% endif %}>
+                                    <i class="fi fi-rr-browser"></i>
+                                    <span>Painel afiliado</span>
+                  </a>
+                                   <a {% if active_menu == "tickets" %} class="menu-item active" {% else %} class="menu-item " href="/tickets" {% endif %}>
+                                    <i class="fi fi-rr-headphones"></i>
+                                    <span>Tickets</span>
+                  </a>
+                                   <a {% if active_menu == "massorder" %} class="menu-item active" {% else %} class="menu-item " href="/massorder" {% endif %}>
+                                    <i class="fi fi-rr-boxes"></i>
+                                    <span>Pedido em massa</span>
+                  </a>
+                                 </div>
+               <div class="sidebar-bottom">
+                  <div class="btn btn-main" onclick="location.href='/logout';">Sair</div>
+               </div>
+            </div>
+         </div>
+         <div class="sidebar-bg"></div>
+      </div>
+      <div class="page-content">
+         <div class="page-header">
+            <div class="sidebar-btn">
+               <i class="fi fi-rr-menu-burger"></i>    
+            </div>
+            <div class="header-search">
+               <div class="header-search-box">
+                  <input class="form-control" name="searchservice" value="" type="text" id="searchservice" placeholder="Service Search & Request Help">
+                  <button class="search-voice open-mic" onclick="startConverting();">
+                  <i class="far fa-microphone"></i>
+                  </button>
+                  <button class="search-voice close-mic hidden" onclick="stopVoice();">
+                  <i class="far fa-microphone"></i>
+                  <span class="voice-wave"></span>
+                  <span class="voice-wave"></span>
+                  <span class="voice-wave"></span>
+                  </button>
+               </div>
+               <i class="far fa-search active-search"></i>
+            </div><style>.header-search,
+.header-search-box,
+.header-search-box input,
+.header-search-box button {
+    display: none;
+}
+</style>
+            
+            
+            <div class="header-detail">
+              <i id="bellIcon" class="far fa-bell" onclick="notifyOpen()"></i>
+
+               <i class="far fa-expand" onclick="toggleFullScreen()"></i>
+               <div class="currencies-content">
+                  <button class="header-detail-button balance currency-btn"><i class="fi fi-rr-coins"></i> ≈ {{ currency["symbol"]  }} {{ (user["balance"]*currency["value"]) |round(2, 'floor') }} <i class="fas fa-caret-down"></i></button>
+                  <button class="currency-btn-mobile"><i class="far fa-sync-alt"></i></button>
+                                    <div class="currency-list" id="currencies-list">
+                                       {% for curr in site['currencies'] %} 
+                                        
+                                    <a class="currency-box" href="/cur?cur={{curr['id']}}"  >{{ curr["name"]}}</a>
+                                    
+                                          
+                                          {% endfor %}
+                                       </div>
+                                 </div>
+                                 
+                                 
+                                 
+                                 
+                                 
+               <button type="button" class="header-detail-button active-account-detail"><i class="fi fi-rr-user"></i></button>
+               <div class="account-detail-box">
+                  <div class="pofiler-content">
+                     <div class="prodile-box">
+                        <img src="https://demo.fsksoft.com/turkpanelim/assets/img/user.png">
+                        <div class="user-name">
+                           <span>{{ user["username"]  }}</span>
+                           <small></small>
+                        </div>
+                     </div>
+                     <a class="profile-button" href="/account"><i class="fi fi-rr-settings"></i>Configurações da Conta</a>
+                     <div class="profile-detail">
+                        <div class="color-change-box">
+                           <div class="light-btn color-btn" onclick="change_light()">
+                              Light <i class="fas fa-check-circle"></i><img src="https://demo.fsksoft.com/turkpanelim/assets/img/light.svg">
+                           </div>
+                           <div class="dark-btn color-btn" onclick="change_dark()">
+                              Dark <i class="fas fa-check-circle"></i><img src="https://demo.fsksoft.com/turkpanelim/assets/img/dark.svg">
+                           </div>
+                           <div class="auto-btn color-btn" onclick="change_auto()">
+                              System <i class="fas fa-check-circle"></i><img src="https://demo.fsksoft.com/turkpanelim/assets/img/lightdark.svg">
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="profiler-btn">
+                     <a class="btn btn-blue" onclick="location.href='/logout';">Sair</a>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+
+
+{% else %}
+
+
+
+<body>
+               <div class="user-page-container">
+            <div class="user-header">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="user-header-left">
+                          <a href="/"><div class="d-flex align-items-center py-3"> 
+	{% if site["logo"] %}
+									  <img src="{{ site['logo'] }}" width="200"  alt="{{ site["site_name"] }}" title="{{ site["site_name"] }}">
+									{% else %}
+									  {{ site["site_name"] }}
+									{% endif %}
+								  </a>
+
+               
+            </div>
+                        </div>
+                        <div class="user-header-center">
+                           <div class="user-header-menu">
+                                                            <div class="user-header-item"><a href="/services" >Serviços</a></div>
+                                                            <div class="user-header-item"><a href="/api" >API</a></div>
+                                                            <div class="user-header-item"><a href="/signup" >Inscrever-se</a></div>
+                                                          
+                                                            
+                                                          
+                                                         </div>
+                        </div>
+                        <div class="user-header-right">
+                           <div class="user-header-button">
+                              <div class="color-mode-btn">
+                                 <div class="auto-btn"></div>
+                                 <div class="light-btn" onclick="change_light()"><i class="fas fa-sun"></i></div>
+                                 <div class="dark-btn" onclick="change_dark()"><i class="fas fa-moon"></i></div>
+                              </div>
+                              <div class="setting-wrapper header-links">
+{#        <li class="lh-55px nav-link  d-lg-block btn-header" onclick="toggleLang()" style="">#}
+{#            <div class="header__lang nav-link">#}
+{#                <div class="lang" id="langHD">#}
+                   
+{#                    <div class="lang__list lang--list">#}
+{#    <a class="lang__item language__img_active" alt="en" data-google-lang="en" translate="no">#}
+{#        <img src="https://cdn.britannica.com/73/4473-050-0D875725/Grand-Union-Flag-January-1-1776.jpg" style="width: 32px" data-was-processed="true">#}
+{#    </a>#}
+{#    <a class="lang__item" alt="Arabic" data-google-lang="ar" translate="no">#}
+{#        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAT4AAACfCAMAAABX0UX9AAAAgVBMVEUAAAAAnkn////OESfRFisICAgFoUzp6en//f/8//8AoEjj+ePNEicAkkTPESXSAChuXjjIABTdnqF4ECEAoEQAkUnj+OjVBywApk7PDiJwXjYAnkV1VjgAj0fJEybOABHTnZXZ/erP5tPYnaLz///n5ObKABrUkpbr7urZ2dkABwAzOBq1AAACFUlEQVR4nO3bWVICQRAAUaTZxQGEAcYNFff7H1AHPYBEVsBH5TvARHRGdUz9dKcXqMw28+0gk05vWkqpyjRENZtPBhd5/OULYj6cb5stX1y/ynzmO4L5EPMh5kPMh5gPic3n3oc4feY7hvkQ8yHmQ8yHmA9x70OcPsR8iPkQ8yHmQ8yHmA9x70OcPsR8iPkQ8yHmQ8yHuLggTh9iPsR8iPkQ8yHmQ8yHuPchTh9iPsR8iPkQ8yHmQ8yHxO99k3Mf6WQm0flmTXMzuF1NErhdHYTmK01zV9dXKdR1fV/Xofkeqt3j03p9mcD64Dk2X7O77o5G4zSGsb+OZrEfv/wETKDbeg2evsW+O/79cgrB01ct2st77kOdTmy+0ubLxHyI+RDzIeZDzIeYDzEfYj7EfIj5EPMh5kPMh5gPMR9iPsR8iPkQ8yHmQ8yHmA8xH2I+xHyI+RDzIeZDzIeYDzEfYj7EfIj5EPMh5kPMh5gPMR9iPsR8iPkQ8yHmQ8yHmA+Jfs/79v4xTOQzePp6y04u5gP6wZd3Yz7z/Zv5EPMh5kPMh5gPMR9iPsR8iPkQ8yHmQ8yHmA8xH2I+xHyI+RDzIeZDzIeYDzEfYj7EfIj5EPMh5kPMh5gPMR9iPsR8iPkQ8yHmQ8yHmA8xH2I+xHyI+RDzIeZDYvP5otJ8x2jzxdVLeXnj8pWk+aoyjZDx8kYqm+VXP5NvxwWX/oPQ8mYAAAAASUVORK5CYII=" style="width: 32px" data-was-processed="true">#}
+{#    </a>#}
+{#</div>#}
+
+               
+           
+        {#</li>#}
+    </div>    
+<script>
+function toggleLang(){
+    $('#langHD').toggleClass('opened');
+}
+</script>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+
+
+{% endif %}

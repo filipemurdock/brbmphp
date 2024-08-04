@@ -1,0 +1,160 @@
+{% include 'header.twig' %}
+
+<div class="g-dash-content">
+   <section class="mt-4 mb-2">
+      <div class="container-fluid">
+         <div class="gcard-2 gcard-shadow fade-1 mb-5">
+            <div class="gcard-body gi-card">
+               <div class="row align-items-center">
+                  <div class="col-auto">
+                     <div class="gcard-icon gi-1">
+                        <i class="ri-star-smile-line"></i>
+                     </div>
+                  </div>
+                  <div class="col">
+                     <span class="gi-title">{{ lang['affiliates.title'] }}</span>
+                     <p class="gi-text">Recomende-nos aos seus amigos e ganhe saldo.</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row mb-3">
+				<div class="col-lg-12 mb-3">
+					<div class="row">
+						<div class="col">
+							<div class="gcard-2 gcard-shadow fade-1">
+								<div class="gcard-body">
+									<h6>{{ lang['affiliates.url'] }}</h6>
+									<span>{{ site['url'] }}/ref/{{ user["referral_code"] }}</span> <i class="ri-file-copy-line cursor-pointer pl-2" onclick="copyToClipboard('{{ site['url'] }}/ref/{{ user['referral_code'] }}')"></i>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="gcard-2 gcard-shadow fade-2">
+								<div class="gcard-body">
+									<h6>{{ lang['affiliates.bonus'] }}</h6>
+									<span>{{ settings["ref_bonus"] }}%</span>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div class="gcard-2 gcard-shadow fade-4">
+								<div class="gcard-body">
+									<h6>{{ lang['affiliates.type'] }}</h6>
+									<span>{% if settings["ref_type"] == 1 %}{{ lang['affiliates.type.first'] }}{% else %}{{ lang['affiliates.type.all'] }}{% endif %}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+            <div class="col-lg-7 mb-3">
+               <div class="gcard">
+                  <div class="gcard-header">
+                     <div class="row align-items-center">
+                        <div class="col d-flex align-items-center">
+                           <div class="ch-g-ticon">
+                              <div class="gcard-head-icon">
+                                 <i class="ri-book-mark-line"></i>
+                              </div>
+                           </div>
+                           <div class="ch-text">
+                              <h3 class="gcard-title">Detalhes de referênciaı</h3>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="gcard-body">
+				  	<div class="d-flex aff-item align-items-center justify-content-between">
+                      <span>{{ lang['affiliates.click'] }}</span>
+                      <span class="aff-bold">{{ user['total_click'] }}</span>
+                    </div>
+				  	<div class="d-flex aff-item align-items-center justify-content-between">
+                      <span>{{ lang['affiliates.total.user'] }}</span>
+                      <span class="aff-bold">{{ refCount }}</span>
+                    </div>
+				  	<div class="d-flex aff-item align-items-center justify-content-between">
+                      <span>{{ lang['affiliates.total.win'] }}</span>
+                      <span class="aff-bold">{{ user['refchar'] }}{{ site['currency'] }}</span>
+                    </div>
+
+                  </div>
+               </div>
+            </div>
+            <div class="col-lg-5">
+               <div class="gcard">
+                  <div class="gcard-header">
+                     <div class="row align-items-center">
+                        <div class="col d-flex align-items-center">
+                           <div class="ch-g-ticon">
+                              <div class="gcard-head-icon">
+                                 <i class="ri-flag-line"></i>
+                              </div>
+                           </div>
+                           <div class="ch-text">
+                              <h3 class="gcard-title">Atenção</h3>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="gcard-body">
+					<p>Com seu link de indicação <strong>{{site["site_name"]}}</strong>' A taxa paga pelos novos usuarios para todas as transações de adição de saldo é de&nbsp{{ settings["ref_bonus"] }}%'</p><br />
+					<p>Tudo o que você precisa fazer é clicar no link de convite e divulgar. Lembre-se, você só ganhará seu bônus de afiliado somente se os usuarios se registrarem através do link definido em sua conta, não há limite de convites!</p><p>    <ol>
+        <li>Critérios de Participação:
+            <ul>
+                <li>Para integrar o Programa de Afiliados, é necessário ter mais de 18 anos.</li>
+            </ul>
+        </li>
+        <li>Cadastro:
+            <ul>
+                <li>A inscrição no Programa de Afiliados é gratuita.</li>
+                <li>Ao se cadastrar, você concorda em fornecer dados precisos e atualizados.</li>
+            </ul>
+        </li>
+        <li>Regras para Receber Comissões:
+            <ul>
+                <li>Não há comissões sobre sua própria assinatura.</li>
+                <li>As comissões são geradas enquanto o cliente referido estiver ativo no BM Ilimitada.</li>
+            </ul>
+        </li>
+        <li>Criação de Links e Ganhos:
+            <ul>
+                <li>Após o cadastro, você terá acesso a links de afiliados exclusivos.</li>
+                <li>Você ganhará 10% de comissão por cada recarga efetuada através dos seus links.</li>
+            </ul>
+        </li>
+        <li>Pagamentos:
+            <ul>
+                <li>Os pagamentos das comissões são feitos automaticamente em sua conta a cada recarga.</li>
+                <li>O valor mínimo para retirada é de R$ 400,00.</li>
+                <li>O valor mínimo de conversão em créditos é de R$ 200,00.</li>
+            </ul>
+        </li>
+        <li>Término da Parceria:
+            <ul>
+                <li>Reservamo-nos o direito de encerrar a parceria a qualquer momento, caso haja violação dos termos estabelecidos.</li>
+                <li>Se encerrar sua participação, as comissões pendentes serão pagas no próximo ciclo de pagamento.</li>
+            </ul>
+        </li>
+        <li>Modificação dos Termos:
+            <ul>
+                <li>Reservamo-nos o direito de alterar os termos do Programa de Afiliados a qualquer momento. Qualquer mudança significativa será comunicada aos afiliados.</li>
+            </ul>
+        </li>
+    </ol>
+</p>
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </section>
+</div>
+</div>
+
+<a href="https://machinesmm.com/">
+    <img src="" alt="">
+</a>
+
+{% include 'footer.twig' %}

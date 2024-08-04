@@ -1,0 +1,263 @@
+{% include 'header.twig' %}
+
+{% if user['auth'] %}
+
+{% else %}
+<style>.g-dash-content {padding-top: 125px}</style>
+{% endif %}
+
+<div class="g-dash-content">
+  <section class="mt-4 mb-2">
+     {% if user['auth'] %}
+      <div class="container-fluid">
+     {% else %}
+      <div class="container">
+     {% endif %}
+
+		<div class="g-dash-content">
+            <section class="mt-4 mb-2">
+               <div class="container-fluid">
+                <div class="gcard-2 gcard-shadow fade-1 mb-5">
+                  <div class="gcard-body gi-card">
+                    <div class="row align-items-center">
+                      <div class="col-auto">
+                        <div class="gcard-icon gi-1">
+                          <i class="ri-questionnaire-line"></i>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <span class="gi-title">Perguntas frequentes</span>
+                        <p class="gi-text">Você pode encontrar as perguntas e respostas mais frequentes abaixo..</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <div class="row mb-3">
+						<div class="col-lg-6 mb-4">
+							<div class="gcard">
+								  <div class="gcard-body">
+									<div class="gnyFAQs">
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+													O que significa os emojis dos serviços
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="display: none;">
+
+											Significado dos emojis e siglas: <br>
+<br>⏰ - Velocidade para iniciar o envio do pedido <br>
+
+🚀 - Velocidade de entrega após inicio de envio<br>
+
+💎 - Qualidade dos perfis do serviço <br>
+
+AQ - Alta qualidade - Perfis com foto de perfil e publicações<br>
+
+MQ - Média qualidade - Perfis sem muitas fotos (ou até sem), nomes árabes, poucas publicações<br>
+
+BQ - Baixa qualidade - Perfis sem fotos (pode variar), sem publicações e às vezes, nomes árabes <br>
+
+♻️ - Tempo de reposição de um serviço<br>
+
+❌ - Serviço sem garantia contra quedas<br>
+
+⭐ - Serviço recomendado pelo administrador<br>
+
+🌍 - Serviço de perfis estrangeiros
+											</div>
+										</div>
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+													O que significa cada status de pedido (pendente, em progresso, etc)?
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="">
+												{{site['domain']}} Antes de abrir uma solicitação de suporte, atente-se ao que cada status de pedido significa:<br>
+
+<br>Status pendente: sua solicitação foi recebida e está sendo processada.<br>
+Status em processamento: seu pedido já está na fila para começar o envio.<br>
+Status em progresso: o seu pedido já está em envio.<br>
+Status parcial: seu pedido foi entregue uma quantidade X e reembolsado.<br>
+Status cancelado: seu pedido foi cancelado e totalmente reembolsado.<br>
+Status concluído: seu pedido foi entregue com sucesso.
+											</div>
+										</div>
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+																										Como preencher o campo link ao fazer pedidos
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="display: none;">
+												Em nosso site todos os serviços possuem em sua descrição um formato de exemplo de como o link deve ser 
+preenchido. Basta ler a descrição do serviço antes de efetuar para confirmar se está efetuando da maneira 
+correta.
+											</div>
+										</div>
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+																										Como faço uma solicitação de suporte?
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="">
+												Você pode criar um ticket indo no menu e clicando em "Suporte" ou usando o nosso botão de Whatsapp no can
+inferior direito da tela se disponível.
+											</div>
+										</div>
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+																								Motivos do pedido aparecer "cancelado"
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="">
+												Saiba que o se o seu pedido aparece como cancelado, você recebeu estorno total dele de forma automática. Os 
+motivos mais frequentes pelos quais isso acontece vamos explicar abaixo:<br>
+
+
+
+<br>O link do seu pedido é inválido. Teste o link para ver se abre onde deveria.<br>
+
+O perfil do seu cliente está privado.<br>
+
+O serviço está indisponível no momento.<br>
+
+Seu cliente mudou o @ ou privou o perfil durante o envio.<br>
+
+Foi apertado o botão de cancelar pedido.
+											</div>
+										</div>
+									</div>
+								  </div>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="gcard">
+								  <div class="gcard-body">
+									<div class="gnyFAQs">
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+															Resgatar um cupom?
+		</div>
+		<div class="col-auto align-self-center right-p">
+			<i class="fas fa-plus"></i>
+			<i class="fas fa-minus"></i>
+		</div>
+	</div>
+</div>
+<div class="gnyFcontent" style="">
+   Basta você ir na na aba "cupons" e digitar o código disponível que seu saldo será recebido de forma 
+automática.
+											</div>
+										</div>
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+														processos automatizados
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="">
+												Otomatik işlemler panel üzerinden sürekli işlem yapmanızda size fayda sağlar. Otomatik işlemleri oluşturduktan sonra panel üzerine hiçbir işleme gerek duymazsınız. Otomatik işlemler sosyal medya platformlarında paylaştığınız gönderilere otomatik olarak belirlediğiniz servisi aktif eder ver {{site['domain']}} panel üzerinde bakiyeniz bulunduğu sürece gönderim sağlar. Bu durum işlemlerinizi kolaylaştırmakla kalmaz size daha fazla süre kazandırır.
+											</div>
+										</div>
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+													Etapas do pedido
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="">
+												Sipariş aşamaları siparişinizin tamamlanma sürecinde size yol gösterir. Sipariş aşamalarını öğrenmeniz siparişinizin ne durumda olduğunu kontrol etmenizde size yardımcı olacaktır. Genel olarak {{site['domain']}} panel üzerinden verdiğiniz siparişler ilk önce kontrol aşamasından geçer daha sonra sıraya alınır ve gönderim yapılmadan önce beklenir. Gönderiniz işleme alındığında gönderim yapılırken sipariş aşaması değişir, ardından siparişiniz sonuçlanır.
+											</div>
+										</div>
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+												O que significam as descrições de serviço?
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="">
+												Her servisin özelliği farklı olduğundan dolayı, yazan açıklamalar sadece bir servise özeldir ve diğer servisler aynı özellikleri göstermediği sürece değişmezler. Açıklama kısmı siz Turkiyeresellers müşterilerine yol göstermek için yazılır ve düzenlenir. {{site['domain']}} müşterileri belirtilen açıklamalara uymak zorundadırlar.
+											</div>
+										</div>
+										<div class="gnyFtab">
+											<div class="gnyFhead">
+												<div class="row">
+													<div class="col">
+													Como são determinados os preços dos serviços?
+													</div>
+													<div class="col-auto align-self-center right-p">
+														<i class="fas fa-plus"></i>
+														<i class="fas fa-minus"></i>
+													</div>
+												</div>
+											</div>
+											<div class="gnyFcontent" style="">
+											   {{site['domain']}} servislerinin fiyatları genel olarak servisin yoğunluğuna göre belirlenir. Eğer servis gereğinden fazla kullanılıyorsa servis yavaşlığı artacak ve fiyat bu yüzden düşecektir. Eğer bir servise gereğinden fazla talep olmazsa, servis hızlı başlayacak ve fiyatı yüksek olacaktır.
+											</div>
+										</div>
+									</div>
+								  </div>
+							</div>
+						</div>
+                    </div>
+               </div>
+            </section>
+         </div>
+      </div>
+
+
+{% include 'footer.twig' %}

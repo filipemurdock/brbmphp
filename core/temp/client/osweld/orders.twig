@@ -1,0 +1,354 @@
+{% include 'header.twig' %}
+
+<style>
+.box-list {
+display: flex !important;
+justify-content: flex-start !important;
+}
+.box-listtitle {
+}
+.btn-blue {
+padding-right: 50px !important;
+color: #a4a4a4 !important;
+}
+.col-lg-auto{
+justify-content: flex-start !important;
+}
+
+.btndownload{
+padding: 7px 15px !important;
+}
+
+.link{
+margin-right: 10px !important;
+}
+</style>
+
+<div class="g-dash-content">
+   <section class="pt-4">
+      <div class="container-fluid">
+         <div class="gcard gcard-border">
+            <div class="gcard-body p-3">
+               <div class="row align-items-center">
+                  <div class="col-md-auto col-12">
+                     <div class="dropdown">
+                        <button class="btn btn-primary btn-sm btn-100 dropdown-toggle gny-btn" type="button"
+                           id="filterServicesDd" data-toggle="dropdown" aria-expanded="false">
+                           <div class="d-flex fw-400">
+                              <i class="ri-filter-2-line mr-2"></i>
+                              <span>Filtrar Pedidos</span>
+                              <i class="ri-arrow-down-s-line ms-auto ms-md-3"></i>
+                           </div>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="filterServicesDd">
+                            <li><a class="dropdown-item" href="orders">{{ lang['orders.status.all'] }}</a></li>
+                            <li><a class="dropdown-item" href="orders/pending">{{ lang['orders.status.pending'] }}</a></li>
+                            <li><a class="dropdown-item" href="orders/inprogress">{{ lang['orders.status.inprogress'] }}</a></li>
+                            <li><a class="dropdown-item" href="orders/completed">{{ lang['orders.status.completed'] }}</a></li>
+                            <li><a class="dropdown-item" href="orders/partial">{{ lang['orders.status.partial'] }}</a></li>
+                            <li><a class="dropdown-item" href="orders/processing">{{ lang['orders.status.processing'] }}</a></li>
+                            <li><a class="dropdown-item" href="orders/canceled">{{ lang['orders.status.canceled'] }}</a></li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="col-lg">
+                     <div class="g-search">
+                        <div class="g-ticon">
+                           <i class="ri-search-line"></i>
+                        </div>
+                        <input type="text" name="search" class="textbox" value="{{ search }}" placeholder="Pesquisar pedidos">
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   <section class="pt-4">
+       <div class="container-fluid">
+        <div class="order-container">
+        
+            {% if orders is empty and 'all' == status %}
+            <div class="gcard-2 gcard-shadow fade-3 mt-3 p-3">
+                <div class="gcard-body">
+                    <div class="noorders text-center">
+                            <p>Olá <strong>{{user['username']}}</strong>, você não tem pedidos ainda.</p>
+                            <p><a href="/">Você pode fazer seu primeiro pedido na página de novo pedido</a>.<br> Depois de fazer seu primeiro pedido, você pode saber o status de seus pedidos nesta página.</div></p>
+                        <div class="d-flex justify-content-center mt-5">
+                             <a href="/addfunds"><button class="btn btn-primary mb-4 mx-1">{{ lang['addfunds.title'] }}</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+                {% for order in orders %}
+                  <div class="gcard mb-3">
+                    <div class="gcard-body">
+                      <div class="orderCardtop cursor-pointer" id="openOrder{{ order['id'] }}">
+                        <div class="row align-items-center">
+                          <div class="col-lg-auto col-md-auto mb-3 mb-lg-0">
+                            {% if order['status'] == lang['orders.status.completed'] %}
+                                <div class="g-status os-sm completed d-flex align-items-center">
+                            {% endif %}
+                            {% if order['status'] == lang['orders.status.processing'] %}
+                                <div class="g-status os-sm processing d-flex align-items-center">
+                            {% endif %}
+                            {% if order['status'] == lang['orders.status.pending'] %}
+                                <div class="g-status os-sm pending d-flex align-items-center">
+                            {% endif %}
+                            {% if order['status'] == lang['orders.status.partial'] %}
+                                <div class="g-status os-sm partial d-flex align-items-center">
+                            {% endif %}
+                            {% if order['status'] == lang['orders.status.inprogress'] %}
+                                <div class="g-status os-sm inprogress d-flex align-items-center">
+                            {% endif %}
+                            {% if order['status'] == lang['orders.status.canceled'] %}
+                                <div class="g-status os-sm cancelled d-flex align-items-center">
+                            {% endif %} 
+                                 <span>{{ order['id'] }}</span> <i class="ri-file-copy-line cursor-pointer pl-2" onclick="copyToClipboard('{{ order['link'] }}')"></i>
+                            </div>
+                          </div>
+                          <div class="col-lg-6 col-md mb-3 mb-lg-0">
+                            <h3 class="g-order-title">
+                                {{ order['service'] }}
+                            </h3>                            
+
+                          </div>
+                          <div class="col-12 d-none d-md-block d-lg-none"></div>
+                          <div class="col-lg col-md-6 mb-3 mb-lg-0">
+                            <div class="g-order-date">{{ order['date'] }}</div>
+                          </div>
+                          <div class="col-lg-auto">
+                          {% if order['status'] == lang['orders.status.completed'] %}
+                              <div class="g-status completed">{{ order['status'] }}
+                          {% endif %}
+                          {% if order['status'] == lang['orders.status.processing'] %}
+                              <div class="g-status processing">{{ order['status'] }}
+                          {% endif %}
+                          {% if order['status'] == lang['orders.status.pending'] %}
+                              <div class="g-status pending">{{ order['status'] }}
+                          {% endif %}
+                          {% if order['status'] == lang['orders.status.partial'] %}
+                              <div class="g-status partial">{{ order['status'] }}
+                          {% endif %}
+                          {% if order['status'] == lang['orders.status.inprogress'] %}
+                              <div class="g-status inprogress">{{ order['status'] }}
+                          {% endif %}
+                          {% if order['status'] == lang['orders.status.canceled'] %}
+                              <div class="g-status cancelled">{{ order['status'] }}
+                          {% endif %}  
+                            </div>
+                          </div>
+                          <div class="col-lg-auto">
+                             <i class="ri-arrow-down-s-line cursor-pointer g-status downBtn"></i>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="g-order-bottom hidden" id="thisOrder{{ order['id'] }}">
+					  <div class="box-listtitle">
+					<div class="row align-items-center row-cols-md-4 row-cols-2">
+					</div>
+                       <div class="box-list">
+                          <div class="col-lg-auto mt-3 mt-md-0">
+                            <div class="g-order-item">
+                              <div class="title">Taxa</div>
+                              <div class="text">{{ order['charge'] }} {{ site['currency'] }}</div>
+                            </div>
+                          </div>
+                          <div class="col-lg-auto mt-3 mt-md-0">
+                            <div class="g-order-item">
+                              <div class="title">Começo</div>
+                              <div class="text">{{ order['start_count'] }}</div>
+                            </div>
+                          </div>
+                          <div class="col-lg-auto mt-3 mt-md-0">
+                            <div class="g-order-item">
+                              <div class="title">Quantia</div>
+                              <div class="text">{{ order['quantity'] }}</div>
+                            </div>
+                          </div>
+                          <div class="col-lg-auto mt-3 mt-md-0">
+                            <div class="g-order-item">
+                              <div class="title">Restante</div>
+                              <div class="text">{{ order['remains'] }}</div>
+							  </div>
+                            </div>
+                          </div>       
+						  
+                  {% if order.link is defined %}
+    {% for url in order.link | split('\n') %}
+        <div class="col-lg-auto col-12 col-md-12 ms-lg-auto d-flex align-items-center justify-content-center mt-3 mt-lg-0 ms-auto">
+            <span class="order-actions">
+			
+			
+  
+{#{% if order.order_status == 'completed' or order.order_status == 'concluido' %}#}
+{% if order.refillButton %}
+
+    <button class="btn btn-green btn-md mr-1" onclick="refillOrder('{{ order.id }}', '{{ order.service_id }}', '{{ url }}')">
+        <i class="ri-restart-line me-2"></i>
+        <span>Refill</span>
+    </button>
+
+    {% endif %}
+	
+	
+
+                <button class="btn btn-blue btn-md mr-1" onclick="copyToClipboard('{{ url }}')">
+                    <i class="ri-file-copy-line me-2"></i>
+                    <span>{{ lang['orders.button.copy'] }}</span>
+                </button>
+            </span>
+            <div class="link">{{ url }}</div>
+			     {# Verifica se há um arquivo associado ao pedido #}
+    {% if order.downloadButton is not null and order.downloadButton is not empty %}
+        <div>{{ order.downloadButton|raw }}</div>
+    {% else %}
+	    <span>Download indisponível</span>
+    {% endif %}
+
+
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Nenhum link disponível.</p>
+{% endif %}
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                                    <script>
+                                                                            $("#openOrder{{ order['id'] }}").click(function () {
+                                            $("#thisOrder{{ order['id'] }}").toggleClass("hidden");
+                                        });
+                                     </script>
+                {% endfor %}
+            </div>
+                      <section class="mt-3">
+                        <div class="container text-center d-flex justify-content-center">
+                          <nav aria-label="">
+                         {% if pagination["count"] > 1 %}  
+                            <ul class="pagination">
+                             {% if pagination["current"] != 1 %}
+                              <li class="page-item pi-pn">
+                                <a class="page-link" href="orders/{{ status }}/{{ pagination["previous"] }}{% if search %}?search={{ search }}{% endif %}" aria-label="Previous"><i class="ri-arrow-left-s-line"></i></a>
+                              </li>
+                            {% endif %}
+
+                              {% set r, l = 3, 3 %}
+
+                              {% if pagination['current'] == 1 %}
+                                {% set r = 7 %}
+                              {% endif %}
+
+                              {% if pagination['current'] == 2 %}
+                                {% set r = 5 %}
+                              {% endif %}
+
+                              {% if pagination['current'] >= pagination['count'] %}
+                                {% set l = 5 %}
+                              {% endif %}
+
+                              {% for page in 1..pagination["count"] %}
+                                {% if page >= (pagination['current']-l) and page <= (pagination['current']+r) %}
+                                  <li{% if i == pagination['current'] %} class="page-item active" {% else %}  class="page-item" {% endif %}><a class="page-link" href="orders/{{ status }}/{{ page }}{% if search %}?search={{ search }}{% endif %}">{{ page }}</a></li>
+                                {%endif%}
+                              {% endfor %}
+
+                              {% if pagination['current'] < pagination['count'] %}
+                                <li class="page-item pi-pn">
+                                  <a class="page-link" href="orders/{{ status }}/{{ pagination['next'] }}{% if search %}?search={{ search }}{% endif %}" aria-label="Next">
+                                    <span aria-hidden="true">»</span>
+                                  </a>
+                                </li>
+                              {% endif %}
+                            </ul>
+                            {% endif %}
+                          </nav>
+                        </div>
+                      </section>
+                </div>
+            </section>
+        </div>
+        <!-- Inclua a biblioteca jQuery -->
+        {# SCRIPT FEITO REFILL #}
+        <script>
+        function refillOrder(orderId, serviceId, orderUrl) {
+            fetch('/register_refill.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    order_id: orderId, 
+                    service_id: serviceId,
+                    order_url: orderUrl // Inclua o order_url aqui
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Reposição Solicitada, o Suporte abrirá um ticket!',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Okay'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Erro ao realizar reposição.',
+                        text: data.message || 'Erro desconhecido',
+                        showConfirmButton: true,
+                        confirmButtonText: 'Okay'
+                    });
+                    if (data.error) {
+                        console.error('Erro do Banco de Dados:', data.error);
+                    }
+                }
+            })
+            .catch((error) => {
+                console.error('Erro:', error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro ao realizar reposição.',
+                    showConfirmButton: true,
+                    confirmButtonText: 'Okay'
+                });
+            });
+        }
+
+        </script>
+        <div class="d-flex g-olink mb-0">
+          <ol id="order-list">
+            <!-- Itens da lista serão adicionados aqui pelo JavaScript -->
+          </ol>
+        </div>
+
+        <script>
+          var orderLink = {{ order.link | e('js') }} // Escapa a string para JavaScript
+
+          console.log(orderLink); // Verifique se a string é exibida corretamente
+
+          var list = document.getElementById('order-list');
+
+          // Divida a string em linhas
+          var lines = orderLink.split('\n');
+
+          // Verifique se a string foi dividida corretamente
+          console.log(lines);
+
+          // Itere sobre cada linha e crie um item de lista
+          lines.forEach(function(line) {
+            if (line.trim() !== "") { // Ignora linhas vazias
+              var listItem = document.createElement('li');
+              listItem.className = 'link';
+              listItem.textContent = line;
+              list.appendChild(listItem);
+            }
+          });
+        </script>
+
+        {% include 'footer.twig' %}
