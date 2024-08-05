@@ -245,7 +245,7 @@ wavesurfer.on('ready', wavesurfer.play.bind(wavesurfer));
 							</a>
 						 </li>
 
-						 if site["subscriptionscount"] 
+						{% if site["subscriptionscount"] %}
 						<li class="g-menu-item">
 							<a class="g-menu-link {% if active_menu == 'subscriptions' %} active {% endif %}" href="/subscriptions">
 								<span class="g-menu-icon"><i class="ri-dvd-line"></i></span>
