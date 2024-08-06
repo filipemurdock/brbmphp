@@ -102,7 +102,8 @@ Explore uma seleção exclusiva de serviços com preços imbatíveis e disponibi
 							line-height: 0;
 							margin-right: 10px;
 							display: inline-block;
-						">						{% elseif category["category_id"] == "61" %}
+						">		
+						{% elseif category["category_id"] == "61" %}
 							<i class="fas fa-code" style="
 								padding-right: 10px;
 								font-size: 30px;
@@ -265,7 +266,7 @@ Explore uma seleção exclusiva de serviços com preços imbatíveis e disponibi
 							<div class="s-col s-title">
    <span class="g-stitle" data-filter-table-service-name="true">
       {% if service["service_image"] %}
-         <img src="{{ service["service_image"] }}" alt="{{ service["service_name"] }}" class="service-image" style="width:40px; height: 36px; object-fit: cover; margin-right: 10px;">
+         <img src="{{ service["service_image"] }}" alt="{{ service["service_name"] }}" class="service-image" style="width:40px; height: 36px; object-fit: cover; margin-right: 10px; border-radius: 7px;">
       {% endif %}
       {{ service["service_name"] }}
       {% if avarageTime %}<div class="align-items-center gap-1 mt-1 avgtime">{{ service["service_speed"] }}</div>{% endif %}
