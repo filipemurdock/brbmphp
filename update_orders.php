@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: application/json');
+
 // Configurações do banco de dados
 $host = 'localhost'; // Altere para o host do seu banco de dados
 $db = 'oswald'; // Altere para o nome do seu banco de dados
@@ -17,19 +19,30 @@ $options = [
 try {
     // Cria a conexão com o banco de dados
     $conn = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
+} catch (PDOException $e) {
     echo json_encode(['error' => 'Falha na conexão: ' . $e->getMessage()]);
     exit();
 }
 
-// Busque os pedidos
-try {
-$query = "SELECT o.order_id AS id, o.order_create AS date, o.sms_number AS sms_number, o.order_url AS link, s.service_name AS service, o.order_status AS status, o.expiration_time
-          FROM orders o
-          INNER JOIN services s ON o.service_id = s.service_id
-          WHERE s.category_id = 57";
+// Iniciar sessão para obter o client_id
+session_start();
+if (!isset($_SESSION['client_id'])) {
+    echo json_encode(['error' => 'Client ID não está definido na sessão.']);
+    exit();
+}
 
-    $stmt = $conn->query($query);
+$client_id = $_SESSION['client_id'];
+
+// Busque os pedidos para o cliente logado e categoria 57
+try {
+    $query = "SELECT o.order_id AS id, o.order_create AS date, o.sms_number AS sms_number, o.order_url AS link, 
+                     s.service_name AS service, o.order_status AS status, o.expiration_time
+              FROM orders o
+              INNER JOIN services s ON o.service_id = s.service_id
+              WHERE o.client_id = :client_id AND s.category_id = 57";
+    
+    $stmt = $conn->prepare($query);
+    $stmt->execute(['client_id' => $client_id]);
     $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo json_encode(['error' => 'Falha ao buscar pedidos: ' . $e->getMessage()]);
@@ -53,4 +66,5 @@ foreach ($orders as &$order) {
 
 // Retorne os dados em JSON
 echo json_encode($orders);
+
 ?>
