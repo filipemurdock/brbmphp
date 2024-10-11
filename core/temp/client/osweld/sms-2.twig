@@ -1,4 +1,5 @@
 {% include 'header.twig' %}
+
 <style>
     table, td, th {
         color: #fff; /* Define a cor do texto como branco */
@@ -22,13 +23,28 @@ background-color: #00000024;
 	margin-right: 20px;
 }
 
-
-
+.h2descricao {
+    background-color: #ff9b1a1c;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+    border-radius: 13px;
+    border: solid 2px #ff9b1a;
+    color: #d5d5d5;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
 
 
 </style>
 <div class="g-dash-content">
 <h2 class="h2title">Meus SMS</h2>
+<h2 class="h2descricao">📌Após gerar o número de telefone, copie e cole no serviço desejado. Aguarde o SMS, que deve ser usado em até 15 minutos.</h2>
     <section class="pt-4">
         <div class="container-fluid">
             <div class="gcard gcard-border">
@@ -37,6 +53,7 @@ background-color: #00000024;
                         <div class="col-md-auto col-12">
                             <div id="order-page" class="well well-float table-responsive">
                                 <table id="orders_table" class="table">
+
                                     <thead>
                                         <tr>
                                             <th style="color: white;">ID</th>
@@ -175,7 +192,6 @@ background:
     </section>
 </div>
 
-{% include 'footer.twig' %}
 <script>
     function copyToClipboard(text) {
         navigator.clipboard.writeText(text).then(function() {
@@ -185,29 +201,28 @@ background:
         });
     }
 </script>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    let updateInterval = null;
+    document.addEventListener('DOMContentLoaded', function () {
+        let updateInterval = null;
 
-    function fetchOrders() {
-        fetch('/api/endpoint.php')
-            .then(response => response.json())
-            .then(data => {
-                updateTable(data);
-                manageUpdateInterval(data);
-            })
-            .catch(error => console.error('Erro ao buscar pedidos:', error));
-    }
+        function fetchOrders() {
+            fetch('/api/endpoint.php')
+                .then(response => response.json())
+                .then(data => {
+                    updateTable(data);
+                    manageUpdateInterval(data);
+                })
+                .catch(error => console.error('Erro ao buscar pedidos:', error));
+        }
 
-  function updateTable(orders) {
-        const tableBody = document.querySelector('#orders_table tbody');
-        tableBody.innerHTML = '';
+        function updateTable(orders) {
+            const tableBody = document.querySelector('#orders_table tbody');
+            tableBody.innerHTML = '';
 
-        orders.forEach(order => {
-            const row = document.createElement('tr');
-            const statusStyles = getStatusStyles(order.status);
-            row.innerHTML = `
+            orders.forEach(order => {
+                const row = document.createElement('tr');
+                const statusStyles = getStatusStyles(order.status);
+                row.innerHTML = `
                 <td>${order.id}</td>
                 <td>${order.date}</td>
                 <td>
@@ -228,135 +243,135 @@ document.addEventListener('DOMContentLoaded', function() {
                     ${order.status === 'inprogress' && order.expiration_time ? `<span id="countdown-${order.id}"></span>` : '-'}
                 </td>
             `;
-            tableBody.appendChild(row);
+                tableBody.appendChild(row);
 
-            // Iniciar o cronômetro apenas se o status for "inprogress" e expiration_time for válido
-            if (order.status === 'inprogress' && order.expiration_time) {
-                startCountdown(order.id, order.expiration_time);
-            }
-        });
-    }
+                if (order.status === 'inprogress' && order.expiration_time) {
+                    startCountdown(order.id, order.expiration_time);
+                }
+            });
+        }
 
-    function startCountdown(id, expirationTime) {
-        const countdownElement = document.getElementById(`countdown-${id}`);
-        const countDownDate = new Date(expirationTime).getTime();
+        function startCountdown(id, expirationTime) {
+            const countdownElement = document.getElementById(`countdown-${id}`);
+            const countDownDate = new Date(expirationTime).getTime();
 
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
+            const x = setInterval(function () {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
 
-            if (distance < 0) {
-                clearInterval(x);
-                countdownElement.innerHTML = 'Expirado';
-                return;
-            }
-
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            countdownElement.innerHTML = `${minutes}m ${seconds}s`;
-        }, 1000);
-    }
-
-   function getStatusStyles(status) {
-    switch (status) {
-        case 'completed':
-            return {
-                backgroundColor: '#00b67a40',
-                borderColor: '#00B67A',
-                color: 'white',
-                borderRadius: '5px',
-                padding: '8px 12px',
-                textAlign: 'center',
-                lineHeight: '1',
-                cursor: 'pointer'
-            };
-        case 'refilling':
-        case 'inprogress':
-            return {
-                backgroundColor: '#029fff40',
-                borderColor: '#029fff',
-                color: 'white',
-                borderRadius: '5px',
-                padding: '8px 12px',
-                textAlign: 'center',
-                lineHeight: '1',
-                cursor: 'pointer'
-            };
-        case 'pending':
-            return {
-                backgroundColor: '#fbbc0524',
-                borderColor: '#fbbc05',
-                color: 'white',
-                borderRadius: '5px',
-                padding: '8px 12px',
-                textAlign: 'center',
-                lineHeight: '1',
-                cursor: 'pointer'
-            };
-        case 'error':
-        case 'canceled':
-            return {
-                backgroundColor: '#ff3e7c2e',
-                borderColor: '#ff3e7c',
-                color: 'white',
-                borderRadius: '5px',
-                padding: '8px 12px',
-                textAlign: 'center',
-                lineHeight: '1',
-                cursor: 'pointer'
-            };
-        default:
-            return {
-                backgroundColor: '#ff6b1d',
-                borderColor: '#ff6b1d',
-                color: 'white',
-                borderRadius: '5px',
-                padding: '8px 12px',
-                textAlign: 'center',
-                lineHeight: '1',
-                cursor: 'pointer'
-            };
-    }
-}
-
-function getStatusName(status) {
-    switch (status) {
-        case 'completed': return 'Concluído';
-        case 'inprogress': return 'Em progresso';
-        case 'pending': return 'Pendente';
-        case 'canceled': return 'Cancelado';
-        default: return 'Status desconhecido'; // Retorno padrão para status não reconhecido
-    }
-}
-
-    function updateOrders() {
-        fetch('update_orders.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    console.error('Erro ao atualizar pedidos:', data.error);
+                if (distance < 0) {
+                    clearInterval(x);
+                    countdownElement.innerHTML = 'Expirado';
                     return;
                 }
-                updateTable(data);
-                manageUpdateInterval(data);
-            })
-            .catch(error => console.error('Erro ao atualizar pedidos:', error));
-    }
 
-    function manageUpdateInterval(orders) {
-        const hasActiveOrders = orders.some(order => order.status === 'pending' || order.status === 'inprogress');
-
-        if (hasActiveOrders && !updateInterval) {
-            updateInterval = setInterval(updateOrders, 30000);
-        } else if (!hasActiveOrders && updateInterval) {
-            clearInterval(updateInterval);
-            updateInterval = null;
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                countdownElement.innerHTML = `${minutes}m ${seconds}s`;
+            }, 1000);
         }
-    }
 
-    // Buscar pedidos inicialmente
-    fetchOrders();
-});
+        function getStatusStyles(status) {
+            switch (status) {
+                case 'completed':
+                    return {
+                        backgroundColor: '#00b67a40',
+                        borderColor: '#00B67A',
+                        color: 'white',
+                        borderRadius: '5px',
+                        padding: '8px 12px',
+                        textAlign: 'center',
+                        lineHeight: '1',
+                        cursor: 'pointer'
+                    };
+                case 'refilling':
+                case 'inprogress':
+                    return {
+                        backgroundColor: '#029fff40',
+                        borderColor: '#029fff',
+                        color: 'white',
+                        borderRadius: '5px',
+                        padding: '8px 12px',
+                        textAlign: 'center',
+                        lineHeight: '1',
+                        cursor: 'pointer'
+                    };
+                case 'pending':
+                    return {
+                        backgroundColor: '#fbbc0524',
+                        borderColor: '#fbbc05',
+                        color: 'white',
+                        borderRadius: '5px',
+                        padding: '8px 12px',
+                        textAlign: 'center',
+                        lineHeight: '1',
+                        cursor: 'pointer'
+                    };
+                case 'error':
+                case 'canceled':
+                    return {
+                        backgroundColor: '#ff3e7c2e',
+                        borderColor: '#ff3e7c',
+                        color: 'white',
+                        borderRadius: '5px',
+                        padding: '8px 12px',
+                        textAlign: 'center',
+                        lineHeight: '1',
+                        cursor: 'pointer'
+                    };
+                default:
+                    return {
+                        backgroundColor: '#ff6b1d',
+                        borderColor: '#ff6b1d',
+                        color: 'white',
+                        borderRadius: '5px',
+                        padding: '8px 12px',
+                        textAlign: 'center',
+                        lineHeight: '1',
+                        cursor: 'pointer'
+                    };
+            }
+        }
+
+        function getStatusName(status) {
+            switch (status) {
+                case 'completed': return 'Concluído';
+                case 'inprogress': return 'Em progresso';
+                case 'pending': return 'Pendente';
+                case 'canceled': return 'Cancelado';
+                default: return 'Status desconhecido';
+            }
+        }
+
+        function updateOrders() {
+            fetch('/api/update_sms.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error('Erro ao atualizar pedidos:', data.error);
+                        return;
+                    }
+                    updateTable(data);
+                    manageUpdateInterval(data);
+                })
+                .catch(error => console.error('Erro ao atualizar pedidos:', error));
+        }
+
+        function manageUpdateInterval(orders) {
+            const hasActiveOrders = orders.some(order => order.status === 'pending' || order.status === 'inprogress');
+
+            if (hasActiveOrders && !updateInterval) {
+                updateInterval = setInterval(updateOrders, 30000);
+            } else if (!hasActiveOrders && updateInterval) {
+                clearInterval(updateInterval);
+                updateInterval = null;
+            }
+        }
+
+        fetchOrders();
+    });
 </script>
+
+{% include 'footer.twig' %}
 
 
